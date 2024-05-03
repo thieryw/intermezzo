@@ -24,6 +24,9 @@ export function Body2(props: PropsOfBody) {
                 >
                     This is a paragraph!
                 </Typography>
+                <div className={classes.gradientTest}>
+
+                </div>
             </div>
         </div>
     );
@@ -46,10 +49,17 @@ const useStyles = tss
             "padding": theme.spacing(3),
             "borderRadius": theme.shape.borderRadius,
             [`&:hover .${classes.paragraph}`]: {
-                "color": theme.palette.success.main
+                "background": theme.palette.gradient1.main,
+                "backgroundClip": "text",
+                "color": "transparent"
             }
         },
         "paragraph": {
             "marginTop": theme.spacing(3)
+        },
+        "gradientTest": {
+            "background": theme.palette.gradient3.main,
+            "width": 250,
+            "height": 250,
         }
     }));

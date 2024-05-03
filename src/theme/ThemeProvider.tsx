@@ -118,6 +118,28 @@ const muiThemeLight = createMuiTheme({
         },
         "darkGray": {
             "main": "#24252D"
+        },
+        "lightOrange": {
+            "main": "#F69770"
+
+        },
+        "orange": {
+            "main": "#F97E53"
+        },
+        "lightGray": {
+            "main": "#D9D9D9"
+        },
+        "white": {
+            "main": "#FFFFFF"
+        },
+        "gradient1": {
+            "main": "linear-gradient(110deg, #8B50EA 0%, #FBAAD4 53%, #F97E53 100%)"
+        },
+        "gradient2": {
+            "main": "linear-gradient(-140deg, #8B50EA 0%, #49336C 100%)"
+        },
+        "gradient3": {
+            "main": "linear-gradient(110deg, #EBEBEB 0%, #DEDEDE 100%)"
         }
     },
     "components": {
@@ -233,11 +255,26 @@ declare module '@mui/material/styles' {
     interface Palette {
       purple: Palette['primary'];
       darkGray: Palette['primary'];
+      lightOrange: Palette['primary'];
+      orange: Palette['primary'];
+      lightGray: Palette['primary'];
+      white: Palette['primary'];
+      gradient1: Palette['primary'];
+      gradient2: Palette['primary'];
+      gradient3: Palette['primary'];
+      
     }
   
     interface PaletteOptions {
       purple?: PaletteOptions['primary'];
       darkGray: PaletteOptions['primary'];
+      lightOrange: PaletteOptions['primary']
+      orange: PaletteOptions['primary']
+      lightGray: PaletteOptions['primary']
+      white: PaletteOptions['primary']
+      gradient1: PaletteOptions['primary'];
+      gradient2: PaletteOptions['primary'];
+      gradient3: PaletteOptions['primary'];
     }
   }
   
@@ -246,5 +283,12 @@ declare module '@mui/material/styles' {
     interface ButtonPropsColorOverrides {
       purple: true;
       darkGray: true;
+      lightOrange: true;
+      orange: true;
+      lightGray: true;
+      white: true;
+      gradient1: true;
+      gradient2: true;
+      gradient3: true;
     }
   }
