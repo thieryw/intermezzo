@@ -15,12 +15,12 @@ export function Body2(props: PropsOfBody) {
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.innerWrapper}>
-                <Typography variant="h1" >
-                    Hello World!!!
+                <Typography variant="heading1" >
+                    Heading 1
                 </Typography>
                 <Typography
                     className={classes.paragraph}
-                    variant="body1"
+                    variant="cardSign"
                 >
                     This is a paragraph!
                 </Typography>
