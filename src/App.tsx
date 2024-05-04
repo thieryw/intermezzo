@@ -2,7 +2,6 @@
 import { GlobalStyles } from "tss-react";
 import { useStyles } from "tss";
 import { Body } from "./Body";
-import { Body2 } from "./Body2";
 
 export function App() {
 
@@ -27,7 +26,6 @@ export function App() {
         }}
       />
       <Body />
-      <Body2 />
     </>
   )
 }

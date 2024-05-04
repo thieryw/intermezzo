@@ -10,35 +10,35 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "6rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-2%"
+            "letterSpacing": "-0.02em"
         },
         "heading2": {
             "fontFamily": '"Questrial", sans-serif',
             "fontSize": "4rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-2%"
+            "letterSpacing": "-0.02em"
         },
         "heading3": {
             "fontFamily": '"Questrial", sans-serif',
             "fontSize": "2.5rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-1%"
+            "letterSpacing": "-0.01em"
         },
         "bigParagraph": {
             "fontFamily": '"Questrial", sans-serif',
             "fontSize": "2.5rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-1%"
+            "letterSpacing": "-0.01em"
         },
         "cardNumber": {
             "fontFamily": '"Questrial", sans-serif',
             "fontSize": "3.6rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "fontStyle": "normal"
         },
         "cardSign": {
@@ -46,7 +46,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "2.6rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "fontStyle": "normal"
         },
         "paragraph1": {
@@ -54,8 +54,9 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "1.3rem",
             "color": palette.darkGray.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "lineHeight": "150%",
+            "opacity": 0.7
 
         },
         "paragraph1Purple": {
@@ -63,7 +64,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "1.3rem",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "lineHeight": "150%",
 
         },
@@ -72,7 +73,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "1.3rem",
             "color": "#F97E53",
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "lineHeight": "150%",
 
         },
@@ -81,8 +82,9 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "1.125rem",
             "color": palette.darkGray.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "lineHeight": "140%",
+            "opacity": 0.7
 
         },
         "details": {
@@ -90,9 +92,77 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "1rem",
             "color": palette.darkGray.main,
             "fontWeight": "400",
-            "letterSpacing": "0%",
+            "letterSpacing": "0em",
             "lineHeight": "160%",
+            "opacity": 0.7
 
+        },
+        "label": {
+            "fontFamily": "neuzeit-grotesk, sans-serif",
+            "fontWeight": 700,
+            "color": palette.purple.main,
+            "fontSize": "1.313rem",
+            "lineHeight": "100%",
+            "letterSpacing": "0em",
+            "fontStyle": "normal"
+        },
+        "menu": {
+            "fontFamily": "neuzeit-grotesk, sans-serif",
+            "fontWeight": 700,
+            "color": palette.purple.main,
+            "fontSize": "3.188rem",
+            "lineHeight": "100%",
+            "letterSpacing": "-0.02em",
+        },
+        "highLight": {
+            "fontFamily": "source-serif-4, serif",
+            "fontWeight": 400,
+            "background": palette.gradient1.main,
+            "backgroundClip": "text",
+            "color": "transparent",
+            "fontSize": "6.563rem",
+            "letterSpacing": "-0.02em",
+            "fontStyle": "italic"
+
+        },
+        "highLight2": {
+            "fontFamily": "source-serif-4, serif",
+            "fontWeight": 400,
+            "background": palette.gradient1.main,
+            "backgroundClip": "text",
+            "color": "transparent",
+            "fontSize": "4rem",
+            "letterSpacing": "-0.02em",
+            "fontStyle": "italic"
+        },
+        "highLight3": {
+            "fontFamily": "source-serif-4, serif",
+            "fontWeight": 400,
+            "color": palette.white.main,
+            "fontSize": "3.5rem",
+            "letterSpacing": "-0.02em",
+            "fontStyle": "italic"
+
+        },
+        "highLight4": {
+            "fontFamily": "source-serif-4, serif",
+            "fontWeight": 400,
+            "background": palette.gradient1.main,
+            "backgroundClip": "text",
+            "color": "transparent",
+            "fontSize": "3.5rem",
+            "letterSpacing": "-0.02em",
+            "fontStyle": "italic"
+        },
+        "italicP": {
+            "fontFamily": "source-serif-4, serif",
+            "fontWeight": 400,
+            "fontSize": "1.125rem",
+            "lineHeight": "140%",
+            "letterSpacing": "0em",
+            "fontStyle": "italic",
+            "color": palette.darkGray.main,
+            "opacity": 0.7
         }
 
     })
@@ -156,7 +226,14 @@ const muiThemeLight = createMuiTheme({
                     "paragraph1Purple": "p",
                     "paragraph1Orange": "p",
                     "smallText": "p",
-                    "details": "p"
+                    "details": "p",
+                    "label": "em",
+                    "menu": "li",
+                    "highLight": "h1",
+                    "highLight2": "h2",
+                    "highLight3": "h3",
+                    "highLight4": "h4",
+                    "italicP": "p"
                 }
             }
         }
@@ -211,6 +288,13 @@ declare module '@mui/material/styles' {
         paragraph1Orange: React.CSSProperties;
         smallText: React.CSSProperties;
         details: React.CSSProperties;
+        label: React.CSSProperties;
+        menu: React.CSSProperties;
+        highLight: React.CSSProperties;
+        highLight2: React.CSSProperties;
+        highLight3: React.CSSProperties;
+        highLight4: React.CSSProperties;
+        italicP: React.CSSProperties;
         
     }
 
@@ -227,6 +311,13 @@ declare module '@mui/material/styles' {
         paragraph1Orange: React.CSSProperties;
         smallText: React.CSSProperties;
         details: React.CSSProperties;
+        label: React.CSSProperties;
+        menu: React.CSSProperties;
+        highLight: React.CSSProperties;
+        highLight2: React.CSSProperties;
+        highLight3: React.CSSProperties;
+        highLight4: React.CSSProperties;
+        italicP: React.CSSProperties;
     }
 }
 
@@ -244,6 +335,13 @@ declare module '@mui/material/Typography' {
         paragraph1Orange: true;
         smallText: true;
         details: true;
+        label: true;
+        menu: true;
+        highLight: true;
+        highLight2: true;
+        highLight3: true;
+        highLight4: true;
+        italicP: true;
         h1: false;
         h2: false;
         h3: false;
