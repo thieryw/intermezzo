@@ -1,6 +1,6 @@
-
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
+import { MenuLink } from "components/MenuLink";
 
 export type PropsOfBody = {
     className?: string;
@@ -28,16 +28,55 @@ export function Body(props: PropsOfBody) {
                 }} variant="cardNumber">3000</Typography>
                 <Typography variant="cardSign">+</Typography>
             </div>
-            <Typography variant="paragraph1">Paragraph 1: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
-            <Typography variant="paragraph1Purple">Paragraph 1 violet: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
-            <Typography variant="paragraph1Orange">Paragraph 1 orange: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
-            <Typography variant="smallText">Small text: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
-            <Typography variant="details">Details: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
-            <Typography variant="label">label: lorem ispum dolor sy amet.<br/>test de paragraph</Typography>
+            <Typography variant="paragraph1">Paragraph 1: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
+            <Typography variant="paragraph1Purple">Paragraph 1 violet: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
+            <Typography variant="paragraph1Orange">Paragraph 1 orange: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
+            <Typography variant="smallText">Small text: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
+            <Typography variant="details">Details: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
+            <Typography variant="label">label: lorem ispum dolor sy amet.<br />test de paragraph</Typography>
             <ul>
-                <Typography variant="menu">Menu Link</Typography>
-                <Typography variant="menu">Menu Link</Typography>
-                <Typography variant="menu">Menu Link</Typography>
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Header 1"
+                    variants="primary"
+
+                />
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Header 2"
+                    variants="primary"
+
+                />
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Header 3"
+                    variants="primary"
+
+                />
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Footer 1"
+                    variants="secondary"
+
+                />
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Footer 2"
+                    variants="secondary"
+
+                />
+                <MenuLink 
+                    isActive={false}
+                    href=""
+                    label="Menu Link Footer 3"
+                    variants="secondary"
+
+                />
             </ul>
 
             <Typography variant="highLight">Highlight 1</Typography>
@@ -48,9 +87,9 @@ export function Body(props: PropsOfBody) {
                 <Typography variant="highLight3">Highlight 3</Typography>
             </div>
             <Typography variant="highLight4">Highlight 4</Typography>
-            <Typography variant="italicP"><br/>Association Toutes à l’abri<br/>Association Promofemmes</Typography>
+            <Typography variant="italicP"><br />Association Toutes à l’abri<br />Association Promofemmes</Typography>
 
-             
+
 
 
         </div>
@@ -60,7 +99,7 @@ export function Body(props: PropsOfBody) {
 
 const useStyles = tss
     .withName({ Body })
-    .create(({theme}) => ({
+    .create(({ theme }) => ({
         "root": {
             "height": "100vh",
             "display": "flex",

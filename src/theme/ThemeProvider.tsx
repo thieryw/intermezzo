@@ -113,6 +113,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "3.188rem",
             "lineHeight": "100%",
             "letterSpacing": "-0.02em",
+            "listStyleType": "none"
         },
         "highLight": {
             "fontFamily": "source-serif-4, serif",
@@ -185,6 +186,9 @@ const muiThemeLight = createMuiTheme({
         },
         "purple": {
             "main": "#49336C",
+        },
+        "pink": {
+            "main": "#FCAFCF"
         },
         "darkGray": {
             "main": "#24252D"
@@ -354,6 +358,7 @@ declare module '@mui/material/styles' {
       purple: Palette['primary'];
       darkGray: Palette['primary'];
       lightOrange: Palette['primary'];
+      pink: Palette['primary'];
       orange: Palette['primary'];
       lightGray: Palette['primary'];
       white: Palette['primary'];
@@ -367,6 +372,7 @@ declare module '@mui/material/styles' {
       purple?: PaletteOptions['primary'];
       darkGray: PaletteOptions['primary'];
       lightOrange: PaletteOptions['primary']
+      pink: PaletteOptions['primary']
       orange: PaletteOptions['primary']
       lightGray: PaletteOptions['primary']
       white: PaletteOptions['primary']
@@ -388,5 +394,6 @@ declare module '@mui/material/styles' {
       gradient1: true;
       gradient2: true;
       gradient3: true;
+      pink: true
     }
   }
