@@ -1,7 +1,7 @@
 
 import { GlobalStyles } from "tss-react";
 import { useStyles } from "tss";
-import {Body} from "./Body2";
+import {Body} from "./Body";
 
 export function App() {
 

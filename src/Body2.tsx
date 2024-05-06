@@ -69,7 +69,7 @@ export function Body(props: PropsOfBody) {
 
 const useStyles = tss
     .withName({ Body })
-    .create(({ theme }) => ({
+    .create(() => ({
         "root": {
         }
     }));

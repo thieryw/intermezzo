@@ -7,35 +7,35 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
     return ({
         "heading1": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "6rem",
+            "fontSize": "clamp(3rem, 5vw, 6rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "-0.02em"
         },
         "heading2": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "4rem",
+            "fontSize": "clamp(2rem, 3.33vw, 4rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "-0.02em"
         },
         "heading3": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "2.5rem",
+            "fontSize": "clamp(1.7rem, 2.08vw, 2.5rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "-0.01em"
         },
         "bigParagraph": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "2.5rem",
+            "fontSize": "clamp(1.7rem, 2.08vw, 2.5rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "-0.01em"
         },
         "cardNumber": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "3.6rem",
+            "fontSize": "clamp(1.8rem, 3.02vw, 3.6rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -43,7 +43,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "cardSign": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "2.6rem",
+            "fontSize": "clamp(1.3rem, 2.18vw, 2.6rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -51,7 +51,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "paragraph1": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "1.3rem",
+            "fontSize": "clamp(0.8rem, 1.09vw, 1.3rem)",
             "color": palette.darkGray.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -61,7 +61,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "paragraph1Purple": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "1.3rem",
+            "fontSize": "clamp(0.8rem, 1.09vw, 1.3rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -70,7 +70,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "paragraph1Orange": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "1.3rem",
+            "fontSize": "clamp(0.8rem, 1.09vw, 1.3rem)",
             "color": "#F97E53",
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -79,7 +79,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "smallText": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "1.125rem",
+            "fontSize": "clamp(0.6rem, 0.93vw, 1.125rem)",
             "color": palette.darkGray.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -89,7 +89,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
         },
         "details": {
             "fontFamily": '"Questrial", sans-serif',
-            "fontSize": "1rem",
+            "fontSize": "clamp(0.5rem, 0.83vw, 1rem)",
             "color": palette.darkGray.main,
             "fontWeight": "400",
             "letterSpacing": "0em",
@@ -101,7 +101,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontFamily": "neuzeit-grotesk, sans-serif",
             "fontWeight": 700,
             "color": palette.purple.main,
-            "fontSize": "1.313rem",
+            "fontSize": "clamp(0.85rem, 1.09vw, 1.313rem)",
             "lineHeight": "100%",
             "letterSpacing": "0em",
             "fontStyle": "normal"
@@ -110,7 +110,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontFamily": "neuzeit-grotesk, sans-serif",
             "fontWeight": 700,
             "color": palette.purple.main,
-            "fontSize": "3.188rem",
+            "fontSize": "clamp(1.6rem, 2.65vw, 3.188rem)",
             "lineHeight": "100%",
             "letterSpacing": "-0.02em",
             "listStyleType": "none"
@@ -121,7 +121,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "background": palette.gradient1.main,
             "backgroundClip": "text",
             "color": "transparent",
-            "fontSize": "6.563rem",
+            "fontSize": "clamp(3.280rem, 5.31vw, 6.563rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic"
 
@@ -132,7 +132,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "background": palette.gradient1.main,
             "backgroundClip": "text",
             "color": "transparent",
-            "fontSize": "4rem",
+            "fontSize": "clamp(2rem, 3.59vw, 4rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic"
         },
@@ -140,7 +140,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontFamily": "source-serif-4, serif",
             "fontWeight": 400,
             "color": palette.white.main,
-            "fontSize": "3.5rem",
+            "fontSize": "clamp(1.7rem, 2.76vw, 3.5rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic"
 
@@ -151,14 +151,14 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "background": palette.gradient1.main,
             "backgroundClip": "text",
             "color": "transparent",
-            "fontSize": "3.5rem",
+            "fontSize": "clamp(1.4rem, 2.29vw, 2.75rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic"
         },
         "italicP": {
             "fontFamily": "source-serif-4, serif",
             "fontWeight": 400,
-            "fontSize": "1.125rem",
+            "fontSize": "clamp(0.6rem, 0.88vw, 1.125rem)",
             "lineHeight": "140%",
             "letterSpacing": "0em",
             "fontStyle": "italic",

@@ -20,7 +20,7 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
     const imageSetRef3 = useRef<HTMLDivElement>(null);
 
     const [position, setPosition] = useState(1)
-    const { classes, cx, theme } = useStyles({ "classesOverrides": props.classes });
+    const { classes, cx} = useStyles({ "classesOverrides": props.classes });
 
     useEffect(()=>{
         if(
@@ -32,9 +32,9 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
             return;
         }
 
-        const style1 = (imageSetRef1.current as HTMLDivElement).style;
+        /*const style1 = (imageSetRef1.current as HTMLDivElement).style;
         const style2 = (imageSetRef2.current as HTMLDivElement).style;
-        const style3 = (imageSetRef3.current as HTMLDivElement).style;
+        const style3 = (imageSetRef3.current as HTMLDivElement).style;*/
 
 
 
