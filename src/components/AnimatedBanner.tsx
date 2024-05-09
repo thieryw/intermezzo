@@ -1,6 +1,6 @@
-import { memo, useEffect, useState, useRef } from "react";
+import { memo } from "react";
 import { tss } from "tss";
-import { useDomRect } from "powerhooks/useDomRect";
+import { keyframes } from "tss-react";
 
 
 export type AnimatedBannerProps = {
@@ -15,73 +15,14 @@ export type AnimatedBannerProps = {
 export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 
     const { images, className } = props;
-    const { domRect: { width }, ref: imageSetRef1} = useDomRect();
-    const imageSetRef2 = useRef<HTMLDivElement>(null);
-    const imageSetRef3 = useRef<HTMLDivElement>(null);
-
-    const [position, setPosition] = useState(1)
-    const { classes, cx} = useStyles({ "classesOverrides": props.classes });
-
-    useEffect(()=>{
-        if(
-            imageSetRef1.current === null || 
-            imageSetRef2.current === null || 
-            imageSetRef3.current === null ||
-            width === 0
-        ){
-            return;
-        }
-
-        /*const style1 = (imageSetRef1.current as HTMLDivElement).style;
-        const style2 = (imageSetRef2.current as HTMLDivElement).style;
-        const style3 = (imageSetRef3.current as HTMLDivElement).style;*/
-
-
-
-
-    }, [position, width]);
-
-    useEffect(() => {
-        let positionTemp = position;
-        const interval = setInterval(() => {
-            if (positionTemp === 3) {
-                setPosition(1);
-                positionTemp = 1;
-                return;
-            }
-
-            setPosition(positionTemp + 1);
-            positionTemp++
-
-
-        }, 2000)
-
-        return () => clearInterval(interval)
-
-    }, [])
+    const { classes, cx } = useStyles({ "classesOverrides": props.classes });
 
 
     return <div className={cx(classes.root, className)}>
         {
-            [imageSetRef1, imageSetRef2, imageSetRef3].map((ref, index) => <div
-                ref={ref} className={classes.logoSet}
-                key={index}
-                style={{
-                    "border": `solid ${
-                        (()=>{
-                            if(index === 0){
-                                return "red";
-                            }
-                            if(index === 1){
-                                return "orange";
-                            }
-                            return "green"
-                        })()
-                    } 2px`
-                }}
-            >
+            Array.from({ "length": 2 }).map((_, index) => <div key={index} className={classes.logoSlider}>
                 {
-                    images.map(({ src, alt }) => <img key={src} src={src} alt={alt} />)
+                    images.map(({ src, alt }) => <img className={classes.image} key={src} src={src} alt={alt} />)
                 }
             </div>)
         }
@@ -91,23 +32,28 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 
 
 const useStyles = tss.withName("AnimatedBanner").create(({ theme }) => {
+    const gap = theme.spacing(10);
 
     return ({
         "root": {
-            "display": "flex",
             "overflow": "hidden",
+            "display": "flex",
 
         },
-        "logoSet": {
+        "logoSlider": {
             "display": "flex",
-            "gap": theme.spacing(20),
-            ...(()=>{
-                const value = parseInt(theme.spacing(20)) / 2
-                return {
-                    "marginLeft": value,
-                    "marginRight": value
-                }
-            })()
+            "animation": `${keyframes`
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+            `} 30s infinite linear`,
+        },
+        "image": {
+            "marginLeft": gap,
+            "marginRight": gap
 
         }
 

@@ -71,5 +71,6 @@ const useStyles = tss
     .withName({ Body })
     .create(() => ({
         "root": {
+            "paddingTop": 400
         }
     }));
