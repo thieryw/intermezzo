@@ -1,7 +1,8 @@
 
 import { GlobalStyles } from "tss-react";
 import { useStyles } from "tss";
-import {Body} from "./Body2";
+import { Body } from "./Body2";
+import { Footer } from "Footer";
 
 export function App() {
 
@@ -26,6 +27,7 @@ export function App() {
         }}
       />
       <Body />
+      <Footer />
     </>
   )
 }

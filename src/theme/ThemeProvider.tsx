@@ -177,8 +177,29 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
     }
 });*/
 
+function setSpacing(factor: number) {
+    const width = window.innerWidth;
+    if (width >= 1920) {
+          return 8 * factor;
+    }
+    if(width >= 1660) {
+        return 7 * factor;
+    }
+    if(width >= 1440){
+        return 6 * factor;
+    }
+    if(width >= 1280){
+        return 5 * factor;
+    }
+    if(width >= 960){
+        return 4 * factor;
+    }
+    return 3 * factor;
+}
+
 const muiThemeLight = createMuiTheme({
     typography,
+    "spacing": setSpacing,
     "palette": {
         "mode": "light",
         "background": {
