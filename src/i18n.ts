@@ -32,8 +32,10 @@ export const {
 		"fr": {
 			"Footer": {
 				"siteTitle": "Intermezzo",
-				"copyRight": "© 2024 Association Musicale Intermezzo Tous droits réservés",
-				"descriptiveTitle": "Incubatrice de Projets Culturels",
+				"copyRight": "© 2024 Association Musicale Intermezzo",
+				"copyRightLine2": "Tous droits réservés",
+				"descriptiveTitle": "Incubatrice de Projets",
+				"descriptiveTitleLine2": "Culturels",
 				"descriptiveTitleItalic": "Innovants",
 				"assoLink": "Association",
 				"passCultureLink": "Pass Culture",
@@ -42,8 +44,8 @@ export const {
 				"festivalLink": "Festival",
 				"contactLink": "Contact",
 				"assoTitle": "Association Musicale Intermezzo",
-				"assoAddressLine1": "60 Boulevard Joliot" ,
-				"assoAddressLine2": "Curie33100 Bordeaux",
+				"assoAddressLine1": "60 Boulevard Joliot Curie" ,
+				"assoAddressLine2": "33100 Bordeaux",
 				"assoEmail": "intermezzo.association33@gmail.com",
 				"legalLink": "Mentions légales",
 				"siteDesigner": "Conçu & développé par IdeaArt"

@@ -8,10 +8,7 @@ import bulletPointSvg from "assets/svg/pink-glitter.svg";
 
 export type MenuLinkProps = Link & {
     className?: string;
-    classes?: {
-        link?: string;
-        underline?: string;
-    };
+    classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     isActive: boolean;
     variants: "primary" | "secondary"
 };
