@@ -201,6 +201,16 @@ function setSpacing(factor: number) {
 const muiThemeLight = createMuiTheme({
     typography,
     "spacing": setSpacing,
+    "breakpoints": {
+
+        "values": {
+            "xl": 1920,
+            "lg": 1440,
+            "md": 960,
+            "sm": 600,
+            "xs": 400
+        }
+    },
     "palette": {
         "mode": "light",
         "background": {

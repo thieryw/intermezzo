@@ -48,7 +48,8 @@ export const {
 				"assoAddressLine2": "33100 Bordeaux",
 				"assoEmail": "intermezzo.association33@gmail.com",
 				"legalLink": "Mentions légales",
-				"siteDesigner": "Conçu & développé par IdeaArt"
+				"siteDesigner": "Conçu & développé par",
+				"ideaArtLink": "IdeaArt"
 			}
 		}
 		/* spell-checker: enable */

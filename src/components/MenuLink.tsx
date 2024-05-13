@@ -36,8 +36,8 @@ export const MenuLink = memo((props: MenuLinkProps) => {
             <Logo
                 className={classes.bulletPoint}
                 logoUrl={bulletPointSvg}
-                width={parseInt(theme.spacing(3))}
-                height={parseInt(theme.spacing(3))}
+                width={20}
+                height={20}
                 fill={
                     (() => {
                         switch (variants) {

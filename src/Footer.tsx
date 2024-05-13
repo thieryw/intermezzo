@@ -43,7 +43,8 @@ export const Footer = memo(() => {
 			"href": "",
 			"label": t("contactLink")
 		},
-	]
+	];
+
 
 	return <footer className={classes.root}>
 		<div className={classes.inner}>
@@ -54,7 +55,7 @@ export const Footer = memo(() => {
 						logoUrl={logoSvg}
 						width={204}
 					/>
-					
+
 					<div className={classes.copyRightWrapper}>
 
 						<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
@@ -132,11 +133,20 @@ export const Footer = memo(() => {
 								{t("legalLink")}
 							</a>
 						</Typography>
+						{
+							(window.innerWidth < theme.breakpoints.values.md) &&
+							<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
+						}
 						<Typography
 							variant="details"
 							style={{ "color": theme.palette.lightGray.main }}
 						>
-							{t("siteDesigner")}
+							{t("siteDesigner")} <a 
+								href=""
+								style={{ "color": theme.palette.white.main }}
+							>
+								{t("ideaArtLink")}
+							</a>
 
 						</Typography>
 					</div>
@@ -158,7 +168,7 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 				return {
 					"paddingLeft": value,
 					"paddingRight": value,
-					[theme.breakpoints.down("sm")]: {
+					[theme.breakpoints.down("md")]: {
 						"padding": 0
 
 					}
@@ -169,40 +179,38 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 		"inner": {
 
 			"background": theme.palette.gradient2.main,
+			"paddingTop": theme.spacing(16),
+			"paddingBottom": theme.spacing(19),
 			...(() => {
 				const brValue = theme.spacing(10);
 				const padding = theme.spacing(21);
-				const paddingMdDown = theme.spacing(7);
 				return {
 					"borderTopLeftRadius": `${brValue} ${brValue}`,
 					"borderTopRightRadius": `${brValue} ${brValue}`,
 					"paddingLeft": padding,
 					"paddingRight": padding,
 					[theme.breakpoints.down("md")]: {
-						"paddingLeft": paddingMdDown,
-						"paddingRight": paddingMdDown,
-					},
-					[theme.breakpoints.down("sm")]: {
-
+						"paddingLeft": 0,
+						"paddingRight": 0,
 						"borderTopLeftRadius": 0,
 						"borderTopRightRadius": 0,
-					}
+						"paddingTop": theme.spacing(28),
+						"paddingBottom": theme.spacing(28)
+					},
 				}
 			})(),
-			"paddingTop": theme.spacing(16),
-			"paddingBottom": theme.spacing(19)
 		},
 		"titleAndLogo": {
 			"display": "flex",
 			"alignItems": "flex-end",
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"justifyContent": "center"
 			}
 
 		},
 		"descTitle": {
 			"color": theme.palette.white.main,
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"display": "none"
 			}
 		},
@@ -218,7 +226,7 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"display": "flex",
 			"flexDirection": "column",
 			"marginRight": theme.spacing(18),
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"marginRight": 0
 			}
 		},
@@ -228,7 +236,7 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 		"copyRightWrapper": {
 			"display": "flex",
 			"flexDirection": "column",
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"display": "none"
 			}
 
@@ -242,13 +250,10 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"gap": theme.spacing(11),
 			"justifyContent": "flex-end",
 			[theme.breakpoints.down("md")]: {
-				"flexWrap": "wrap",
-				"justifyContent": "flex-start"
-			},
-			[theme.breakpoints.down("sm")]: {
+				"marginTop": theme.spacing(20),
 				"flexDirection": "column",
 				"alignItems": "center",
-				"gap": theme.spacing(9)
+				"gap": theme.spacing(20),
 			}
 		},
 		"links": {
@@ -256,10 +261,10 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"flexDirection": "column",
 			"gap": theme.spacing(2),
 			"paddingInlineStart": 0,
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"alignItems": "center",
-				"marginRight": theme.spacing(4),
-				"gap": theme.spacing(4)
+				"marginRight": theme.spacing(10),
+				"gap": theme.spacing(7)
 			}
 		},
 		"link": {
@@ -272,26 +277,37 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"flexDirection": "column",
 			"gap": theme.spacing(2),
 			"marginTop": theme.spacing(3),
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"display": "none"
 			}
 		},
 
 		"socialLegalDesign": {
 			"marginTop": theme.spacing(2),
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				"display": "flex",
 				"flexDirection": "column",
-				"alignItems": "center"
+				"alignItems": "center",
+				"gap": theme.spacing(20)
 			}
 		},
 		"socialWrapper": {
 			"display": "flex",
 			"gap": theme.spacing(4),
 			"alignItems": "center",
-			"marginBottom": theme.spacing(6)
+			"marginBottom": theme.spacing(6),
+			[theme.breakpoints.down("md")]: {
+				"gap": theme.spacing(10)
+			}
 		},
-		"legalDesignWrapper": {}
+		"legalDesignWrapper": {
+			[theme.breakpoints.down("md")]: {
+				"display": "flex",
+				"gap": theme.spacing(4),
+				"flexDirection": "column",
+				"alignItems": "center"
+			}
+		}
 
 
 	})
@@ -316,6 +332,7 @@ const { i18n } = declareComponentKeys<
 	| "assoEmail"
 	| "legalLink"
 	| "siteDesigner"
+	| "ideaArtLink"
 >()({ Footer });
 
 export type I18n = typeof i18n;
