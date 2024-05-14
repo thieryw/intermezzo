@@ -10,7 +10,6 @@ import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
 import testJpg from "assets/jpg/accueil-hero-image.jpg";
 import { PictureAnimator } from "components/PictureAnimator";
-import { ThemeContext } from "@emotion/react";
 
 
 
