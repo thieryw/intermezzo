@@ -8,6 +8,9 @@ import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
 import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
 import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
+import testJpg from "assets/jpg/accueil-hero-image.jpg";
+import { PictureAnimator } from "components/PictureAnimator";
+import { ThemeContext } from "@emotion/react";
 
 
 
@@ -20,11 +23,20 @@ export function Body(props: PropsOfBody) {
 
     const { className } = props;
 
-    const { cx, classes } = useStyles();
+    const { cx, classes, theme } = useStyles();
 
     return (
         <div className={cx(classes.root, className)}>
-            <AnimatedBanner 
+            <PictureAnimator 
+                src={testJpg}
+                classes={{
+                    "image": classes.image
+                }}
+                width={parseInt(theme.spacing(93))}
+                height={parseInt(theme.spacing(93)) / 100 * 85}
+                borderRadius="0px 44%"
+            />
+            <AnimatedBanner
                 images={[
                     {
                         "src": svgNouvAqui,
@@ -71,6 +83,8 @@ const useStyles = tss
     .withName({ Body })
     .create(() => ({
         "root": {
-            "paddingTop": 400
+            "paddingTop": 100,
+        },
+        "image": {
         }
     }));

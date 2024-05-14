@@ -47,114 +47,117 @@ export const Footer = memo(() => {
 
 
 	return <footer className={classes.root}>
-		<div className={classes.inner}>
-			<div className={classes.titleAndLogo}>
-				<div className={classes.logoWrapper}>
-					<Logo
-						className={classes.logo}
-						logoUrl={logoSvg}
-						width={204}
-					/>
+		<div className={classes.outer}>
 
-					<div className={classes.copyRightWrapper}>
+			<div className={classes.inner}>
+				<div className={classes.titleAndLogo}>
+					<div className={classes.logoWrapper}>
+						<Logo
+							className={classes.logo}
+							logoUrl={logoSvg}
+							width={204}
+						/>
 
-						<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
-						<Typography className={classes.copyRight} variant="details">{t("copyRightLine2")}</Typography>
+						<div className={classes.copyRightWrapper}>
+
+							<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
+							<Typography className={classes.copyRight} variant="details">{t("copyRightLine2")}</Typography>
+						</div>
 					</div>
-				</div>
-				<div className={classes.descTitleWrapper}>
+					<div className={classes.descTitleWrapper}>
 
-					<Typography className={classes.descTitle} variant="heading2">{t("descriptiveTitle")}</Typography>
-					<Typography className={classes.descTitle} variant="heading2">{t("descriptiveTitleLine2")} <span className={classes.descTitleItal}>{t("descriptiveTitleItalic")}</span></Typography>
-				</div>
+						<Typography className={classes.descTitle} variant="heading2">{t("descriptiveTitle")}</Typography>
+						<Typography className={classes.descTitle} variant="heading2">{t("descriptiveTitleLine2")} <span className={classes.descTitleItal}>{t("descriptiveTitleItalic")}</span></Typography>
+					</div>
 
 
-			</div>
-			<div className={classes.contentWrapper}>
-				<ul className={classes.links}>
-					{
-						links.map(link => <MenuLink
-							key={link.label}
-							classes={{
-								"text": classes.link
-							}}
-							{...link}
-							variants="secondary"
-							isActive={false}
-						/>)
-					}
-				</ul>
-				<div className={classes.addressWrapper}>
-					{
-						[
-							t("assoTitle"),
-							t("assoAddressLine1"),
-							t("assoAddressLine2"),
-							t("assoEmail")
-						].map((asso, index) => {
-							if (index === 3) {
-								return <Typography
-									variant="paragraph1"
-									key={index}
-								>
-									<a
-										href={`mailto:${asso}`}
-										style={{ "color": theme.palette.white.main }}
-									>
-										{asso}
-									</a>
-								</Typography>
-							}
-							return <Typography key={index} style={{ "color": theme.palette.white.main }} variant="paragraph1">{asso}</Typography>
-						})
-					}
 				</div>
-				<div className={classes.socialLegalDesign}>
-					<div className={classes.socialWrapper}>
+				<div className={classes.contentWrapper}>
+					<ul className={classes.links}>
 						{
-							[
-								fbSvg,
-								instaSvg,
-								ytSvg,
-							].map(svg => <Logo
-								key={svg}
-								logoUrl={svg}
-								width={30}
+							links.map(link => <MenuLink
+								key={link.label}
+								classes={{
+									"text": classes.link
+								}}
+								{...link}
+								variants="secondary"
+								isActive={false}
 							/>)
 						}
-
-					</div>
-					<div className={classes.legalDesignWrapper}>
-						<Typography variant="details">
-							<a
-								href=""
-								style={{ "color": theme.palette.white.main }}
-							>
-								{t("legalLink")}
-							</a>
-						</Typography>
+					</ul>
+					<div className={classes.addressWrapper}>
 						{
-							(window.innerWidth < theme.breakpoints.values.md) &&
-							<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
+							[
+								t("assoTitle"),
+								t("assoAddressLine1"),
+								t("assoAddressLine2"),
+								t("assoEmail")
+							].map((asso, index) => {
+								if (index === 3) {
+									return <Typography
+										variant="paragraph1"
+										key={index}
+									>
+										<a
+											href={`mailto:${asso}`}
+											style={{ "color": theme.palette.white.main }}
+										>
+											{asso}
+										</a>
+									</Typography>
+								}
+								return <Typography key={index} style={{ "color": theme.palette.white.main }} variant="paragraph1">{asso}</Typography>
+							})
 						}
-						<Typography
-							variant="details"
-							style={{ "color": theme.palette.lightGray.main }}
-						>
-							{t("siteDesigner")} <a 
-								href=""
-								style={{ "color": theme.palette.white.main }}
-							>
-								{t("ideaArtLink")}
-							</a>
+					</div>
+					<div className={classes.socialLegalDesign}>
+						<div className={classes.socialWrapper}>
+							{
+								[
+									fbSvg,
+									instaSvg,
+									ytSvg,
+								].map(svg => <Logo
+									key={svg}
+									logoUrl={svg}
+									width={30}
+								/>)
+							}
 
-						</Typography>
+						</div>
+						<div className={classes.legalDesignWrapper}>
+							<Typography variant="details">
+								<a
+									href=""
+									style={{ "color": theme.palette.white.main }}
+								>
+									{t("legalLink")}
+								</a>
+							</Typography>
+							{
+								(window.innerWidth < theme.breakpoints.values.md) &&
+								<Typography className={classes.copyRight} variant="details">{t("copyRight")}</Typography>
+							}
+							<Typography
+								variant="details"
+								style={{ "color": theme.palette.lightGray.main }}
+							>
+								{t("siteDesigner")} <a
+									href=""
+									style={{ "color": theme.palette.white.main }}
+								>
+									{t("ideaArtLink")}
+								</a>
+
+							</Typography>
+						</div>
+
 					</div>
 
 				</div>
 
 			</div>
-
 		</div>
 
 	</footer>
@@ -176,29 +179,43 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			})(),
 
 		},
-		"inner": {
-
+		"outer": {
+			"display": "flex",
+			"justifyContent": "center",
 			"background": theme.palette.gradient2.main,
-			"paddingTop": theme.spacing(16),
-			"paddingBottom": theme.spacing(19),
-			...(() => {
-				const brValue = theme.spacing(10);
-				const padding = theme.spacing(21);
+			...(()=>{
+				const value = theme.spacing(10);
 				return {
-					"borderTopLeftRadius": `${brValue} ${brValue}`,
-					"borderTopRightRadius": `${brValue} ${brValue}`,
-					"paddingLeft": padding,
-					"paddingRight": padding,
-					[theme.breakpoints.down("md")]: {
-						"paddingLeft": 0,
-						"paddingRight": 0,
-						"borderTopLeftRadius": 0,
-						"borderTopRightRadius": 0,
-						"paddingTop": theme.spacing(28),
-						"paddingBottom": theme.spacing(28)
-					},
+					"borderTopLeftRadius": `${value} ${value}`,
+					"borderTopRightRadius": `${value} ${value}`,
 				}
 			})(),
+			[theme.breakpoints.down("md")]: {
+
+				"borderTopLeftRadius": 0,
+				"borderTopRightRadius": 0,
+			}
+
+		},
+		"inner": {
+			"width": "100%",
+			"maxWidth": theme.breakpoints.values.xl,
+			"paddingTop": theme.spacing(16),
+			"paddingBottom": theme.spacing(19),
+			"boxSizing": "border-box",
+			...(() => {
+				const padding = theme.spacing(21);
+				return {
+					"paddingLeft": padding,
+					"paddingRight": padding,
+				}
+			})(),
+			[theme.breakpoints.down("md")]: {
+				"paddingLeft": 0,
+				"paddingRight": 0,
+				"paddingTop": theme.spacing(28),
+				"paddingBottom": theme.spacing(28)
+			},
 		},
 		"titleAndLogo": {
 			"display": "flex",
@@ -249,11 +266,12 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"marginTop": theme.spacing(11),
 			"gap": theme.spacing(11),
 			"justifyContent": "flex-end",
+			"flexWrap": "wrap",
 			[theme.breakpoints.down("md")]: {
-				"marginTop": theme.spacing(20),
+				"marginTop": theme.spacing(17),
 				"flexDirection": "column",
 				"alignItems": "center",
-				"gap": theme.spacing(20),
+				"gap": theme.spacing(17),
 			}
 		},
 		"links": {
@@ -264,7 +282,7 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			[theme.breakpoints.down("md")]: {
 				"alignItems": "center",
 				"marginRight": theme.spacing(10),
-				"gap": theme.spacing(7)
+				"gap": theme.spacing(6)
 			}
 		},
 		"link": {
@@ -288,7 +306,7 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 				"display": "flex",
 				"flexDirection": "column",
 				"alignItems": "center",
-				"gap": theme.spacing(20)
+				"gap": theme.spacing(17)
 			}
 		},
 		"socialWrapper": {
@@ -297,13 +315,13 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 			"alignItems": "center",
 			"marginBottom": theme.spacing(6),
 			[theme.breakpoints.down("md")]: {
-				"gap": theme.spacing(10)
+				"gap": theme.spacing(8)
 			}
 		},
 		"legalDesignWrapper": {
 			[theme.breakpoints.down("md")]: {
 				"display": "flex",
-				"gap": theme.spacing(4),
+				"gap": theme.spacing(3),
 				"flexDirection": "column",
 				"alignItems": "center"
 			}

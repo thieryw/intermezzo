@@ -20,7 +20,7 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 
     return <div className={cx(classes.root, className)}>
         {
-            Array.from({ "length": 2 }).map((_, index) => <div key={index} className={classes.logoSlider}>
+            Array.from({ "length": 6 }).map((_, index) => <div key={index} className={classes.logoSlider}>
                 {
                     images.map(({ src, alt }) => <img className={classes.image} key={src} src={src} alt={alt} />)
                 }

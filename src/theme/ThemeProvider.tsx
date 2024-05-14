@@ -17,7 +17,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "clamp(3.125rem, 3.33vw, 4rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-0.02em"
+            "letterSpacing": "-0.02em",
+            "lineHeight": "1.05em"
         },
         "heading3": {
             "fontFamily": '"Questrial", sans-serif',
@@ -183,19 +184,16 @@ function setSpacing(factor: number) {
     if (width >= 1920) {
           return 8 * factor;
     }
-    if(width >= 1660) {
+    if(width >= 1440){
         return 7 * factor;
     }
-    if(width >= 1440){
+    if(width >= 1280){
         return 6 * factor;
     }
-    if(width >= 1280){
+    if(width >= 960){
         return 5 * factor;
     }
-    if(width >= 960){
-        return 4 * factor;
-    }
-    return 3 * factor;
+    return 4 * factor;
 }
 
 const muiThemeLight = createMuiTheme({
