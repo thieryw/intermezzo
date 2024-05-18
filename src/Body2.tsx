@@ -10,6 +10,9 @@ import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
 import testJpg from "assets/jpg/accueil-hero-image.jpg";
 import { PictureAnimator } from "components/PictureAnimator";
+import { StatisticsCard } from "components/StatisticsCard";
+import Typo from "@mui/material/Typography";
+import { Header } from "Header";
 
 
 
@@ -26,7 +29,33 @@ export function Body(props: PropsOfBody) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <PictureAnimator 
+            <Header 
+            />
+            <StatisticsCard
+                stats={[
+                    {
+                        "statNumber": "170",
+                        "statSign": "+",
+                        "statDesc": "Concerts & Spectacles"
+                    },
+                    {
+                        "statNumber": "50",
+                        "statSign": "+",
+                        "statDesc": "Artistes Soutenus"
+                    },
+                    {
+                        "statNumber": "220",
+                        "statSign": "+",
+                        "statDesc": "Heures de Médiations"
+                    },
+                    {
+                        "statNumber": <Typo className={classes.cardNumber} variant="cardNumber">3000</Typo>,
+                        "statSign": <Typo className={classes.cardNumber} variant="cardSign">+</Typo>,
+                        "statDesc": "Spectateurs Conquis"
+                    },
+                ]}
+            />
+            <PictureAnimator
                 src={testJpg}
                 classes={{
                     "image": classes.image
@@ -80,10 +109,15 @@ export function Body(props: PropsOfBody) {
 
 const useStyles = tss
     .withName({ Body })
-    .create(() => ({
+    .create(({ theme }) => ({
         "root": {
-            "paddingTop": 100,
+            "display": "relative"
         },
         "image": {
+        },
+        "cardNumber": {
+            "color": "transparent",
+            "background": theme.palette.gradient1.main,
+            "backgroundClip": "text"
         }
     }));

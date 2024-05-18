@@ -2,6 +2,7 @@ import React, { type ReactNode } from "react";
 import { createTheme as createMuiTheme, ThemeProvider as MuiThemeProvider, Palette } from "@mui/material/styles";
 import { IsDarkProvider,/* useIsDark*/ } from "./useIsDark";
 import type { TypographyOptions } from "@mui/material/styles/createTypography";
+import defaultShadows from "@mui/material/styles/shadows";
 
 const typography: (palette: Palette) => TypographyOptions = (palette) => {
     return ({
@@ -271,7 +272,8 @@ const muiThemeLight = createMuiTheme({
                 }
             }
         }
-    }
+    },
+    "shadows": ["none", "0px 18px 29.8px 0px rgba(36, 37, 45, 0.08)", ...defaultShadows.splice(2)] as typeof defaultShadows
 });
 
 export function ThemeProvider(
