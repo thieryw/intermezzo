@@ -119,5 +119,5 @@ const useStyles = tss
             "color": "transparent",
             "background": theme.palette.gradient1.main,
             "backgroundClip": "text"
-        }
+        },
     }));

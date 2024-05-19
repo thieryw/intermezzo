@@ -27,7 +27,7 @@ export const StatisticsCard = memo((props: StatisticsCardProps) => {
         className={cx(classes.root, className)}
     >
         {
-            stats.map(({ statDesc, statNumber, statSign }, index) => <div className={classes.statWrapper}>
+            stats.map(({ statDesc, statNumber, statSign }, index) => <div key={index} className={classes.statWrapper}>
                 {
                     index !== 0 &&
                     <div className={classes.decoLine}></div>

@@ -7,6 +7,14 @@ import youtubeIcon from "assets/svg/header/yt-color.svg";
 import { declareComponentKeys } from "i18nifty";
 import { Header as HeaderComponent } from "components/Header";
 import { useTranslation } from "i18n";
+import svgAcademie from "assets/svg/sponsors/logo-academie.svg";
+import svgBordeaux from "assets/svg/sponsors/logo-bordeaux.svg";
+import svgCredit from "assets/svg/sponsors/logo-creditmutuel.svg";
+import svgGironde from "assets/svg/sponsors/logo-gironde.svg";
+import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
+import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
+import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
+import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
 
 
 
@@ -48,17 +56,12 @@ export const Header = memo(() => {
         ]}
         currentLinkLabel=""
         logo={siteLogo}
-        contact={<div>
-        </div>}
         smallPrint={
             <div>
                 <a href=""><Text variant="details">{t("legalLink")}</Text></a>
                 <Text variant="details">{t("copyRight")}</Text>
-                <div>
-                    <Text variant="details">{t("siteDesigner")}</Text>
-                    <Text variant="details">{t("ideaArtLink")}</Text>
+                <Text variant="details">{t("siteDesigner")} <a href="">{t("ideaArtLink")}</a></Text>
 
-                </div>
             </div>
         }
         logoLinks={[
@@ -82,6 +85,19 @@ export const Header = memo(() => {
             "openInNewTab": true,
             "label": t("joinUsLink"),
             "href": "https://outlook.office365.com/book/cesarreservation@artisteformation.com/"
+        }}
+        animatedBanner={{
+            "images": [
+                { "src": svgAcademie },
+                { "src": svgBordeaux },
+                { "src": svgCredit },
+                { "src": svgGironde },
+                { "src": svgMecenart },
+                { "src": svgMuseeAqui },
+                { "src": svgNouvAqui },
+                { "src": svgPassCult }
+
+            ]
         }}
 
     />

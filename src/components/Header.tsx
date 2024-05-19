@@ -10,6 +10,8 @@ import { getScrollableParent } from "powerhooks/getScrollableParent";
 import type { LinkButtonProps } from "./LinkButton";
 import {MenuLink} from "./MenuLink";
 import Typography from "@mui/material/Typography";
+import { AnimatedBanner } from "components/AnimatedBanner";
+import type { AnimatedBannerProps } from "components/AnimatedBanner";
 
 
 const linksVariants: Variants = {
@@ -82,7 +84,6 @@ export type HeaderProps = {
     links: Link[];
     currentLinkLabel?: string;
     logo?: ReactNode;
-    contact?: ReactNode;
     smallPrint?: ReactNode;
     buttonLink?: LinkButtonProps;
     logoLinks?: ({
@@ -90,10 +91,20 @@ export type HeaderProps = {
     } & Link)[],
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
+    animatedBanner?: AnimatedBannerProps;
 }
 
 export function Header(props: HeaderProps) {
-    const { links, className, logoLinks, currentLinkLabel, logo, contact, smallPrint, buttonLink } = props;
+    const { 
+        links, 
+        className, 
+        logoLinks, 
+        currentLinkLabel, 
+        logo, 
+        smallPrint, 
+        buttonLink,
+        animatedBanner
+    } = props;
     const [isOpen, setIsOpen] = useState(false);
     const controls = useAnimation();
 
@@ -190,28 +201,8 @@ export function Header(props: HeaderProps) {
                                     >
                                         {
                                             typeof logo === "string" ?
-                                                <Logo width={119} logoUrl={logo} /> :
+                                                <Logo width={204} logoUrl={logo} /> :
                                                 logo
-                                        }
-                                    </motion.div>
-                                }
-                                {
-
-                                    contact !== undefined &&
-                                    <motion.div
-                                        className={classes.contact}
-                                        initial="hidden"
-                                        variants={buttonVariants}
-                                        animate={controls}
-                                        transition={{
-                                            "ease": "easeInOut",
-                                            "delay": 0.7,
-                                            "duration": 0.9
-                                        }}
-
-                                    >
-                                        {
-                                            contact
                                         }
                                     </motion.div>
                                 }
@@ -225,12 +216,11 @@ export function Header(props: HeaderProps) {
                                         variants={socialLinksVariants}
                                     >
                                         {
-                                            logoLinks.map(({ logo, label, ...rest }, index) => <div
+                                            logoLinks.map(({ logo, label, ...rest }) => <div
                                                 className={classes.logoLink}
                                                 key={label}
                                                 style={{
                                                     "overflow": "hidden",
-                                                    "marginRight": index === logoLinks.length - 1 ? undefined : theme.spacing(6),
                                                 }}
                                             >
                                                 <motion.div
@@ -244,7 +234,7 @@ export function Header(props: HeaderProps) {
                                                         {...rest}
                                                         aria-label={label}
                                                     >{typeof logo === "string" ?
-                                                        <Logo width={62} logoUrl={logo} /> :
+                                                        <Logo width={30} logoUrl={logo} /> :
                                                         logo
                                                         }
                                                     </a>
@@ -304,7 +294,7 @@ export function Header(props: HeaderProps) {
                                     onClick={handleMenuItemClick}
                                     key={label}
                                     style={{
-                                        "marginBottom": index === links.length - 1 ? undefined : theme.spacing(8),
+                                        "marginBottom": index === links.length - 1 ? undefined : theme.spacing(5),
                                         "overflow": "hidden"
                                     }}
                                 >
@@ -367,6 +357,16 @@ export function Header(props: HeaderProps) {
                         }
 
                     </div>
+
+                {
+                    animatedBanner !== undefined &&
+                    <AnimatedBanner
+                        className={classes.animatedBanner}
+                    
+                        {...animatedBanner}
+
+                    />
+                }
                 </div>
 
             </div>
@@ -415,11 +415,14 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
                         "paddingLeft": 25,
                         "position": "absolute",
                         "top": 0,
-                        "left": 0
+                        "left": 0,
+                        "zIndex": 4200
 
                     }
                 }
                 return {
+                    "position": "relative",
+                    "top": -parseInt(theme.spacing(8))
 
                 }
             })()
@@ -448,8 +451,10 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
         },
         "logoLinks": {
             "display": "flex",
-            "marginTop": theme.spacing(8),
-            "marginBottom": theme.spacing(8)
+            "marginTop": theme.spacing(10),
+            "marginBottom": theme.spacing(4),
+            "alignItems": "center",
+            "gap": theme.spacing(4)
         },
         "mobileLogoWrapper": {
             "marginTop": 20,
@@ -461,6 +466,8 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "display": "flex",
             "position": "relative",
             "height": "100%",
+            "alignItems": "center",
+            "minHeight": 920
         },
         "menu": {
             "position": "fixed",
@@ -470,31 +477,32 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "transition": `height ${transitionTime}ms`,
             "width": "100%",
             "backgroundColor": theme.palette.lightGray.main,
-            "overflow": "hidden",
-            ...(() => {
+            //"overflow": "hidden",
+            "height": isOpen ? "100%" : 0,
+            "overflow": "auto",
+            [theme.breakpoints.down("sm")]: {
+                "overflow": "auto",
 
-                if (window.innerWidth < theme.breakpoints.values.sm) {
-                    return {
-                        "overflow": "auto"
-                    }
-                }
-                return {
-                    "height": isOpen ? "100%" : 0,
-                }
-
-            })(),
-            /*...(theme.windowInnerWidth > 2000 ? {
+            },
+            ...(window.innerWidth > 2000 ? {
                 "display": "flex",
                 "justifyContent": "center"
-            } : {})*/
-            [theme.breakpoints.up("xl")]: {
-                "display": "flex",
-                "justifyContent": "center"
-            }
+            } : {})
+        },
+        "animatedBanner": {
+            "zIndex": 4200,
+            "position": "absolute",
+            "bottom": theme.spacing(15)
+
+
+            
+
         },
         "contactWrapper": {
-            "marginRight": 320,
-            "marginLeft": 243,
+            "marginLeft": theme.spacing(30),
+            "marginRight": theme.spacing(28),
+            "position": "relative",
+            "top": -parseInt(theme.spacing(8)),
             "transition": `opacity ${transitionTime}ms`,
             "opacity": isOpen ? 1 : 0,
             "transitionDelay": !isOpen ? undefined : `${transitionTime / 2}ms`
@@ -602,7 +610,7 @@ const { ToggleMenuButton } = (() => {
             "display": "block",
             "height": 2,
             "backgroundColor": theme.palette.white.main,
-            "borderRadius": "50%",
+            "borderRadius": "2px",
             "width": "100%",
             //"background": theme.colors.bloodOrange,
             "transition": "all 0.3s ease"
