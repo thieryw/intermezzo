@@ -6,7 +6,6 @@ import { Logo } from "./Logo";
 import type { Link } from "../tools/link";
 import type { Variants } from "framer-motion";
 import { motion, useAnimation } from "framer-motion";
-import { getScrollableParent } from "powerhooks/getScrollableParent";
 import type { LinkButtonProps } from "./LinkButton";
 import {MenuLink} from "./MenuLink";
 import Typography from "@mui/material/Typography";
