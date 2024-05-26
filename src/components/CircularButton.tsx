@@ -72,14 +72,13 @@ const { Char } = (() => {
 
     const Char = memo((props: CharProps) => {
         const { char, index } = props;
-        const { classes } = useStyles({ index, char });
+        const { classes } = useStyles({ index });
         return <div className={classes.root}>
             <Typography className={classes.char} variant="details">{char}</Typography>
         </div>
     })
 
-    const useStyles = tss.withName("Char").withParams<{ index: number; char: string }>().create(({ theme, char, index }) => {
-const al = "abcdefghijklmnopqrstuvwxyz"
+    const useStyles = tss.withName("Char").withParams<{ index: number; }>().create(({ theme, index }) => {
         return ({
             "root": {
                 "position": "absolute",
