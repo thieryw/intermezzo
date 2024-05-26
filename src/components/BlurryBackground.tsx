@@ -32,6 +32,7 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
             "overflow": "hidden",
             "top": 0,
             "left": 0,
+            "pointerEvents": "none"
 
         },
         "gradientContainer": {

@@ -13,6 +13,8 @@ import { PictureAnimator } from "components/PictureAnimator";
 import { StatisticsCard } from "components/StatisticsCard";
 import Typo from "@mui/material/Typography";
 import { Header } from "Header";
+import { CircularButton } from "components/CircularButton";
+import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 
 
 
@@ -32,6 +34,11 @@ export function Body(props: PropsOfBody) {
         <div className={cx(classes.root, className)}>
             <Header
             />
+            <CircularButton 
+                logoSvgSrc={arrowSvg}
+                circularText="Nous avons leur confiance . On avance ensemble . Partenaires . "
+            />
+
             <StatisticsCard
                 stats={[
                     {
