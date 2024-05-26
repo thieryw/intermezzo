@@ -66,6 +66,7 @@ const useStyles = tss
         return ({
 
             "root": {
+                "position": "relative",
                 "display": "inline-flex",
                 "backgroundColor": theme.palette.white.main,
                 "padding": theme.spacing(6),

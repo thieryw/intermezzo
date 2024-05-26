@@ -166,6 +166,7 @@ export const Footer = memo(() => {
 const useStyles = tss.withName("Footer").create(({ theme }) => {
 	return ({
 		"root": {
+			"position": "relative",
 			...(() => {
 				const value = theme.spacing(11);
 				return {

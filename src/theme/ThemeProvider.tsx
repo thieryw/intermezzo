@@ -113,7 +113,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontFamily": "neuzeit-grotesk, sans-serif",
             "fontWeight": 700,
             "color": palette.purple.main,
-            "fontSize": "3.188rem",
+            "fontSize": "clamp(2.2rem, 2.598vw, 3.188rem)",
             "lineHeight": "100%",
             "letterSpacing": "-0.02em",
             "listStyleType": "none"

@@ -3,31 +3,37 @@ import { GlobalStyles } from "tss-react";
 import { useStyles } from "tss";
 import { Body } from "./Body2";
 import { Footer } from "Footer";
+import { BlurryBackground } from "components/BlurryBackground";
+import { IsMenuOpenContext } from "components/Header";
+import { useContext } from "react";
 
 export function App() {
 
   const { isDark, scrollbarStyles, theme } = useStyles();
+  const { isOpen } = useContext(IsMenuOpenContext);
 
   return (
     <>
-      <GlobalStyles
-        styles={{
-          "html, body": {
-            "margin": "0",
-            "padding": "0",
-          },
-          "html": {
-            "colorScheme": isDark ? "dark" : "light",
-            "backgroundColor": theme.palette.background.default
-          },
-          "body": {
-            "scrollBehavior": "smooth",
-            ...scrollbarStyles
-          }
-        }}
-      />
-      <Body />
-      <Footer />
+        <GlobalStyles
+          styles={{
+            "html, body": {
+              "margin": "0",
+              "padding": "0",
+            },
+            "html": {
+              "colorScheme": isDark ? "dark" : "light",
+              "backgroundColor": theme.palette.background.default
+            },
+            "body": {
+              "scrollBehavior": "smooth",
+              ...scrollbarStyles
+            }
+          }}
+        />
+        <BlurryBackground animationPlaying={!isOpen} />
+        <Body />
+        <Footer />
+
     </>
   )
 }

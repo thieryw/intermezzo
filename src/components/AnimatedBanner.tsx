@@ -6,6 +6,7 @@ import { keyframes } from "tss-react";
 export type AnimatedBannerProps = {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
+    isPlaying?: boolean;
     images: {
         src: string;
         alt?: string;
@@ -14,8 +15,8 @@ export type AnimatedBannerProps = {
 
 export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 
-    const { images, className } = props;
-    const { classes, cx } = useStyles({ "classesOverrides": props.classes });
+    const { images, className, isPlaying = true } = props;
+    const { classes, cx } = useStyles({ isPlaying, "classesOverrides": props.classes });
 
 
     return <div className={cx(classes.root, className)}>
@@ -31,7 +32,7 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 })
 
 
-const useStyles = tss.withName("AnimatedBanner").create(({ theme }) => {
+const useStyles = tss.withName("AnimatedBanner").withParams<{isPlaying: boolean}>().create(({ theme, isPlaying }) => {
     const gap = theme.spacing(10);
 
     return ({
@@ -42,7 +43,7 @@ const useStyles = tss.withName("AnimatedBanner").create(({ theme }) => {
         },
         "logoSlider": {
             "display": "flex",
-            "animation": `${keyframes`
+            "animation": !isPlaying ? "none" : `${keyframes`
             from {
                 transform: translateX(0);
             }

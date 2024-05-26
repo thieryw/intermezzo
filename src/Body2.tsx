@@ -27,9 +27,10 @@ export function Body(props: PropsOfBody) {
 
     const { cx, classes, theme } = useStyles();
 
+
     return (
         <div className={cx(classes.root, className)}>
-            <Header 
+            <Header
             />
             <StatisticsCard
                 stats={[

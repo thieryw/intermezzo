@@ -1,4 +1,4 @@
-import { useState, memo, useRef, useEffect } from 'react';
+import { useState, memo, useRef, useEffect, createContext, useContext } from 'react';
 import type { ReactNode } from "react";
 import { tss } from "tss";
 import { useConstCallback } from "powerhooks/useConstCallback";
@@ -12,7 +12,24 @@ import {MenuLink} from "./MenuLink";
 import Typography from "@mui/material/Typography";
 import { AnimatedBanner } from "components/AnimatedBanner";
 import type { AnimatedBannerProps } from "components/AnimatedBanner";
+import { BlurryBackground } from "components/BlurryBackground";
 
+export const IsMenuOpenContext = createContext<
+    {isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}
+>({"isOpen": false, "setIsOpen": () => {}});
+
+export const IsMenuOpenProvider = memo((props: { children: ReactNode }) => {
+    const { children } = props;
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <IsMenuOpenContext.Provider value={{
+            isOpen, setIsOpen
+        }}>
+            {children}
+        </IsMenuOpenContext.Provider>
+    );
+});
 
 const linksVariants: Variants = {
     "hidden": {
@@ -95,18 +112,30 @@ export type HeaderProps = {
 }
 
 export function Header(props: HeaderProps) {
-    const { 
-        links, 
-        className, 
-        logoLinks, 
-        currentLinkLabel, 
-        logo, 
-        smallPrint, 
+    const {
+        links,
+        className,
+        logoLinks,
+        currentLinkLabel,
+        logo,
+        smallPrint,
         buttonLink,
         animatedBanner
     } = props;
-    const [isOpen, setIsOpen] = useState(false);
+    const {isOpen, setIsOpen} = useContext(IsMenuOpenContext);
+    const { classes, cx, theme } = useStyles({ isOpen, "classesOverrides": props.classes });
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < theme.breakpoints.values.sm)
     const controls = useAnimation();
+
+    useEffect(() => {
+        if (window.innerWidth < theme.breakpoints.values.sm) {
+            setIsSmallScreen(true);
+            return;
+        }
+
+        setIsSmallScreen(false);
+
+    }, [window.innerWidth])
 
     useEffect(() => {
         if (isOpen) {
@@ -115,7 +144,7 @@ export function Header(props: HeaderProps) {
         };
         controls.start("hidden")
 
-    }, [isOpen, controls])
+    }, [isOpen, controls, isSmallScreen])
 
 
 
@@ -127,7 +156,6 @@ export function Header(props: HeaderProps) {
         setIsOpen(false);
     })
 
-    const { classes, cx, theme } = useStyles({ isOpen, "classesOverrides": props.classes });
 
 
     return (
@@ -178,6 +206,7 @@ export function Header(props: HeaderProps) {
             </div>
             <div className={classes.menu} role="menu">
 
+                <BlurryBackground animationPlaying={isOpen} className={classes.background} />
                 <div className={classes.menuInner}>
 
                     {
@@ -274,7 +303,7 @@ export function Header(props: HeaderProps) {
                                 return <div className={classes.mobileLogoWrapper}>
                                     {
                                         typeof logo === "string" ?
-                                            <Logo width={90} logoUrl={logo} /> :
+                                            <Logo width={200} logoUrl={logo} /> :
                                             logo
                                     }
                                 </div>
@@ -337,7 +366,7 @@ export function Header(props: HeaderProps) {
 
                                             }}
                                         >{typeof logo === "string" ?
-                                            <Logo width={62} logoUrl={logo} /> :
+                                            <Logo width={40} logoUrl={logo} /> :
                                             logo
                                             }
                                         </a>)
@@ -358,15 +387,16 @@ export function Header(props: HeaderProps) {
 
                     </div>
 
-                {
-                    animatedBanner !== undefined &&
-                    <AnimatedBanner
-                        className={classes.animatedBanner}
-                    
-                        {...animatedBanner}
+                    {
+                        (animatedBanner !== undefined && !isSmallScreen) &&
+                        <AnimatedBanner
+                            className={classes.animatedBanner}
+                            isPlaying={isOpen}
 
-                    />
-                }
+                            {...animatedBanner}
+
+                        />
+                    }
                 </div>
 
             </div>
@@ -398,6 +428,11 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             })(),
 
         },
+        "background": {
+            "opacity": isOpen ? 1 : 0,
+            "transition": "opacity 1000ms"
+
+        },
         "logoLink": {
             "transition": "transform 600ms",
             ":hover": {
@@ -416,7 +451,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
                         "position": "absolute",
                         "top": 0,
                         "left": 0,
-                        "zIndex": 4200
+                        "zIndex": 4200,
 
                     }
                 }
@@ -437,7 +472,10 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "gap": theme.spacing(4),
             "alignItems": "center",
             "paddingTop": theme.spacing(7),
-            "paddingRight": theme.spacing(21)
+            "paddingRight": theme.spacing(21),
+            [theme.breakpoints.down("sm")]: {
+                "paddingRight": theme.spacing(11)
+            }
 
         },
         "toggleMenuButton": {
@@ -457,7 +495,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "gap": theme.spacing(4)
         },
         "mobileLogoWrapper": {
-            "marginTop": 20,
+            "marginTop": 100,
             "marginBottom": 60,
 
         },
@@ -467,7 +505,8 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "position": "relative",
             "height": "100%",
             "alignItems": "center",
-            "minHeight": 920
+            "minHeight": 920,
+            "overflow": "hidden"
         },
         "menu": {
             "position": "fixed",
@@ -479,11 +518,12 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "backgroundColor": theme.palette.lightGray.main,
             //"overflow": "hidden",
             "height": isOpen ? "100%" : 0,
-            "overflow": "auto",
-            [theme.breakpoints.down("sm")]: {
+            "overflowY": "auto",
+            "overflowX": "hidden",
+            /*[theme.breakpoints.down("sm")]: {
                 "overflow": "auto",
 
-            },
+            },*/
             ...(window.innerWidth > 2000 ? {
                 "display": "flex",
                 "justifyContent": "center"
@@ -495,7 +535,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "bottom": theme.spacing(15)
 
 
-            
+
 
         },
         "contactWrapper": {
