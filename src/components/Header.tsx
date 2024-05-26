@@ -506,7 +506,6 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "height": "100%",
             "alignItems": "center",
             "minHeight": 920,
-            "overflow": "hidden"
         },
         "menu": {
             "position": "fixed",
@@ -585,7 +584,7 @@ const { ToggleMenuButton } = (() => {
         const { classes, cx } = useStyles({ isActive })
         const ref = useRef<HTMLButtonElement>(null);
 
-        useEffect(() => {
+        /*useEffect(() => {
             if (ref.current === null) {
                 return;
             }
@@ -609,7 +608,7 @@ const { ToggleMenuButton } = (() => {
             return () => scrollableParent.removeEventListener("scroll", preventScroll);
 
 
-        }, [ref.current, isActive])
+        }, [ref.current, isActive])*/
 
         return <button
             ref={ref}

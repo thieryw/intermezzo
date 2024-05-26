@@ -35,7 +35,7 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
 
         },
         "gradientContainer": {
-            "filter": "blur(40px)",
+            "filter": "blur(80px)",
             "width": "100%",
             "height": "100%"
 
@@ -43,32 +43,23 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
         "g": {
             "position": "absolute",
             "mixBlendMode": "hard-light",
-            "border": "solid red 2px",
-            ...(() => {
-                const percentage = "80%";
-                const position = `calc(50% - ${percentage} / 2)`;
-                return {
-                    "width": percentage,
-                    "height": percentage,
-                    "top": position,
-                    "left": position
-
-                }
-            })(),
+            "width": 500,
+            "height": 700
         },
         "g1": {
             "background": "radial-gradient(circle at center, rgba(253, 110, 52, 0.8) 0, rgba(253, 110, 52, 0) 50%) no-repeat",
             "transformOrigin": "center center",
+            "top": 0,
+            "right": "10%",
             "animation": !animationPlaying ? "none" : `${keyframes`
             0% {
-                transform: rotate(0deg);
+                transform: rotate(0deg) translateX(-50%);
             }
             50% {
-                transform: rotate(180deg);
+                transform: rotate(180deg) translateX(50%);
             }
             100% {
-                transform: rotate(360deg);
-
+                transform: rotate(360deg) translateX(-50%);
             }
             `} infinite ease 30s`,
             "opacity": 0.5
@@ -76,6 +67,8 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
         "g2": {
             "background": "radial-gradient(circle at center, rgba(76,51,147, 0.8) 0, rgba(76,51,147, 0) 50%) no-repeat",
             "transformOrigin": "calc(50% - 400px)",
+            "top": 0,
+            "right": "40%",
             "animation": !animationPlaying ? "none" : `${keyframes`
             0% {
                 transform: translateY(-50%);
@@ -94,7 +87,9 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
         "g3": {
             "background": "radial-gradient(circle at center, rgba(139,80,234, 0.8) 0, rgba(139,80,234, 0) 50%) no-repeat",
             "transformOrigin": "calc(50% + 400px)",
-            "animation": !animationPlaying ? "none" : `${keyframes`
+            "top": "50%",
+            "right": "30%",
+            "animation": !animationPlaying ? "none" : `${keyframes`,
             0% {
                 transform: translateX(-50%) translateY(-10%);
             }

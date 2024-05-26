@@ -26,7 +26,9 @@ export function App() {
             },
             "body": {
               "scrollBehavior": "smooth",
-              ...scrollbarStyles
+              ...scrollbarStyles,
+              "height": isOpen ? 0 : undefined,
+              "overflow": isOpen ? "hidden" : undefined
             }
           }}
         />
