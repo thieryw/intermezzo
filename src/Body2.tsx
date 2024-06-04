@@ -15,6 +15,7 @@ import Typo from "@mui/material/Typography";
 import { Header } from "Header";
 import { CircularButton } from "components/CircularButton";
 import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
+import { ClickableCard } from "components/ClickableCard";
 
 
 
@@ -34,7 +35,17 @@ export function Body(props: PropsOfBody) {
         <div className={cx(classes.root, className)}>
             <Header
             />
-            <CircularButton 
+            <ClickableCard 
+                surTitle="Pass Culture"
+                title="Intermezzo Débarque en Classe"
+                paragraph="Voyages initiatiques, ateliers, spectacles et évènements culturels,  100% financés par le Pass Culture."
+                link={{
+                    "href": ""
+                }}
+
+            />
+
+            <CircularButton
                 logoSvgSrc={arrowSvg}
                 circularText="Nous avons leur confiance . On avance ensemble . Partenaires . "
             />
