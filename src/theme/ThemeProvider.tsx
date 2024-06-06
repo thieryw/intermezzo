@@ -145,7 +145,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "color": palette.white.main,
             "fontSize": "clamp(3.125rem, 2.76vw, 3.5rem)",
             "letterSpacing": "-0.02em",
-            "fontStyle": "italic"
+            "fontStyle": "italic",
+            "lineHeight": "1.05em"
 
         },
         "highLight4": {

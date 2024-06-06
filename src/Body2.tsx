@@ -16,6 +16,8 @@ import { Header } from "Header";
 import { CircularButton } from "components/CircularButton";
 import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 import { ClickableCard } from "components/ClickableCard";
+import { SliderCard } from "components/SliderCard";
+import passSrc  from "assets/jpg/pass-culture/program-1-img.jpg";
 
 
 
@@ -35,7 +37,17 @@ export function Body(props: PropsOfBody) {
         <div className={cx(classes.root, className)}>
             <Header
             />
-            <ClickableCard 
+            <SliderCard 
+                imageSrc={passSrc}
+                subTitle="Musique et histoire"
+                title="À la Découverte de la Musique Classique"
+                hover={{
+                    "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                    "bulletPoint1": "4 intervenants",
+                    "bulletPoint2": "50 à 60mn"
+                }}
+            />
+            <ClickableCard
                 surTitle="Pass Culture"
                 title="Intermezzo Débarque en Classe"
                 paragraph="Voyages initiatiques, ateliers, spectacles et évènements culturels,  100% financés par le Pass Culture."
@@ -130,7 +142,9 @@ const useStyles = tss
     .withName({ Body })
     .create(({ theme }) => ({
         "root": {
-            "display": "relative"
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 100
         },
         "image": {
         },
