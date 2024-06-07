@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 export type LinkButtonProps = Link & {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
-    variant?: "filled" | "outlined";
+    variant?: "filled" | "outlinedLight" | "outlinedDark";
     openInNewTab?: boolean;
 }
 
@@ -20,7 +20,7 @@ export const LinkButton = memo((props: LinkButtonProps) => {
     const { href, label, onClick, className, variant, openInNewTab = false } = props;
     const { ref, domRect: { height } } = useDomRect();
     const { classes, cx } = useStyles({
-        "variant": variant ?? "outlined",
+        "variant": variant ?? "outlinedDark",
         "textHeight": height,
         "classesOverrides": props.classes
     });
@@ -29,9 +29,9 @@ export const LinkButton = memo((props: LinkButtonProps) => {
 
             <div className={classes.textWrapper}>
                 <div ref={ref}>
-                    <Typography className={classes.linkLabel} variant="button">{label}</Typography>
+                    <Typography className={classes.linkLabel} variant="paragraph1">{label}</Typography>
                 </div>
-                <Typography className={classes.linkLabel} variant="button">{label}</Typography>
+                <Typography className={classes.linkLabel} variant="paragraph1">{label}</Typography>
             </div>
         </div>
     </a>
@@ -58,29 +58,41 @@ const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { 
             }
 
         })(),
-        "border": `solid ${theme.palette.darkGray} 1px`,
+        "boxSizing": "border-box",
+        ...(()=>{
+            switch(variant){
+                case "filled": return {};
+                case "outlinedDark": return {
+                    "border": `solid ${theme.palette.purple.main} 1px`
+                };
+                case "outlinedLight": return {
+                    "border": `solid ${theme.palette.white.main} 1px`,
+
+                }
+            }
+        })(),
         "backgroundColor": (() => {
             switch (variant) {
-                case "filled": return theme.palette.background.default;
-                case "outlined": return undefined;
+                case "filled": return theme.palette.lightOrange.main;
+                default: return undefined;
             }
 
         })(),
         [`&:hover .${classes.linkLabel}`]: {
-            "transform": `translateY(${-textHeight}px)`
-
+            "transform": `translateY(${-textHeight}px)`,
         },
+        "borderRadius": 50
 
     },
     "linkLabel": {
         "color": (() => {
             switch (variant) {
                 case "filled": return theme.palette.white.main;
-                case "outlined": return theme.palette.purple.main;
+                case "outlinedDark": return theme.palette.purple.main;
+                case "outlinedLight": return theme.palette.white.main;
             }
 
         })(),
-        "textTransform": "uppercase",
         "marginBlock": 0,
         "transition": "transform 500ms",
     }

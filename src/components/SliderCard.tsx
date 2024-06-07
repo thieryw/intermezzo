@@ -26,6 +26,7 @@ export type SliderCardProps = {
 export const SliderCard = memo((props: SliderCardProps) => {
     const { className, title, imageSrc, subTitle, hover, sources } = props;
     const { classes, cx } = useStyles({
+        "hasHoverContent": hover !== undefined,
         "classesOverrides": props.classes,
 
     })
@@ -75,7 +76,8 @@ export const SliderCard = memo((props: SliderCardProps) => {
 
 const useStyles = tss
     .withNestedSelectors<"hoverContent" | "content">()
-    .withName("SliderCard").create(({ theme, classes }) => {
+    .withParams<{ hasHoverContent: boolean; }>()
+    .withName("SliderCard").create(({ theme, classes, hasHoverContent }) => {
         return ({
 
             "root": {
@@ -84,14 +86,16 @@ const useStyles = tss
                 "borderRadius": "55px",
                 "backgroundColor": theme.palette.lightOrange.main,
                 "position": "relative",
-                [`&:hover .${classes.content}`]: {
-                    "opacity": 0,
-                    "pointerEvents": "none"
-                },
-                [`&:hover .${classes.hoverContent}`]: {
-                    "opacity": 1,
-                    "pointerEvents": "all"
-                }
+                ...(hasHoverContent ? {
+                    [`&:hover .${classes.content}`]: {
+                        "opacity": 0,
+                        "pointerEvents": "none"
+                    },
+                    [`&:hover .${classes.hoverContent}`]: {
+                        "opacity": 1,
+                        "pointerEvents": "all"
+                    }
+                } : {}),
 
             },
             "content": {

@@ -17,7 +17,8 @@ import { CircularButton } from "components/CircularButton";
 import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 import { ClickableCard } from "components/ClickableCard";
 import { SliderCard } from "components/SliderCard";
-import passSrc  from "assets/jpg/pass-culture/program-1-img.jpg";
+import passSrc from "assets/jpg/pass-culture/program-1-img.jpg";
+import { DraggableSliderWrapper } from "components/DraggableSliderWrapper";
 
 
 
@@ -37,7 +38,80 @@ export function Body(props: PropsOfBody) {
         <div className={cx(classes.root, className)}>
             <Header
             />
-            <SliderCard 
+            <DraggableSliderWrapper
+                title="Voyages initiatiques"
+                titleHighLight="Pour Tous"
+                paragraph="En fonction du programme d’histoire ou de musique abordé en classe durant l’année, nous pouvons proposer un programme adapté, entre musique, théâtre et danse."
+                subtitle="Programmes d’Intervention"
+                slides={[
+                    {
+                        "imageSrc": passSrc,
+                        "subTitle": "Musique et histoire",
+                        "title": "À la Découverte de la Musique Classique",
+                        "hover": {
+                            "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                            "bulletPoint1": "4 intervenants",
+                            "bulletPoint2": "50 à 60mn"
+
+                        }
+                    },
+                    {
+                        "imageSrc": passSrc,
+                        "subTitle": "Musique et histoire",
+                        "title": "À la Découverte de la Musique Classique",
+                        "hover": {
+                            "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                            "bulletPoint1": "4 intervenants",
+                            "bulletPoint2": "50 à 60mn"
+
+                        }
+                    },
+                    {
+                        "imageSrc": passSrc,
+                        "subTitle": "Musique et histoire",
+                        "title": "À la Découverte de la Musique Classique",
+                        "hover": {
+                            "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                            "bulletPoint1": "4 intervenants",
+                            "bulletPoint2": "50 à 60mn"
+
+                        }
+                    },
+                    {
+                        "imageSrc": passSrc,
+                        "subTitle": "Musique et histoire",
+                        "title": "À la Découverte de la Musique Classique",
+                        "hover": {
+                            "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                            "bulletPoint1": "4 intervenants",
+                            "bulletPoint2": "50 à 60mn"
+
+                        }
+                    },
+                    {
+                        "imageSrc": passSrc,
+                        "subTitle": "Musique et histoire",
+                        "title": "À la Découverte de la Musique Classique",
+                        "hover": {
+                            "paragraph": "Un temps d'échange et de découverte du métier de musicien, suivi d'un mini concert.  Possible aussi d'orienter le programme Pop Music (ABBA, QUEEN) et musique classique.",
+                            "bulletPoint1": "4 intervenants",
+                            "bulletPoint2": "50 à 60mn"
+
+                        }
+                    },
+
+                ]}
+                link1={{
+                    "href": "",
+                    "label": "En savoir plus"
+                }}
+                link2={{
+                    "href": "",
+                    "label": "Un projet ?"
+                }}
+            />
+
+            <SliderCard
                 imageSrc={passSrc}
                 subTitle="Musique et histoire"
                 title="À la Découverte de la Musique Classique"
