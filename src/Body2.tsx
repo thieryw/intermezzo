@@ -218,7 +218,8 @@ const useStyles = tss
         "root": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 100
+            "gap": 100,
+            "overflowX": "hidden"
         },
         "image": {
         },
