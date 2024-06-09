@@ -41,6 +41,25 @@ export const Video = memo((props: VideoProps) => {
     })
 
     useEffect(()=>{
+        if(!isLightBoxOpen){
+            return;
+        }
+
+        function handleEscape(e: KeyboardEvent){
+            if(e.code !== "Escape"){
+                return;
+            }
+
+            setIsLightBoxOpen(false);
+        }
+
+        window.addEventListener("keydown", handleEscape);
+
+        return () => window.removeEventListener("keydown", handleEscape);
+
+    }, [isLightBoxOpen])
+
+    useEffect(()=>{
         (async ()=>{
             if(isLightBoxOpen){
                 setZIndex(5000);
@@ -122,7 +141,9 @@ const useStyles = tss.withName("Video").withParams<{isLightBoxOpen: boolean; zIn
         "playIcon": {
             "& svg": {
                 "fill": theme.palette.white.main,
-                "transition": "fill 600ms, transform 600ms"
+                "transition": "fill 600ms, transform 600ms",
+                "width": theme.spacing(15),
+                "height": theme.spacing(15)
             },
             ":hover": {
                 "& svg": {
