@@ -126,7 +126,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "color": "transparent",
             "fontSize": "clamp(4.25rem, 5.31vw, 6.563rem)",
             "letterSpacing": "-0.02em",
-            "fontStyle": "italic"
+            "fontStyle": "italic",
+            "lineHeight": "1em"
 
         },
         "highLight2": {
@@ -137,7 +138,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "color": "transparent",
             "fontSize": "clamp(3.438rem, 3.59vw, 4rem)",
             "letterSpacing": "-0.02em",
-            "fontStyle": "italic"
+            "fontStyle": "italic",
+            "lineHeight": "1em"
         },
         "highLight3": {
             "fontFamily": "source-serif-4, serif",
@@ -205,6 +207,7 @@ const muiThemeLight = createMuiTheme({
 
         "values": {
             "xl": 1920,
+            "lgPlus": 1650,
             "lg": 1440,
             "md": 960,
             "sm": 600,
@@ -332,7 +335,10 @@ declare module '@mui/material/styles' {
         highLight3: React.CSSProperties;
         highLight4: React.CSSProperties;
         italicP: React.CSSProperties;
-        
+
+    }
+    interface BreakpointOverrides {
+        lgPlus: true;
     }
 
     // allow configuration using `createTheme`
@@ -388,45 +394,45 @@ declare module '@mui/material/Typography' {
 
 declare module '@mui/material/styles' {
     interface Palette {
-      purple: Palette['primary'];
-      darkGray: Palette['primary'];
-      lightOrange: Palette['primary'];
-      pink: Palette['primary'];
-      orange: Palette['primary'];
-      lightGray: Palette['primary'];
-      white: Palette['primary'];
-      gradient1: Palette['primary'];
-      gradient2: Palette['primary'];
-      gradient3: Palette['primary'];
-      
+        purple: Palette['primary'];
+        darkGray: Palette['primary'];
+        lightOrange: Palette['primary'];
+        pink: Palette['primary'];
+        orange: Palette['primary'];
+        lightGray: Palette['primary'];
+        white: Palette['primary'];
+        gradient1: Palette['primary'];
+        gradient2: Palette['primary'];
+        gradient3: Palette['primary'];
+
     }
-  
+
     interface PaletteOptions {
-      purple?: PaletteOptions['primary'];
-      darkGray: PaletteOptions['primary'];
-      lightOrange: PaletteOptions['primary']
-      pink: PaletteOptions['primary']
-      orange: PaletteOptions['primary']
-      lightGray: PaletteOptions['primary']
-      white: PaletteOptions['primary']
-      gradient1: PaletteOptions['primary'];
-      gradient2: PaletteOptions['primary'];
-      gradient3: PaletteOptions['primary'];
+        purple?: PaletteOptions['primary'];
+        darkGray: PaletteOptions['primary'];
+        lightOrange: PaletteOptions['primary']
+        pink: PaletteOptions['primary']
+        orange: PaletteOptions['primary']
+        lightGray: PaletteOptions['primary']
+        white: PaletteOptions['primary']
+        gradient1: PaletteOptions['primary'];
+        gradient2: PaletteOptions['primary'];
+        gradient3: PaletteOptions['primary'];
     }
-  }
-  
-  // Update the Button's color options to include an ochre option
-  declare module '@mui/material/Button' {
+}
+
+// Update the Button's color options to include an ochre option
+declare module '@mui/material/Button' {
     interface ButtonPropsColorOverrides {
-      purple: true;
-      darkGray: true;
-      lightOrange: true;
-      orange: true;
-      lightGray: true;
-      white: true;
-      gradient1: true;
-      gradient2: true;
-      gradient3: true;
-      pink: true
+        purple: true;
+        darkGray: true;
+        lightOrange: true;
+        orange: true;
+        lightGray: true;
+        white: true;
+        gradient1: true;
+        gradient2: true;
+        gradient3: true;
+        pink: true
     }
-  }
+}

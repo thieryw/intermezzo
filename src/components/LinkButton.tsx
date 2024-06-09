@@ -48,8 +48,8 @@ const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { 
     },
     "inner": {
         ...(() => {
-            const topBottom = 25;
-            const leftRight = 62;
+            const topBottom = theme.spacing(3);
+            const leftRight = theme.spacing(7);
             return {
                 "paddingLeft": leftRight,
                 "paddingRight": leftRight,
@@ -81,7 +81,7 @@ const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { 
         [`&:hover .${classes.linkLabel}`]: {
             "transform": `translateY(${-textHeight}px)`,
         },
-        "borderRadius": 50
+        "borderRadius": theme.spacing(6)
 
     },
     "linkLabel": {

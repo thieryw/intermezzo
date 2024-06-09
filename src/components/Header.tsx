@@ -518,6 +518,9 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "height": isOpen ? "100%" : 0,
             "overflowY": "auto",
             "overflowX": "hidden",
+            '&::-webkit-scrollbar': {
+                "width": 7, /* Width of the scrollbar */
+            },
             /*[theme.breakpoints.down("sm")]: {
                 "overflow": "auto",
 
