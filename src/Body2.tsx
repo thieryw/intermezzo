@@ -19,6 +19,8 @@ import { ClickableCard } from "components/ClickableCard";
 import { SliderCard } from "components/SliderCard";
 import passSrc from "assets/jpg/pass-culture/program-1-img.jpg";
 import { DraggableSliderWrapper } from "components/DraggableSliderWrapper";
+import { Video } from "components/Video";
+import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
 
 
 
@@ -37,6 +39,14 @@ export function Body(props: PropsOfBody) {
     return (
         <div className={cx(classes.root, className)}>
             <Header
+            />
+            <Video 
+                src={videoImage}
+                width={parseInt(theme.spacing(125))}
+                height={parseInt(theme.spacing(125)) / 100 * 40}
+                borderRadius={`${theme.spacing(25)} 0px`}
+                iframeUrl="https://www.youtube.com/embed/UlFsoRQYVrs?si=xKehSg3kRz66aHH0"
+                alt="video preview image"
             />
             <DraggableSliderWrapper
                 title="Voyages initiatiques"
