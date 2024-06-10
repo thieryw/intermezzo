@@ -92,7 +92,7 @@ export function Body(props: PropsOfBody) {
                 width={parseInt(theme.spacing(125))}
                 height={parseInt(theme.spacing(125)) / 100 * 40}
                 borderRadius={`${theme.spacing(25)} 0px`}
-                iframeUrl="https://www.youtube.com/embed/UlFsoRQYVrs?si=xKehSg3kRz66aHH0"
+                videoId="UlFsoRQYVrs"
                 alt="video preview image"
             />
             <DraggableSliderWrapper

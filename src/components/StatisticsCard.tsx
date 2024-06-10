@@ -73,7 +73,9 @@ const useStyles = tss
                 "padding": theme.spacing(6),
                 "borderRadius": theme.spacing(6),
                 "boxShadow": theme.shadows[1],
-                "flexWrap": "wrap",
+                [theme.breakpoints.down("lg")]: {
+                    "flexWrap": "wrap",
+                },
                 "boxSizing": "border-box",
                 "gap": theme.spacing(6),
                 "justifyContent": "center",
@@ -94,9 +96,9 @@ const useStyles = tss
                 "width": 1,
                 "height": "100%",
                 "borderLeft": `solid ${theme.palette.lightGray.main} 1px`,
-                [theme.breakpoints.down("md")]: {
-                    "display": "none",
-                }
+                [theme.breakpoints.down("lg")]: {
+                    "display": "none"
+                },
             },
             "stat": {
                 "display": "flex",

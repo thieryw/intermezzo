@@ -184,12 +184,10 @@ const useStyles = tss.withName("Hero").create(({ theme }) => {
             "gap": theme.spacing(3)
         },
         "statisticCard": {
-            "flexWrap": "nowrap",
             "position": "relative",
             "bottom": theme.spacing(10),
             "right": theme.spacing(6),
             [theme.breakpoints.down("lg")]: {
-                "flexWrap": "wrap",
                 "right": 0
             }
         },

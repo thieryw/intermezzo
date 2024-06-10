@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useState, useEffect, useRef } from "react";
 import { useCallbackFactory } from "powerhooks/useCallbackFactory";
 import { tss } from "tss";
 import { PictureAnimator } from "components/PictureAnimator";
@@ -6,6 +6,8 @@ import type { PictureAnimatorProps } from "components/PictureAnimator";
 import { ReactSVG } from "react-svg";
 import playIconSvg from "assets/svg/icons/play-icon.svg";
 import ClearIcon from '@mui/icons-material/Clear';
+import Youtube from "react-youtube";
+import type { YouTubeProps } from "react-youtube/dist/YouTube";
 
 
 const transitionTime = 500;
@@ -13,7 +15,7 @@ const transitionTime = 500;
 export type VideoProps = {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
-    iframeUrl: string;
+    videoId: string;
 } & Omit<PictureAnimatorProps, "className" | "classes">
 
 
@@ -21,7 +23,7 @@ export const Video = memo((props: VideoProps) => {
     const {
         borderRadius,
         height,
-        iframeUrl,
+        videoId,
         src,
         width,
         alt,
@@ -36,17 +38,17 @@ export const Video = memo((props: VideoProps) => {
 
     const toggleLightBox = useCallbackFactory((
         [isOpen]: [boolean]
-    )=>{
+    ) => {
         setIsLightBoxOpen(isOpen)
     })
 
-    useEffect(()=>{
-        if(!isLightBoxOpen){
+    useEffect(() => {
+        if (!isLightBoxOpen) {
             return;
         }
 
-        function handleEscape(e: KeyboardEvent){
-            if(e.code !== "Escape"){
+        function handleEscape(e: KeyboardEvent) {
+            if (e.code !== "Escape") {
                 return;
             }
 
@@ -59,9 +61,9 @@ export const Video = memo((props: VideoProps) => {
 
     }, [isLightBoxOpen])
 
-    useEffect(()=>{
-        (async ()=>{
-            if(isLightBoxOpen){
+    useEffect(() => {
+        (async () => {
+            if (isLightBoxOpen) {
                 setZIndex(5000);
                 return;
             }
@@ -71,6 +73,38 @@ export const Video = memo((props: VideoProps) => {
         })()
 
     }, [isLightBoxOpen])
+
+    const playerRef = useRef<any>(null);
+
+    const onReady: YouTubeProps['onReady'] = (event) => {
+        playerRef.current = event.target;
+    };
+
+
+    function handleVideo(state: "play" | "pause", playerRef: any) {
+        if (playerRef.current === null) {
+            return;
+        };
+
+        switch (state) {
+            case "pause": playerRef.current.pauseVideo(); return;
+            case "play": playerRef.current.playVideo();
+        };
+
+    }
+
+    useEffect(()=>{
+        if(playerRef.current === null){
+            return;
+        }
+
+        if(isLightBoxOpen){
+            handleVideo("play", playerRef);
+            return;
+        }
+        handleVideo("pause", playerRef);
+
+    }, [isLightBoxOpen, playerRef.current])
 
 
 
@@ -103,14 +137,21 @@ export const Video = memo((props: VideoProps) => {
             <div onClick={toggleLightBox(false)}>
                 <ClearIcon className={classes.closeIcon} />
             </div>
-            <iframe
+            {/*<iframe
                 className={classes.iframe}
                 src={iframeUrl}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen>
-            </iframe>
+                allowFullScreen
+            >
+            </iframe>*/}
+            <Youtube
+                className={classes.iframe}
+                videoId={videoId}
+                onReady={onReady}
+
+            />
 
         </div>
 
@@ -119,7 +160,7 @@ export const Video = memo((props: VideoProps) => {
     </div>
 });
 
-const useStyles = tss.withName("Video").withParams<{isLightBoxOpen: boolean; zIndex: number | undefined; }>().create(({ theme, isLightBoxOpen, zIndex }) => {
+const useStyles = tss.withName("Video").withParams<{ isLightBoxOpen: boolean; zIndex: number | undefined; }>().create(({ theme, isLightBoxOpen, zIndex }) => {
     return ({
         "root": {
             "alignSelf": "self-start",
@@ -170,7 +211,7 @@ const useStyles = tss.withName("Video").withParams<{isLightBoxOpen: boolean; zIn
             "transition": `opacity ${transitionTime}ms, transform ${transitionTime}ms`,
             "pointerEvents": isLightBoxOpen ? undefined : "none",
             zIndex,
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(5);
                 return {
                     "paddingRight": value,
@@ -197,10 +238,13 @@ const useStyles = tss.withName("Video").withParams<{isLightBoxOpen: boolean; zIn
 
         },
         "iframe": {
-            "maxWidth": "100vw",
-            "width": theme.spacing(100),
-            "height": theme.spacing(50),
-            "border": "none"
+            "& iframe": {
+                "maxWidth": "100vw",
+                "width": theme.spacing(100),
+                "height": theme.spacing(50),
+                "border": "none",
+
+            }
         }
 
     })
