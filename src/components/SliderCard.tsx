@@ -82,8 +82,9 @@ const useStyles = tss
 
             "root": {
                 "width": 450,
-                "height": 390,
-                "borderRadius": "55px",
+                "maxWidth": `calc(100vw - ${theme.spacing(4)})`,
+                "minHeight": 390,
+                "borderRadius": 55,
                 "backgroundColor": theme.palette.lightOrange.main,
                 "position": "relative",
                 ...(hasHoverContent ? {
@@ -100,7 +101,7 @@ const useStyles = tss
             },
             "content": {
                 ...(() => {
-                    const value = 40;
+                    const value = theme.spacing(5);
                     return {
                         "paddingLeft": value,
                         "paddingRight": value
@@ -108,10 +109,10 @@ const useStyles = tss
                 })(),
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 23,
+                "gap": theme.spacing(3),
                 "justifyContent": "center",
                 "width": "100%",
-                "height": "100%",
+                "minHeight": 390,
                 "boxSizing": "border-box",
                 "transition": "opacity 700ms"
             },
@@ -122,13 +123,20 @@ const useStyles = tss
 
             },
             "pictureWrapper": {
-                "width": 160,
-                "height": 160,
-                "borderRadius": "60px 0px",
+                ...(()=>{
+                    const value = theme.spacing(20);
+                    return {
+                        "width": value,
+                        "height": value,
+
+                    }
+
+                })(),
+                "borderRadius": `${theme.spacing(8)} 0px`,
                 "overflow": "hidden",
                 "position": "absolute",
                 ...(() => {
-                    const value = -35;
+                    const value = `-${theme.spacing(4)}`;
                     return {
                         "bottom": value,
                         "right": value
@@ -151,7 +159,7 @@ const useStyles = tss
                 "opacity": 0,
                 "transition": "opacity 700ms",
                 ...(() => {
-                    const value = 40;
+                    const value = theme.spacing(5);
                     return {
                         "paddingLeft": value,
                         "paddingRight": value
@@ -161,11 +169,11 @@ const useStyles = tss
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "boxSizing": "border-box",
-                "gap": 50
+                "gap": theme.spacing(6)
             },
             "bulletPoint": {
                 "display": "flex",
-                "gap": 28,
+                "gap": theme.spacing(4),
                 "alignItems": "center",
                 "& p": {
                     "color": theme.palette.white.main
@@ -174,12 +182,18 @@ const useStyles = tss
             "bulletPoints": {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 10
+                "gap": theme.spacing(1)
             },
             "starBulletPoint": {
                 "& svg": {
-                    "width": 15,
-                    "height": 15
+                    ...(()=>{
+                        const value = theme.spacing(2);
+                        return {
+
+                            "width": value,
+                            "height": value,
+                        }
+                    })()
                 }
             }
         })
