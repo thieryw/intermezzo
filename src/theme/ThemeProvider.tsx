@@ -209,6 +209,7 @@ const muiThemeLight = createMuiTheme({
             "xl": 1920,
             "lgPlus": 1650,
             "lg": 1440,
+            "mdPlus": 1200,
             "md": 960,
             "sm": 600,
             "xs": 400
@@ -339,6 +340,7 @@ declare module '@mui/material/styles' {
     }
     interface BreakpointOverrides {
         lgPlus: true;
+        mdPlus: true;
     }
 
     // allow configuration using `createTheme`

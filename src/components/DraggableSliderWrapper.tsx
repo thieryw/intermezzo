@@ -93,13 +93,25 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
         "slider": {
             "position": "relative",
             "right": theme.spacing(11),
-            "top": theme.spacing(2)
+            "top": theme.spacing(2),
+            [theme.breakpoints.down("mdPlus")]: {
+                "right": 0
+            }
         },
         "textWrapper": {
             "display": "flex",
             "paddingLeft": theme.spacing(18),
             "position": "relative",
-            "top": theme.spacing(17)
+            "top": theme.spacing(17),
+            [theme.breakpoints.down("mdPlus")]: {
+                "top": 0,
+                "paddingLeft": 0,
+                "justifyContent": "center",
+                "gap": theme.spacing(10),
+                "alignItems": "center",
+                "paddingTop": theme.spacing(10),
+                "paddingBottom": theme.spacing(5)
+            }
         },
         "titleWrapper": {
             "marginRight": theme.spacing(7),
@@ -117,7 +129,11 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
             "flexDirection": "column",
             "gap": theme.spacing(4),
             "position": "relative",
-            "top": theme.spacing(5)
+            "top": theme.spacing(5),
+            [theme.breakpoints.down("mdPlus")]: {
+                "top": 0
+
+            }
         },
         "subtitleWrapper": {
             "display": "flex",

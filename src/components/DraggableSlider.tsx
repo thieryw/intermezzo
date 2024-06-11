@@ -216,7 +216,12 @@ const useStyles = tss.withParams<{ numberOfSlides: number; slideWidth: number; }
             "display": "flex",
             "marginBottom": theme.spacing(13),
             "justifyContent": "flex-end",
-
+            [theme.breakpoints.down("mdPlus")]: {
+                "marginBottom": theme.spacing(10),
+                "justifyContent": "center"
+            },
+            "position": "relative",
+            "left": 10
         },
         "arrowWrapper": {
 
@@ -232,7 +237,7 @@ const useStyles = tss.withParams<{ numberOfSlides: number; slideWidth: number; }
             "justifyContent": "center",
             "padding": 35,
             "borderRadius": "50%",
-            "boxSizing": "border-box"
+            "boxSizing": "border-box",
         },
         "arrowWrapperForwards": {
             "position": "relative",
