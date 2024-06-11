@@ -39,13 +39,22 @@ export const Hero = memo((props: HeroProps)=>{
         highLightTitleImageUrl
     } = props;
 
-    const {classes, cx, theme} = useStyles();
+    const {classes, cx, theme, windowInnerWidth} = useStyles();
 
     return <section className={cx(classes.root, className)}>
         {
             (()=>{
-                if (window.innerWidth < theme.breakpoints.values.sm) {
+                if (window.innerWidth < theme.breakpoints.values.md) {
                     return <div className={classes.mobileTitleWrapper}>
+                        <div className={classes.mobileSurtitle}>
+                            <ReactSVG src={starSvg} className={classes.starSvg} />
+                            <Typography variant="label">{surtitle}</Typography>
+                        </div>
+                        <div className={classes.mobileTitle}>
+                            <Typography className={classes.mobileHeading1} variant="heading1">{title}</Typography>
+                            <Typography variant="highLight">{highLightTitle}</Typography>
+
+                        </div>
 
                     </div>
                 }
@@ -93,17 +102,32 @@ export const Hero = memo((props: HeroProps)=>{
                 {...animatedPicture}
                 width={parseInt(theme.spacing(93))}
                 height={parseInt(theme.spacing(93)) / 100 * 85}
-                borderRadius="0px 44%"
+                borderRadius={windowInnerWidth < theme.breakpoints.values.md ? "0px" : "0px 44%"}
             />
-            <StatisticsCard
-                className={classes.statisticCard}
-                {...statisticCard}
-            />
+            <div className={classes.statisticCard}>
+                <StatisticsCard
+                    {...statisticCard}
+                />
+
+            </div>
 
         </div>
         {
-            window.innerWidth < theme.breakpoints.values.sm &&
+            window.innerWidth < theme.breakpoints.values.md &&
             <div className={classes.mobileParagraphAndButtons}>
+                <Typography className={classes.mobileParagraph} variant="paragraph1">{paragraph}</Typography>
+                <div className={classes.mobileButtonWrapper}>
+                    <LinkButton
+                        {...button1}
+                        variant="filled"
+                        className={classes.mobileLinkButton}
+                    />
+                    <LinkButton
+                        {...button2}
+                        variant="outlinedDark"
+                        className={classes.mobileLinkButton}
+                    />
+                </div>
 
             </div>
         }
@@ -112,14 +136,14 @@ export const Hero = memo((props: HeroProps)=>{
 
 })
 
-const useStyles = tss.withName("Hero").create(({ theme }) => {
+const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
     return ({
         "root": {
             "width": "100vw",
             "position": "relative",
             "display": "grid",
             "gridTemplateColumns": "repeat(2, 1fr)",
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(15);
                 return {
                     "paddingRight": value,
@@ -129,14 +153,26 @@ const useStyles = tss.withName("Hero").create(({ theme }) => {
             "boxSizing": "border-box",
             [theme.breakpoints.down("lg")]: {
                 "gap": theme.spacing(5)
+            },
+            [theme.breakpoints.down("md")]: {
+                "display": "flex",
+                "flexDirection": "column",
+                "padding": 0
             }
         },
-        "mobileTitleWrapper": {},
+        "mobileTitleWrapper": {
+            "paddingTop": theme.spacing(12),
+            "marginBottom": theme.spacing(8)
+        },
         "textAndButtonWrapper": {
             "paddingTop": theme.spacing(6)
         },
         "paragraph": {
-            "maxWidth": 572
+            ...(windowInnerWidth < 1500 ? {
+                "maxWidth": 400
+            } : {
+                "maxWidth": 572,
+            })
 
         },
         "textAndButtonWrapperInner": {
@@ -151,8 +187,38 @@ const useStyles = tss.withName("Hero").create(({ theme }) => {
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "flex-end",
+            [theme.breakpoints.down("md")]: {
+                "alignItems": "center",
+                "marginBottom": theme.spacing(6)
+            },
+            [theme.breakpoints.down("sm")]: {
+                "marginBottom": 0
+            },
+
         },
-        "mobileParagraphAndButtons": {},
+        "mobileParagraphAndButtons": {
+            ...(()=>{
+                const value = theme.spacing(4);
+                return {
+                    "paddingRight": value,
+                    "paddingLeft": value
+                }
+            })()
+        },
+        "mobileParagraph": {
+            "textAlign": "center",
+            "marginBottom": theme.spacing(10)
+        },
+        "mobileButtonWrapper": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": theme.spacing(3),
+            "alignItems": "center"
+        },
+        "mobileLinkButton": {
+            "width": 270,
+
+        },
         "surtitle": {
             "display": "flex",
             "alignItems": "center",
@@ -188,9 +254,40 @@ const useStyles = tss.withName("Hero").create(({ theme }) => {
             "bottom": theme.spacing(10),
             "right": theme.spacing(6),
             [theme.breakpoints.down("lg")]: {
-                "right": 0
+                "right": theme.spacing(3)
+            },
+            [theme.breakpoints.down("md")]: {
+                "right": 0,
+                "bottom": 0,
+                "marginTop": theme.spacing(12)
+            },
+            [theme.breakpoints.down("sm")]: {
+                "bottom": theme.spacing(10),
+                "marginTop": 0
             }
         },
+        "mobileSurtitle": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "gap": theme.spacing(3),
+            "marginBottom": theme.spacing(7)
+        },
+        "mobileTitle": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            ...(() => {
+                const value = theme.spacing(4);
+                return {
+                    "paddingLeft": value,
+                    "paddingRight": value
+                }
+            })()
+        },
+        "mobileHeading1": {
+            "textAlign": "center"
+        }
 
     })
 })

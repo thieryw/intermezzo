@@ -122,19 +122,19 @@ export function Header(props: HeaderProps) {
         animatedBanner
     } = props;
     const {isOpen, setIsOpen} = useContext(IsMenuOpenContext);
-    const { classes, cx, theme } = useStyles({ isOpen, "classesOverrides": props.classes });
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < theme.breakpoints.values.sm)
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 960);
     const controls = useAnimation();
+    const { classes, cx, theme, windowInnerWidth } = useStyles({ isOpen, "classesOverrides": props.classes, isSmallScreen });
 
     useEffect(() => {
-        if (window.innerWidth < theme.breakpoints.values.sm) {
+        if (windowInnerWidth < theme.breakpoints.values.md) {
             setIsSmallScreen(true);
             return;
         }
 
         setIsSmallScreen(false);
 
-    }, [window.innerWidth])
+    }, [windowInnerWidth])
 
     useEffect(() => {
         if (isOpen) {
@@ -162,7 +162,7 @@ export function Header(props: HeaderProps) {
             <div className={classes.buttonWrapper}>
                 {
                     (() => {
-                        if (window.innerWidth < theme.breakpoints.values.sm) {
+                        if (isSmallScreen) {
                             return undefined
                         }
                         return <>
@@ -210,7 +210,7 @@ export function Header(props: HeaderProps) {
 
                     {
                         (() => {
-                            if (window.innerWidth < theme.breakpoints.values.sm) {
+                            if (isSmallScreen) {
                                 return undefined;
                             }
                             return <div className={classes.contactWrapper}>
@@ -296,7 +296,7 @@ export function Header(props: HeaderProps) {
                     <div className={classes.mobileWrapper}>
                         {
                             (() => {
-                                if (logo === undefined || window.innerWidth >= theme.breakpoints.values.sm) {
+                                if (logo === undefined || !isSmallScreen) {
                                     return undefined;
                                 }
                                 return <div className={classes.mobileLogoWrapper}>
@@ -351,7 +351,7 @@ export function Header(props: HeaderProps) {
 
                         {
                             (() => {
-                                if (logoLinks === undefined || window.innerWidth >= theme.breakpoints.values.sm) {
+                                if (logoLinks === undefined || !isSmallScreen) {
                                     return undefined;
                                 }
                                 return <div className={classes.logoLinks}>
@@ -375,7 +375,7 @@ export function Header(props: HeaderProps) {
                         }
                         {
                             (() => {
-                                if (smallPrint === undefined || window.innerWidth >= theme.breakpoints.values.sm) {
+                                if (smallPrint === undefined || !isSmallScreen) {
                                     return undefined;
                                 }
                                 return <div onClick={handleMenuItemClick}>
@@ -406,7 +406,7 @@ export function Header(props: HeaderProps) {
 
 
 
-const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme }) => {
+const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>().create(({ isOpen, theme, isSmallScreen }) => {
     const transitionTime = 600;
     return ({
         "root": {
@@ -414,7 +414,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "top": 0,
             "left": 0,
             ...(() => {
-                if (window.innerWidth < theme.breakpoints.values.sm) {
+                if (isSmallScreen) {
                     return {
                         "width": "100vw"
 
@@ -441,7 +441,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
         },
         "mobileWrapper": {
             ...(() => {
-                if (window.innerWidth < theme.breakpoints.values.sm) {
+                if (isSmallScreen) {
                     return {
                         "display": "flex",
                         "flexDirection": "column",
@@ -472,7 +472,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "alignItems": "center",
             "paddingTop": theme.spacing(7),
             "paddingRight": theme.spacing(21),
-            [theme.breakpoints.down("sm")]: {
+            [theme.breakpoints.down("md")]: {
                 "paddingRight": theme.spacing(11)
             }
 
@@ -558,7 +558,7 @@ const useStyles = tss.withParams<{ isOpen: boolean }>().create(({ isOpen, theme 
             "opacity": isOpen ? 1 : 0,
             "transitionDelay": !isOpen ? undefined : `${transitionTime / 2}ms`,
             "marginBottom": (() => {
-                if (window.innerWidth < theme.breakpoints.values.sm) {
+                if (isSmallScreen) {
                     return 40;
                 }
                 return undefined;
@@ -586,31 +586,6 @@ const { ToggleMenuButton } = (() => {
         const { classes, cx } = useStyles({ isActive })
         const ref = useRef<HTMLButtonElement>(null);
 
-        /*useEffect(() => {
-            if (ref.current === null) {
-                return;
-            }
-            const scrollableParent = getScrollableParent({
-                "doReturnElementIfScrollable": true,
-                "element": ref.current
-            })
-            function preventScroll() {
-                scrollableParent.scrollTo({
-                    "top": 0,
-                    "behavior": "instant"
-                })
-            }
-            (() => {
-                if (!isActive) {
-                    return;
-                }
-                scrollableParent.addEventListener("scroll", preventScroll);
-            })()
-
-            return () => scrollableParent.removeEventListener("scroll", preventScroll);
-
-
-        }, [ref.current, isActive])*/
 
         return <button
             ref={ref}

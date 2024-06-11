@@ -81,7 +81,7 @@ const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { 
         [`&:hover .${classes.linkLabel}`]: {
             "transform": `translateY(${-textHeight}px)`,
         },
-        "borderRadius": theme.spacing(6)
+        "borderRadius": "50px"
 
     },
     "linkLabel": {
@@ -95,6 +95,7 @@ const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { 
         })(),
         "marginBlock": 0,
         "transition": "transform 500ms",
+        "textAlign": "center"
     }
 
 }))

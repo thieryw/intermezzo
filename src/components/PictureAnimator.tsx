@@ -61,17 +61,20 @@ const useStyles = tss.withParams<
         height: number;
         borderRadius: string;
     }
->().create(({ inView, animationDelay, borderRadius, height, width }) => {
+>().create(({ inView, animationDelay, borderRadius, height: _height, width: _width, windowInnerWidth, theme }) => {
+
+    const width = windowInnerWidth < theme.breakpoints.values.sm ? "100vw" : _width;
+    const height = windowInnerWidth < theme.breakpoints.values.sm ? `${_height / (_width / 100)}vw` : _height;
+
 
     return ({
         "root": {
             "position": "relative",
+
             width,
             height,
             borderRadius,
             "overflow": "hidden",
-            "maxWidth": "100vw",
-            "maxHeight": "85vw"
         },
         "animatedDiv": {
 

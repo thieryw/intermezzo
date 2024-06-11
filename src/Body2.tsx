@@ -56,7 +56,7 @@ export function Body(props: PropsOfBody) {
                     "label": "Contact"
                 }}
                 surtitle="L'Association Musicale"
-                title="Icubatrice de Projets Culturels"
+                title="Incubatrice de Projets Culturels"
                 highLightTitle="Innovants"
                 highLightTitleImageUrl={titleCapsuleSrc}
                 paragraph="Fondée par des artistes locaux passionnés, notre association musicale Intermezzo s'engage pleinement à promouvoir les talents artistiques de Bordeaux et de sa région."
