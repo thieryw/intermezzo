@@ -23,6 +23,7 @@ import { Video } from "components/Video";
 import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
 import { Hero } from "components/Hero";
 import titleCapsuleSrc from "assets/jpg/home/title-capsule-croped.jpg";
+import { SwipeSlider } from "components/SwipeSlider";
 
 
 
@@ -43,7 +44,7 @@ export function Body(props: PropsOfBody) {
             <Header
             />
 
-            <Hero 
+            <Hero
                 animatedPicture={{
                     "src": testJpg,
                 }}
@@ -86,6 +87,26 @@ export function Body(props: PropsOfBody) {
 
                 }}
 
+            />
+            <SwipeSlider 
+                slides={[
+                    {
+                        "title": "Innover1",
+                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                    },
+                    {
+                        "title": "Innover2",
+                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                    },
+                    {
+                        "title": "Innover3",
+                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                    },
+                    {
+                        "title": "Innover4",
+                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                    },
+                ]}
             />
             <Video
                 src={videoImage}

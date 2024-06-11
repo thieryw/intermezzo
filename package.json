@@ -23,7 +23,8 @@
     "i18nifty": "^3.2.1",
     "react-intersection-observer": "^9.10.2",
     "@mui/icons-material": "5.15.19",
-    "react-youtube": "^10.1.0"
+    "react-youtube": "^10.1.0",
+    "embla-carousel-react": "^8.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
