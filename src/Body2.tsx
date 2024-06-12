@@ -23,7 +23,7 @@ import { Video } from "components/Video";
 import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
 import { Hero } from "components/Hero";
 import titleCapsuleSrc from "assets/jpg/home/title-capsule-croped.jpg";
-import { SwipeSlider } from "components/SwipeSlider";
+import { ParagraphList } from "components/ParagraphList";
 
 
 
@@ -88,23 +88,27 @@ export function Body(props: PropsOfBody) {
                 }}
 
             />
-            <SwipeSlider 
-                slides={[
+            <ParagraphList 
+                paragraphs={[
                     {
-                        "title": "Innover1",
+                        "title": "Innover",
                         "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
                     },
                     {
-                        "title": "Innover2",
-                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                        "title": "Révéler",
+                        "paragraph": "Permettre aux artistes et particulièrement aux jeunes de trouver sur  Bordeaux et sa métropole, les conditions favorables à la réalisation de leurs projets artistiques."
                     },
                     {
-                        "title": "Innover3",
-                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                        "title": "Irriguer",
+                        "paragraph": "Faire découvrir des lieux culturels inédits ou moins conventionnels, dans une démarche d’irrigation culturelle du territoire et à travers une logique de festival itinérant."
                     },
                     {
-                        "title": "Innover4",
-                        "paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques variées, où pourront interagir diverses formes artistiques."
+                        "title": "Créer",
+                        "paragraph": "Favoriser la création musicale en réalisant des commandes auprès de compositeurs et en accompagnant le public à travers l’écoute de la musique contemporaine."
+                    },
+                    {
+                        "title": "Sensibiliser",
+                        "paragraph": "Proposer des actions de médiation en direction de publics hétérogènes ou empêchés . Animer des ateliers afin de sensibiliser les générations futures aux arts vivants."
                     },
                 ]}
             />
