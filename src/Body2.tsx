@@ -24,7 +24,27 @@ import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
 import { Hero } from "components/Hero";
 import titleCapsuleSrc from "assets/jpg/home/title-capsule-croped.jpg";
 import { ParagraphList } from "components/ParagraphList";
+import { PortraitGallery } from "components/PortraitGallery";
+import benevoleImg1 from "assets/jpg/home/benevoles/benevole-img-1.jpg";
+import benevoleImg2 from "assets/jpg/home/benevoles/benevole-img-2.jpg";
+import benevoleImg3 from "assets/jpg/home/benevoles/benevole-img-3.jpg";
+import benevoleImg4 from "assets/jpg/home/benevoles/benevole-img-4.jpg";
+import benevoleImg5 from "assets/jpg/home/benevoles/benevole-img-5.jpg";
+import benevoleImg6 from "assets/jpg/home/benevoles/benevole-img-6.jpg";
+import benevoleImg7 from "assets/jpg/home/benevoles/benevole-img-7.jpg";
+import benevoleImg8 from "assets/jpg/home/benevoles/benevole-img-8.jpg";
 
+
+const benevoleImages = [
+    benevoleImg1,
+    benevoleImg2,
+    benevoleImg3,
+    benevoleImg4,
+    benevoleImg5,
+    benevoleImg6,
+    benevoleImg7,
+    benevoleImg8,
+]
 
 
 
@@ -88,7 +108,25 @@ export function Body(props: PropsOfBody) {
                 }}
 
             />
-            <ParagraphList 
+            <PortraitGallery 
+                images={benevoleImages.map(image => ({
+                    "src": image
+                }))}
+                button={{
+                    "href": "",
+                    "label": "Nous rejoindre"
+                }}
+                surtitle="Nos Bénévoles"
+                title="Il Etait Une Fois"
+                highlight="Intermezzo"
+                mobilePictures={[
+                    {
+                        "src": benevoleImg7
+                    },
+                ]}
+
+            />
+            <ParagraphList
                 paragraphs={[
                     {
                         "title": "Innover",
