@@ -386,6 +386,7 @@ export function Header(props: HeaderProps) {
 
                     </div>
 
+                </div>
                     {
                         (animatedBanner !== undefined && !isSmallScreen) &&
                         <AnimatedBanner
@@ -396,7 +397,6 @@ export function Header(props: HeaderProps) {
 
                         />
                     }
-                </div>
 
             </div>
 
@@ -533,7 +533,8 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
         "animatedBanner": {
             "zIndex": 4200,
             "position": "absolute",
-            "bottom": theme.spacing(15)
+            "bottom": theme.spacing(15),
+            "left": 0
 
 
 

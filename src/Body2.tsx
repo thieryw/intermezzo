@@ -8,7 +8,7 @@ import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
 import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
 import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
-import testJpg from "assets/jpg/accueil-hero-image.jpg";
+import testJpg from "assets/jpg/home/accueil-hero-image.jpg";
 import { PictureAnimator } from "components/PictureAnimator";
 import { StatisticsCard } from "components/StatisticsCard";
 import Typo from "@mui/material/Typography";
