@@ -188,7 +188,8 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 				}
 			})(),
 			"width": "100vw",
-			"boxSizing": "border-box"
+			"boxSizing": "border-box",
+			"marginTop": theme.spacing(20)
 
 
 		},

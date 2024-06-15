@@ -39,8 +39,11 @@ const useStyles = tss
             "overflowX": "hidden",
             "display": "flex",
             "flexDirection": "column",
-            "alignItems": "center",
+            //"alignItems": "center",
             "minHeight": "100vh",
+            [theme.breakpoints.up("xl")]: {
+                "alignItems": "center"
+            }
         },
         "body": {
             "maxWidth": 1920,

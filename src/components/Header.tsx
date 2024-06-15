@@ -385,10 +385,8 @@ export function Header(props: HeaderProps) {
                         }
 
                     </div>
-
-                </div>
                     {
-                        (animatedBanner !== undefined && !isSmallScreen) &&
+                        (animatedBanner !== undefined && !isSmallScreen && windowInnerWidth < theme.breakpoints.values.xl) &&
                         <AnimatedBanner
                             className={classes.animatedBanner}
                             isPlaying={isOpen}
@@ -397,6 +395,18 @@ export function Header(props: HeaderProps) {
 
                         />
                     }
+
+                </div>
+                {
+                    (animatedBanner !== undefined && !isSmallScreen && windowInnerWidth >= theme.breakpoints.values.xl) &&
+                    <AnimatedBanner
+                        className={classes.animatedBanner}
+                        isPlaying={isOpen}
+
+                        {...animatedBanner}
+
+                    />
+                }
 
             </div>
 
@@ -534,7 +544,8 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
             "zIndex": 4200,
             "position": "absolute",
             "bottom": theme.spacing(15),
-            "left": 0
+            "left": 0,
+            "pointerEvents": "none"
 
 
 

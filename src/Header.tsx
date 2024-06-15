@@ -55,6 +55,11 @@ export const Header = memo(() => {
             ...routes.festival().link,
             "routeName": routes.festival().name
         },
+        {
+            "label": t("contactLink"),
+            ...routes.contact().link,
+            "routeName": routes.contact().name
+        },
 
     ])
     return <HeaderComponent
