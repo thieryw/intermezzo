@@ -8,7 +8,6 @@ const opts: RouterOpts = {
 
 const publicUrl = import.meta.env.BASE_URL;
 
-console.log(publicUrl)
 
 export const routeDefs = {
 	"home": defineRoute(publicUrl.slice(0, -1)),
