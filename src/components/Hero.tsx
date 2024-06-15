@@ -140,6 +140,7 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
     return ({
         "root": {
             "width": "100vw",
+            "maxWidth": 1920,
             "position": "relative",
             "display": "grid",
             "gridTemplateColumns": "repeat(2, 1fr)",

@@ -10,6 +10,7 @@ import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { MenuLink } from "components/MenuLink";
 import type { Link } from "tools/link";
+import {useRoute, routes} from "router";
 
 
 
@@ -18,30 +19,38 @@ export const Footer = memo(() => {
 
 	const { classes, theme } = useStyles();
 	const { t } = useTranslation("Footer");
-	const links: Link[] = [
+	const route = useRoute();
+	const links: (Link & {routeName: string;})[] = [
 		{
-			"href": "",
-			"label": t("assoLink")
+			"label": t("assoLink"),
+			...routes.home().link,
+			"routeName": routes.home().name
+
 		},
 		{
-			"href": "",
-			"label": t("passCultureLink")
+			"label": t("passCultureLink"),
+			...routes.pc().link,
+			"routeName": routes.pc().name
 		},
 		{
-			"href": "",
-			"label": t("partnerLink")
+			"label": t("partnerLink"),
+			...routes.mediation().link,
+			"routeName": routes.mediation().name
 		},
 		{
-			"href": "",
-			"label": t("recitalPLink")
+			"label": t("recitalPLink"),
+			...routes.rp().link,
+			"routeName": routes.rp().name
 		},
 		{
-			"href": "",
-			"label": t("festivalLink")
+			"label": t("festivalLink"),
+			...routes.festival().link,
+			"routeName": routes.festival().name
 		},
 		{
-			"href": "",
-			"label": t("contactLink")
+			"label": t("contactLink"),
+			...routes.contact().link,
+			"routeName": routes.contact().name
 		},
 	];
 
@@ -82,7 +91,7 @@ export const Footer = memo(() => {
 								}}
 								{...link}
 								variants="secondary"
-								isActive={false}
+								isActive={route.name === link.routeName}
 							/>)
 						}
 					</ul>

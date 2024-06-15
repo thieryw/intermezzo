@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useRef } from "react";
 import Text from "@mui/material/Typography";
 import siteLogo from "assets/svg/header/menu-logo.svg";
 import fbIcon from "assets/svg/header/fb-color.svg";
@@ -15,46 +15,51 @@ import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
 import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
 import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
+import { routes, useRoute } from "router";
+
 
 
 
 
 export const Header = memo(() => {
     const { t } = useTranslation("Header");
+    const route = useRoute();
+    const linksRef = useRef<{
+        href: string;
+        onClick?: () => void;
+        label: string;
+        routeName: string;
+    }[]>([
+        {
+            "label": t("assoLink"),
+            ...routes.home().link,
+            "routeName": routes.home().name
+        },
+        {
+            "label": t("passCultureLink"),
+            ...routes.pc().link,
+            "routeName": routes.pc().name
+        },
+        {
+            "label": t("mediationLink"),
+            ...routes.mediation().link,
+            "routeName": routes.mediation().name
+        },
+        {
+            "label": t("rPLInk"),
+            ...routes.rp().link,
+            "routeName": routes.rp().name
+        },
+        {
+            "label": t("festivalLink"),
+            ...routes.festival().link,
+            "routeName": routes.festival().name
+        },
+
+    ])
     return <HeaderComponent
-        links={[
-            {
-                "href": "",
-                "label": t("assoLink")
-
-            },
-            {
-                "href": "",
-                "label": t("passCultureLink")
-
-            },
-            {
-                "href": "",
-                "label": t("mediationLink")
-
-            },
-            {
-                "href": "",
-                "label": t("rPLInk")
-
-            },
-            {
-                "href": "",
-                "label": t("festivalLink")
-
-            },
-            {
-                "href": "",
-                "label": t("contactLink")
-
-            },
-        ]}
-        currentLinkLabel=""
+        links={linksRef.current}
+        currentLinkLabel={linksRef.current.find(({ routeName }) => routeName === route.name)?.label}
         logo={siteLogo}
         smallPrint={
             <div>

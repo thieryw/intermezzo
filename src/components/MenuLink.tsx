@@ -104,7 +104,7 @@ const useStyles = tss
                 })()
             },
             "bulletPoint": {
-                "opacity": 0,
+                "opacity": !isActive ? 0 : 1,
                 "transition": "opacity 500ms"
 
             }

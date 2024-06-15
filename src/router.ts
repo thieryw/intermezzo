@@ -8,9 +8,10 @@ const opts: RouterOpts = {
 
 const publicUrl = import.meta.env.BASE_URL;
 
+console.log(publicUrl)
 
 export const routeDefs = {
-	"home": defineRoute(publicUrl),
+	"home": defineRoute(publicUrl.slice(0, -1)),
 	"pc": defineRoute(publicUrl + "pass-culture"),
 	"mediation": defineRoute(publicUrl + "mediation"),
 	"rp": defineRoute(publicUrl + "recital-production"),

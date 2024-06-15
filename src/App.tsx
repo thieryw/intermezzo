@@ -2,7 +2,6 @@
 import { GlobalStyles } from "tss-react";
 import { useStyles } from "tss";
 import { Body } from "./Body";
-import { Footer } from "Footer";
 import { BlurryBackground } from "components/BlurryBackground";
 import { IsMenuOpenContext } from "components/Header";
 import { useContext } from "react";

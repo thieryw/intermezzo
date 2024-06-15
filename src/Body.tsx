@@ -20,6 +20,7 @@ export function Body(props: PropsOfBody) {
             <Header />
             <div className={classes.body}>
                 {route.name === "home" && <Home />}
+                {route.name === "pc" && <div>pipi caca</div>}
 
             </div>
             <div className={classes.footerWrapper}>
@@ -43,6 +44,7 @@ const useStyles = tss
         },
         "body": {
             "maxWidth": 1920,
+            "paddingTop": theme.spacing(21)
         },
         "footerWrapper": {
             "marginTop": "auto"
