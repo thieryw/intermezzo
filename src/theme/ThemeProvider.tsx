@@ -26,7 +26,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "clamp(2rem, 2.08vw, 2.5rem)",
             "color": palette.purple.main,
             "fontWeight": "400",
-            "letterSpacing": "-0.01em"
+            "letterSpacing": "-0.01em",
+            "lineHeight": "1.3em"
         },
         "bigParagraph": {
             "fontFamily": '"Questrial", sans-serif',
@@ -145,7 +146,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontFamily": "source-serif-4, serif",
             "fontWeight": 400,
             "color": palette.white.main,
-            "fontSize": "clamp(3.125rem, 2.76vw, 3.5rem)",
+            "fontSize": "clamp(2rem, 2.76vw, 3.5rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic",
             "lineHeight": "1.05em"
@@ -157,7 +158,7 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "background": palette.gradient1.main,
             "backgroundClip": "text",
             "color": "transparent",
-            "fontSize": "2.75rem",
+            "fontSize": "clamp(2.063rem, 2.22vw, 2.75rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic"
         },

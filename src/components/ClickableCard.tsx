@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { CSSProperties, memo } from "react";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { ReactSVG } from "react-svg";
@@ -16,6 +16,7 @@ export type ClickableCardProps = {
     paragraph: string;
     backgroundColor?: string;
     link: Omit<Link, "label">;
+    style?: CSSProperties;
 };
 
 
@@ -23,7 +24,7 @@ export type ClickableCardProps = {
 
 
 export const ClickableCard = memo((props: ClickableCardProps) => {
-    const { className, paragraph, surTitle, title, backgroundColor, link } = props;
+    const { className, paragraph, surTitle, title, backgroundColor, link, style } = props;
     const { classes, cx } = useStyles({
         "classesOverrides": props.classes,
         backgroundColor
@@ -33,16 +34,21 @@ export const ClickableCard = memo((props: ClickableCardProps) => {
 
     return <div
         className={cx(classes.root, className)}
+        style={style}
     >
         <a className={classes.link} {...link}>
 
-            <ReactSVG src={cardSvg} className={classes.cardSvg} />
+            <ReactSVG
+                src={cardSvg}
+                className={classes.cardSvg}
+            />
             <div className={classes.content}>
 
                 <div className={classes.surtitleWrapper}>
                     <ReactSVG
                         src={starSvg}
                         className={classes.starSvg}
+
                     />
                     <Typography className={classes.typo} variant="label">{surTitle}</Typography>
                 </div>
@@ -60,7 +66,8 @@ export const ClickableCard = memo((props: ClickableCardProps) => {
 
 const useStyles = tss
     .withParams<{ backgroundColor?: string }>()
-    .withName("ClickableCard").create(({ theme, backgroundColor }) => {
+    .withName("ClickableCard").create(({ theme, backgroundColor, windowInnerWidth }) => {
+        const scale = windowInnerWidth / 400 - 0.05
         return ({
 
             "root": {
@@ -71,8 +78,20 @@ const useStyles = tss
                 "position": "relative",
                 "transition": "transform 300ms",
                 ":hover": {
-                    "transform": "scale(1.02)"
+                    ...(windowInnerWidth < 400 ? {} : {
+                        "transform": "scale(1.02)"
+
+                    })
                 },
+                ...(windowInnerWidth < 400 ? {
+                    "width": 400,
+                    "maxWidth": 400,
+                    "maxHeight": 360,
+                    "transform": `scale(${scale})`,
+                    "transformOrigin": "bottom left",
+                    "position": "relative",
+                    "left": 10
+                } : {})
 
             },
             "cardSvg": {
@@ -82,7 +101,7 @@ const useStyles = tss
                     "left": 0,
                     "fill": backgroundColor ?? theme.palette.pink.main,
                     "width": "100%",
-                    "height": "100%"
+                    "height": "100%",
                 }
 
             },
@@ -105,7 +124,7 @@ const useStyles = tss
                 "boxSizing": "border-box",
 
                 ...(() => {
-                    const value = theme.spacing(5);
+                    const value = windowInnerWidth >= theme.breakpoints.values.lg ? theme.spacing(4) : theme.spacing(8);
                     return {
                         "paddingLeft": value,
                         "paddingRight": value,
@@ -119,7 +138,7 @@ const useStyles = tss
             },
             "titleAndParagraph": {},
             "title": {
-                "marginBottom": theme.spacing(4)
+                "marginBottom": theme.spacing(2)
             },
             "paragraph": {
                 "color": theme.palette.purple.main
@@ -132,8 +151,12 @@ const useStyles = tss
                 "height": "25.6%",
                 "transition": "transform 300ms",
                 ":hover": {
-                    "transform": "scale(1.05)"
-                }
+                    ...(windowInnerWidth < 400 ? {}: {
+
+                        "transform": "scale(1.05)"
+                    })
+                },
+                backgroundColor
             },
             "link": {
                 "textDecoration": "none",

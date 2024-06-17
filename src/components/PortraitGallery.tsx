@@ -89,7 +89,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                                     }
                                     width={400}
                                     height={400 / 3 * 2.1}
-                                    borderRadius="20px"
+                                    borderRadius="0"
                                     key={index}
                                 />)
                             }

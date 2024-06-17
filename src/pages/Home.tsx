@@ -10,23 +10,72 @@ import Typo from "@mui/material/Typography";
 import { CircularButton } from "components/CircularButton";
 import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 import { AnimatedBanner } from "components/AnimatedBanner";
-import svgAcademie from "assets/svg/sponsors/logo-academie.svg";
-import svgBordeaux from "assets/svg/sponsors/logo-bordeaux.svg";
-import svgCredit from "assets/svg/sponsors/logo-creditmutuel.svg";
-import svgGironde from "assets/svg/sponsors/logo-gironde.svg";
-import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
-import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
-import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
-import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
+import svgAcademie from "assets/svg/home/logo-academie-bordeaux.svg";
+import svgBordeaux from "assets/svg/home/logo-bordeaux.svg";
+import svgCredit from "assets/svg/home/logo-creditmutuel.svg";
+import svgGironde from "assets/svg/home/logo-gironde.svg";
+import svgMecenart from "assets/svg/home/logo-mecenart.svg";
+import svgMuseeAqui from "assets/svg/home/logo-musee-aquitaine.svg";
+import svgNouvAqui from "assets/svg/home/logo-nouvelle-aquitaine.svg";
+import svgPassCult from "assets/svg/home/logo-passculture.svg";
 import { Surtitle } from "components/Surtitle";
 import { LinkButton } from "components/LinkButton";
 import { routes } from "router";
 import { ParagraphList } from "components/ParagraphList";
+import { CommentCard } from "components/CommentCard";
+import raphaelPortraitJpg from "assets/jpg/home/raphael-portrait.jpg";
+import raphaelPortraitWebp from "assets/webp/home/raphael-portrait.webp";
+import { PictureAnimator } from "components/PictureAnimator";
+import valuesJpg from "assets/jpg/home/valeurs-image.jpg";
+import valuesWebp from "assets/webp/home/valeurs-image.webp";
+import bigTrLogoSvg from "assets/svg/big-transparent-logo.svg";
+import { ReactSVG } from "react-svg";
+import { PortraitGallery } from "components/PortraitGallery";
+import benevoleJpg1 from "assets/jpg/home/benevoles/benevole-img-1.jpg";
+import benevoleJpg2 from "assets/jpg/home/benevoles/benevole-img-2.jpg";
+import benevoleJpg3 from "assets/jpg/home/benevoles/benevole-img-3.jpg";
+import benevoleJpg4 from "assets/jpg/home/benevoles/benevole-img-4.jpg";
+import benevoleJpg5 from "assets/jpg/home/benevoles/benevole-img-5.jpg";
+import benevoleJpg6 from "assets/jpg/home/benevoles/benevole-img-6.jpg";
+import benevoleJpg7 from "assets/jpg/home/benevoles/benevole-img-7.jpg";
+import benevoleJpg8 from "assets/jpg/home/benevoles/benevole-img-8.jpg";
+import benevoleWebp1 from "assets/webp/home/benevoles/benevole-img-1.webp";
+import benevoleWebp2 from "assets/webp/home/benevoles/benevole-img-2.webp";
+import benevoleWebp3 from "assets/webp/home/benevoles/benevole-img-3.webp";
+import benevoleWebp4 from "assets/webp/home/benevoles/benevole-img-4.webp";
+import benevoleWebp5 from "assets/webp/home/benevoles/benevole-img-5.webp";
+import benevoleWebp6 from "assets/webp/home/benevoles/benevole-img-6.webp";
+import benevoleWebp7 from "assets/webp/home/benevoles/benevole-img-7.webp";
+import benevoleWebp8 from "assets/webp/home/benevoles/benevole-img-8.webp";
+import { CardWrapper } from "components/CardWrapper";
+
+const benevImages = {
+    "webp": [
+        benevoleWebp1,
+        benevoleWebp2,
+        benevoleWebp3,
+        benevoleWebp4,
+        benevoleWebp5,
+        benevoleWebp6,
+        benevoleWebp7,
+        benevoleWebp8,
+    ],
+    "jpg": [
+        benevoleJpg1,
+        benevoleJpg2,
+        benevoleJpg3,
+        benevoleJpg4,
+        benevoleJpg5,
+        benevoleJpg6,
+        benevoleJpg7,
+        benevoleJpg8,
+    ],
+}
 
 
 export const Home = memo(() => {
     const { t } = useTranslation("Home");
-    const { classes } = useStyles()
+    const { classes, theme } = useStyles()
     return <div>
         <Hero
             animatedPicture={{
@@ -154,7 +203,7 @@ export const Home = memo(() => {
 
                 />
             </div>
-            <ParagraphList 
+            <ParagraphList
                 paragraphs={[
                     {
                         "title": t("reasonsCard1Title"),
@@ -180,18 +229,148 @@ export const Home = memo(() => {
             />
 
         </section>
+        <section className={classes.reasonsSection}>
+            <ReactSVG
+                src={bigTrLogoSvg}
+                className={classes.bigTrLogo}
+            />
+            <div className={classes.stepsTextWrapper}>
+                <Typo className={classes.stepsText} variant="heading3">
+                    {t("stepsParagraphBeginning")}
+                    <span className={classes.stepsHighlight}> {t("stepsParagraphHighLight")} </span>
+                    {t("stepsParagraphEnd")}
+                </Typo>
+
+            </div>
+            <div className={classes.stepsImageAndComment}>
+                <CommentCard
+                    className={classes.commentCard}
+                    portraitSrc={raphaelPortraitWebp}
+                    portraitSources={[
+                        {
+                            "srcSet": raphaelPortraitWebp,
+                            "type": "image/webp"
+                        },
+                        {
+                            "srcSet": raphaelPortraitJpg,
+                            "type": "image/jpg"
+                        }
+                    ]}
+                    name={t("raphaelName")}
+                    jobDesc={t("raphaelTitle")}
+                    paragraph={t("raphaelComment")}
+                />
+                <PictureAnimator
+                    src={valuesWebp}
+                    sources={[
+                        {
+                            "srcSet": valuesWebp,
+                            "type": "image/webp"
+                        },
+                        {
+                            "srcSet": valuesJpg,
+                            "type": "image/jpeg"
+                        }
+                    ]}
+                    width={parseInt(theme.spacing(100))}
+                    height={parseInt(theme.spacing(80))}
+                    borderRadius={`0px ${theme.spacing(40)}`}
+                />
+
+            </div>
+
+            <CardWrapper 
+                className={classes.cardWrapper}
+                title={t("servicesTitle")}
+                titleHighlight={t("servicesTitleHighLight")}
+                paragraph={t("servicesParagraph")}
+                cards={[
+                    {
+                        "link": {
+                            "href": ""
+                        },
+                        "backgroundColor": theme.palette.pink.main,
+                        "surTitle": t("servicesCard1Surtitle"),
+                        "title": t("servicesCard1Title"),
+                        "paragraph": t("servicesCard1Paragraph")
+                    },
+                    {
+                        "link": {
+                            "href": ""
+                        },
+                        "backgroundColor": theme.palette.lightOrange.main,
+                        "surTitle": t("servicesCard2Surtitle"),
+                        "title": t("servicesCard2Title"),
+                        "paragraph": t("servicesCard2Paragraph")
+                    },
+                    {
+                        "link": {
+                            "href": ""
+                        },
+                        "backgroundColor": theme.palette.pink.main,
+                        "surTitle": t("servicesCard3Surtitle"),
+                        "title": t("servicesCard3Title"),
+                        "paragraph": t("servicesCard3Paragraph")
+                    },
+                ]}
+
+            />
+
+
+
+
+            <PortraitGallery
+                images={benevImages.webp.map((image, index) => ({
+                    "alt": "portrait",
+                    "src": image,
+                    "sources": [
+                        {
+                            "srcSet": image,
+                            "type": "image/webp"
+                        },
+                        {
+                            "srcSet": benevImages.jpg[index],
+                            "type": "image/jpeg"
+                        }
+                    ]
+                }))}
+                button={{
+                    "href": "",
+                    "label": t("joinButtonLabel")
+                }}
+                surtitle={t("voluntarySurtitle")}
+                title={t("voluntaryTitle")}
+                highlight={t("voluntaryHighLight")}
+                mobilePictures={[
+                    {
+                        "src": benevoleWebp7,
+                        "sources": [
+                            {
+                                "srcSet": benevoleWebp7,
+                                "type": "image/webp"
+                            },
+                            {
+                                "srcSet": benevoleJpg7,
+                                "type": "image/jpeg"
+                            }
+                        ],
+                        "alt": "portrait"
+                    }
+                ]}
+
+            />
+        </section>
 
     </div>
 })
 
 
-const useStyles = tss.withName("Home").create(({ theme }) => {
+const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
     return ({
         "cardNumber": {
             "color": "transparent",
             "background": theme.palette.gradient1.main,
             "backgroundClip": "text"
-
         },
         "partnerSection": {
             "position": "relative",
@@ -243,13 +422,15 @@ const useStyles = tss.withName("Home").create(({ theme }) => {
             //"width": "105vw",
             "width": "105vw",
             "position": "relative",
-            "right": "2.5vw",
+            "transform": "translateX(-2vw)",
             [theme.breakpoints.down("sm")]: {
                 "right": 0,
             }
         },
         "sliderSection": {
-            "marginTop": theme.spacing(20)
+            "marginTop": theme.spacing(20),
+            "position": "relative",
+            "zIndex": 1
 
 
         },
@@ -257,7 +438,7 @@ const useStyles = tss.withName("Home").create(({ theme }) => {
             "display": "flex",
             "justifyContent": "space-between",
             "alignItems": "flex-end",
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(32);
                 return {
                     "paddingRight": value,
@@ -293,6 +474,68 @@ const useStyles = tss.withName("Home").create(({ theme }) => {
             [theme.breakpoints.down("md")]: {
                 "display": "none"
             }
+        },
+        "reasonsSection": {
+            "position": "relative",
+            "marginTop": theme.spacing(31)
+
+        },
+        "bigTrLogo": {
+            "position": "relative",
+            "& svg": {
+                "position": "absolute",
+                "top": `-${theme.spacing(28)}`,
+                "right": 0,
+                "width": "100vw",
+                [theme.breakpoints.down("sm")]: {
+                    "width": "200vw",
+                    //"top": "-200%"
+                    "top": -300
+
+                }
+
+            }
+
+        },
+        "stepsTextWrapper": {
+            ...(() => {
+                const value = windowInnerWidth < theme.breakpoints.values.sm ? theme.spacing(2) : theme.spacing(31);
+                return {
+                    "paddingLeft": value,
+                    "paddingRight": value
+                }
+            })(),
+            "marginBottom": theme.spacing(21),
+            "boxSizing": "border-box"
+
+        },
+        "stepsText": {
+            "width": 800,
+            "maxWidth": "100%",
+            [theme.breakpoints.down("md")]: {
+                "textAlign": "center"
+            }
+        },
+        "stepsHighlight": {
+            ...theme.typography.highLight4
+        },
+        "stepsImageAndComment": {
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            [theme.breakpoints.down("md")]: {
+                "display": "none"
+            }
+        },
+        "commentCard": {
+            "position": "relative",
+            "left": theme.spacing(12),
+            "top": theme.spacing(10),
+            "zIndex": 1
+        },
+        "cardWrapper": {
+            "marginBottom": theme.spacing(25),
+            "marginTop": theme.spacing(25)
         }
     })
 
