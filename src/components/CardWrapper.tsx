@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
-import { ClickableCard } from "components/ClickableCard";
 import type { ReactNode } from "react";
 
 export type CardWrapperProps = {

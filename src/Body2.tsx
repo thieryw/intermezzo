@@ -9,7 +9,6 @@ import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 import { ClickableCard } from "components/ClickableCard";
 import { SliderCard } from "components/SliderCard";
 import passSrc from "assets/jpg/pass-culture/program-1-img.jpg";
-import { DraggableSliderWrapper } from "components/DraggableSliderWrapper";
 import { Video } from "components/Video";
 import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
 import { Hero } from "components/Hero";
