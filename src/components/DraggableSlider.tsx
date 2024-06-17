@@ -5,15 +5,14 @@ import { useDomRect } from "powerhooks/useDomRect";
 import { useCallbackFactory } from "powerhooks/useCallbackFactory";
 import ArrowIcon from 'assets/svg/icons/arrows/arrow-white.svg';
 import { ReactSVG } from "react-svg";
-import { SliderCard } from "components/SliderCard";
-import type { SliderCardProps } from "components/SliderCard";
+import type { ReactNode } from "react";
 
 
 export type DraggableSliderProps = {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     startingPercentage?: number;
-    slides: SliderCardProps[];
+    slides: ReactNode[];
 };
 
 export const DraggableSlider = (props: DraggableSliderProps) => {
@@ -187,9 +186,7 @@ export const DraggableSlider = (props: DraggableSliderProps) => {
                 >
                     {
                         slides.map((slide, index) => <div ref={index === 0 ? slideRef : undefined} key={index} className={classes.slide}>
-                            <SliderCard
-                                {...slide}
-                            />
+                            {slide}
                         </div>)
                     }
                 </div>

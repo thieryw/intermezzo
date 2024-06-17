@@ -264,54 +264,56 @@ export const Home = memo(() => {
                 title={t("servicesTitle")}
                 titleHighlight={t("servicesTitleHighLight")}
                 paragraph={t("servicesParagraph")}
+                isScaled={true}
                 cards={[
-                    {
-                        "link": {
+                    <ClickableCard 
+                        link={{
                             "href": ""
-                        },
-                        "backgroundColor": theme.palette.pink.main,
-                        "surTitle": t("servicesCard1Surtitle"),
-                        "title": t("servicesCard1Title"),
-                        "paragraph": t("servicesCard1Paragraph")
-                    },
-                    {
-                        "link": {
+                        }}
+                        backgroundColor={ theme.palette.pink.main}
+                        surTitle={t("servicesCard1Surtitle")}
+                        title={t("servicesCard1Title")}
+                        paragraph={t("servicesCard1Paragraph")}
+                    />,
+                    <ClickableCard 
+                        link={{
                             "href": ""
-                        },
-                        "backgroundColor": theme.palette.lightOrange.main,
-                        "surTitle": t("servicesCard2Surtitle"),
-                        "title": t("servicesCard2Title"),
-                        "paragraph": t("servicesCard2Paragraph")
-                    },
-                    {
-                        "link": {
+                        }}
+                        backgroundColor={ theme.palette.pink.main}
+                        surTitle={t("servicesCard2Surtitle")}
+                        title={t("servicesCard2Title")}
+                        paragraph={t("servicesCard2Paragraph")}
+                    />,
+                    <ClickableCard 
+                        link={{
                             "href": ""
-                        },
-                        "backgroundColor": theme.palette.pink.main,
-                        "surTitle": t("servicesCard3Surtitle"),
-                        "title": t("servicesCard3Title"),
-                        "paragraph": t("servicesCard3Paragraph")
-                    },
+                        }}
+                        backgroundColor={ theme.palette.pink.main}
+                        surTitle={t("servicesCard3Surtitle")}
+                        title={t("servicesCard3Title")}
+                        paragraph={t("servicesCard3Paragraph")}
+                    />,
                     (() => {
                         if (windowInnerWidth >= 400) {
 
                             return undefined;
                         }
-                        return {
-
-                            "link": {
+                        return <ClickableCard 
+                            link={{
                                 "href": ""
-                            },
-                            "surTitle": t("festivalCardSurtitle"),
-                            "title": t("festivalCardTitle"),
-                            "paragraph": t("festivalCardParagraph"),
-                            "backgroundColor": "#4E2D84",
-                            "classes": {
+                            }}
+                            surTitle={t("festivalCardSurtitle")}
+                            title={t("festivalCardTitle")}
+                            paragraph={t("festivalCardParagraph")}
+                            backgroundColor="#4E2D84"
+                            classes={{
                                 "arrowSvg": classes.cubeCardArrow,
                                 "typo": classes.cubeTypo,
                                 "starSvg": classes.cubeStar
-                            }
-                        }
+
+                            }}
+
+                        />
                     })()
                 ]}
 

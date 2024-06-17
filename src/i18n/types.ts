@@ -10,6 +10,9 @@ export const fallbackLanguage = "fr";
 export type ComponentKeyHome =
     | import("pages/Home").I18n
 
+export type ComponentKeyPassCulture = 
+    | import("pages/PassCulture").I18n
+
 export type ComponentKeyHeaderFooter = 
     | import("Header").I18n
     | import("Footer").I18n
@@ -24,6 +27,13 @@ export type TranslationHeaderFooter<L extends Language> = GenericTranslations<
 
 export type TranslationHome<L extends Language> = GenericTranslations<
     ComponentKeyHome,
+    Language,
+    typeof fallbackLanguage,
+    L
+>
+
+export type TranslationPassCulture<L extends Language> = GenericTranslations<
+    ComponentKeyPassCulture,
     Language,
     typeof fallbackLanguage,
     L

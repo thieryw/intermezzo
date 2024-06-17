@@ -2,8 +2,7 @@ import { memo } from "react";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { ClickableCard } from "components/ClickableCard";
-import type { ClickableCardProps } from "components/ClickableCard";
-
+import type { ReactNode } from "react";
 
 export type CardWrapperProps = {
     className?: string;
@@ -11,7 +10,8 @@ export type CardWrapperProps = {
     title: string;
     titleHighlight: string;
     paragraph: string;
-    cards: (Omit<ClickableCardProps, "className" | "classes"> | undefined)[]
+    cards: (ReactNode | undefined)[];
+    isScaled: boolean;
 }
 
 
@@ -21,6 +21,7 @@ export const CardWrapper = memo((props: CardWrapperProps) => {
         paragraph,
         title,
         titleHighlight,
+        isScaled,
         className
 
     } = props;
@@ -47,20 +48,21 @@ export const CardWrapper = memo((props: CardWrapperProps) => {
             <div className={classes.cards}>
                 {
                     cards.map((card, index) => {
-                        if(card === undefined){
+                        if (card === undefined) {
                             return;
                         }
-                        return <ClickableCard
-                        key={index}
-                        {...card}
-                        style={{
-                            ...(windowInnerWidth < 400 ? {
-                                "position": "relative",
-                                "bottom": `${(400 - windowInnerWidth) * (index + 1)}px`
-                            }: {})
-                        }}
-                    />
-                })
+                        return <div
+                            key={index}
+                            style={ isScaled ? {
+                                ...(windowInnerWidth < 400 ? {
+                                    "position": "relative",
+                                    "bottom": `${(400 - windowInnerWidth) * (index + 1)}px`
+                                } : {})
+                            }: undefined}
+                        >
+                            {card}
+                        </div>
+                    })
                 }
             </div>
         </div>
@@ -122,6 +124,13 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
             "gap": theme.spacing(26),
             "alignItems": "center",
             "marginBottom": theme.spacing(14),
+            ...(()=>{
+                const value = theme.spacing(5);
+                return {
+                    "paddingRight": value,
+                    "paddingLeft": value
+                }
+            })(),
             [theme.breakpoints.down("md")]: {
                 "gap": theme.spacing(12),
                 "flexDirection": "column",

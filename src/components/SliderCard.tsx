@@ -82,7 +82,7 @@ const useStyles = tss
 
             "root": {
                 "width": 450,
-                "maxWidth": `calc(100vw - ${theme.spacing(4)})`,
+                "maxWidth": `calc(100vw - ${theme.spacing(5)})`,
                 "minHeight": 390,
                 "borderRadius": 55,
                 "backgroundColor": theme.palette.lightOrange.main,
@@ -141,7 +141,10 @@ const useStyles = tss
                         "bottom": value,
                         "right": value
                     }
-                })()
+                })(),
+                [theme.breakpoints.down("xs")]: {
+                    "right": 50
+                }
             },
             "image": {
                 "objectFit": "cover",

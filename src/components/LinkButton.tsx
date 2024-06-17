@@ -40,6 +40,7 @@ export const LinkButton = memo((props: LinkButtonProps) => {
 const useStyles = tss.withParams<Required<Pick<LinkButtonProps, "variant">> & { textHeight: number }>().withNestedSelectors<"linkLabel">().create(({ theme, classes, variant, textHeight }) => ({
     "root": {
         "textDecoration": "none",
+        "position": "relative"
     },
     "textWrapper": {
         "height": textHeight,

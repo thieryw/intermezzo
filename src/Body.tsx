@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { useRoute } from "router";
 import { Home } from "pages/Home";
+import { PassCulture } from "pages/PassCulture";
 
 export type PropsOfBody = {
     className?: string;
@@ -20,7 +21,7 @@ export function Body(props: PropsOfBody) {
             <Header />
             <div className={classes.body}>
                 {route.name === "home" && <Home />}
-                {route.name === "pc" && <div>pipi caca</div>}
+                {route.name === "pc" && <PassCulture />}
 
             </div>
             <div className={classes.footerWrapper}>

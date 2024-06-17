@@ -1,9 +1,12 @@
 import { createI18nApi, declareComponentKeys } from "i18nifty";
 import type {
-	ComponentKeyHome, ComponentKeyHeaderFooter
+	ComponentKeyHome, 
+	ComponentKeyHeaderFooter,
+	ComponentKeyPassCulture
 } from "./types";
 import {translation as homeTranslation} from "./resources/fr/home"
 import {translation as headerFooterTranslation} from "./resources/fr/headerAndFooter";
+import {translation as passCultureTranslation} from "./resources/fr/passCulture";
 export { declareComponentKeys };
 
 //List the languages you with to support
@@ -27,7 +30,8 @@ export const {
 	getTranslation 
 } = createI18nApi<
 	ComponentKeyHeaderFooter |
-	ComponentKeyHome
+	ComponentKeyHome |
+	ComponentKeyPassCulture
 >()(
 	{
 		languages,
@@ -38,7 +42,8 @@ export const {
 		"fr": {
 			"Home": homeTranslation.Home,
 			"Header": headerFooterTranslation.Header,
-			"Footer": headerFooterTranslation.Footer
+			"Footer": headerFooterTranslation.Footer,
+			"PassCulture": passCultureTranslation.PassCulture
 		}
 		/* spell-checker: enable */
 	}
