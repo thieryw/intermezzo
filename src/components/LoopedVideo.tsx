@@ -25,7 +25,7 @@ export const LoopedVideo = memo((props: LoopedVideoProps)=>{
     </div>
 })
 
-const useStyles = tss.withName("LoopedVideos").withParams<Pick<LoopedVideoProps, "width" | "height">>().create(({height, width, theme}) => {
+const useStyles = tss.withName("LoopedVideos").withParams<Pick<LoopedVideoProps, "width" | "height">>().create(({height, width }) => {
     return ({
         "root": {
             width,
