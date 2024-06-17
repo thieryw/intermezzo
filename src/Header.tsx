@@ -97,17 +97,17 @@ export const Header = memo(() => {
             "href": "https://outlook.office365.com/book/cesarreservation@artisteformation.com/"
         }}
         animatedBanner={{
-            "images": [
-                { "src": svgAcademie },
-                { "src": svgBordeaux },
-                { "src": svgCredit },
-                { "src": svgGironde },
-                { "src": svgMecenart },
-                { "src": svgMuseeAqui },
-                { "src": svgNouvAqui },
-                { "src": svgPassCult }
-
-            ]
+            "slides":
+                [
+                    <img src={svgNouvAqui} alt="sponsor" />,
+                    <img src={svgGironde} alt="sponsor" />,
+                    <img src={svgPassCult} alt="sponsor" />,
+                    <img src={svgMecenart} alt="sponsor" />,
+                    <img src={svgCredit} alt="sponsor" />,
+                    <img src={svgMuseeAqui} alt="sponsor" />,
+                    <img src={svgAcademie} alt="sponsor" />,
+                    <img src={svgBordeaux} alt="sponsor" />,
+                ]
         }}
 
     />

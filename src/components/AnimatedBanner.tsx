@@ -1,21 +1,19 @@
 import { memo } from "react";
 import { tss } from "tss";
 import { keyframes } from "tss-react";
+import type { ReactNode } from "react";
 
 
 export type AnimatedBannerProps = {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     isPlaying?: boolean;
-    images: {
-        src: string;
-        alt?: string;
-    }[]
+    slides: ReactNode[]
 }
 
 export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 
-    const { images, className, isPlaying = true } = props;
+    const { slides, className, isPlaying = true } = props;
     const { classes, cx } = useStyles({ isPlaying, "classesOverrides": props.classes });
 
 
@@ -23,8 +21,7 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
         {
             Array.from({ "length": 6 }).map((_, index) => <div key={index} className={classes.logoSlider}>
                 {
-                    images.map(({ src, alt }) => <img className={classes.image} key={src} src={src} alt={alt} />)
-                }
+                    slides.map((slide, index) => <div key={index} className={classes.slide}>{slide}</div> )}
             </div>)
         }
 
@@ -32,7 +29,7 @@ export const AnimatedBanner = memo((props: AnimatedBannerProps) => {
 })
 
 
-const useStyles = tss.withName("AnimatedBanner").withParams<{isPlaying: boolean}>().create(({ theme, isPlaying }) => {
+const useStyles = tss.withName("AnimatedBanner").withParams<{ isPlaying: boolean }>().create(({ theme, isPlaying }) => {
     const gap = theme.spacing(10);
 
     return ({
@@ -43,6 +40,7 @@ const useStyles = tss.withName("AnimatedBanner").withParams<{isPlaying: boolean}
         },
         "logoSlider": {
             "display": "flex",
+            "alignItems": "center",
             "animation": !isPlaying ? "none" : `${keyframes`
             from {
                 transform: translateX(0);
@@ -52,7 +50,7 @@ const useStyles = tss.withName("AnimatedBanner").withParams<{isPlaying: boolean}
             }
             `} 30s infinite linear`,
         },
-        "image": {
+        "slide": {
             "marginLeft": gap,
             "marginRight": gap
 

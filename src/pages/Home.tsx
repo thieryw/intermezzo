@@ -48,6 +48,10 @@ import benevoleWebp6 from "assets/webp/home/benevoles/benevole-img-6.webp";
 import benevoleWebp7 from "assets/webp/home/benevoles/benevole-img-7.webp";
 import benevoleWebp8 from "assets/webp/home/benevoles/benevole-img-8.webp";
 import { CardWrapper } from "components/CardWrapper";
+import { LoopedVideo } from "components/LoopedVideo";
+import cubeMp4 from "assets/mp4/cube.mp4";
+import { ClickableCard } from "components/ClickableCard";
+import starSvg from "assets/svg/pink-glitter.svg";
 
 const benevImages = {
     "webp": [
@@ -75,7 +79,7 @@ const benevImages = {
 
 export const Home = memo(() => {
     const { t } = useTranslation("Home");
-    const { classes, theme } = useStyles()
+    const { classes, theme, cx, windowInnerWidth } = useStyles()
     return <div>
         <Hero
             animatedPicture={{
@@ -147,39 +151,15 @@ export const Home = memo(() => {
                 />
                 <AnimatedBanner
                     className={classes.animatedBanner}
-                    images={[
-                        {
-                            "src": svgNouvAqui,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgGironde,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgPassCult,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgMecenart,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgCredit,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgMuseeAqui,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgAcademie,
-                            "alt": "sponsor"
-                        },
-                        {
-                            "src": svgBordeaux,
-                            "alt": "sponsor"
-                        },
+                    slides={[
+                        <img src={svgNouvAqui} alt="sponsor" />,
+                        <img src={svgGironde} alt="sponsor" />,
+                        <img src={svgPassCult} alt="sponsor" />,
+                        <img src={svgMecenart} alt="sponsor" />,
+                        <img src={svgCredit} alt="sponsor" />,
+                        <img src={svgMuseeAqui} alt="sponsor" />,
+                        <img src={svgAcademie} alt="sponsor" />,
+                        <img src={svgBordeaux} alt="sponsor" />,
                     ]}
                 />
             </div>
@@ -279,7 +259,7 @@ export const Home = memo(() => {
 
             </div>
 
-            <CardWrapper 
+            <CardWrapper
                 className={classes.cardWrapper}
                 title={t("servicesTitle")}
                 titleHighlight={t("servicesTitleHighLight")}
@@ -312,9 +292,108 @@ export const Home = memo(() => {
                         "title": t("servicesCard3Title"),
                         "paragraph": t("servicesCard3Paragraph")
                     },
+                    (() => {
+                        if (windowInnerWidth >= 400) {
+
+                            return undefined;
+                        }
+                        return {
+
+                            "link": {
+                                "href": ""
+                            },
+                            "surTitle": t("festivalCardSurtitle"),
+                            "title": t("festivalCardTitle"),
+                            "paragraph": t("festivalCardParagraph"),
+                            "backgroundColor": "#4E2D84",
+                            "classes": {
+                                "arrowSvg": classes.cubeCardArrow,
+                                "typo": classes.cubeTypo,
+                                "starSvg": classes.cubeStar
+                            }
+                        }
+                    })()
                 ]}
 
             />
+            <section className={classes.cubeSection}>
+                <div className={classes.cubeTitleWrapper}>
+                    <div className={classes.cubeTitleInnerWrapper}>
+                        <Typo variant="heading2">{t("festivalTitle")}</Typo>
+                        <Typo variant="highLight2">{t("festivalTitleHighLight")}</Typo>
+                    </div>
+                </div>
+
+                <div className={classes.cubeCards}>
+                    <LoopedVideo
+                        src={cubeMp4}
+                        width={440}
+                        height={390}
+                        className={cx(classes.cubeMp4, classes.cubeTopMp4)}
+                    />
+                    <ClickableCard
+                        className={classes.cubeCard}
+                        link={{
+                            "href": ""
+                        }}
+                        surTitle={t("festivalCardSurtitle")}
+                        title={t("festivalCardTitle")}
+                        paragraph={t("festivalCardParagraph")}
+                        backgroundColor="#4E2D84"
+                        classes={{
+                            "arrowSvg": classes.cubeCardArrow,
+                            "typo": classes.cubeTypo,
+                            "starSvg": classes.cubeStar
+                        }}
+                    />
+                    <LoopedVideo
+                        src={cubeMp4}
+                        width={440}
+                        height={390}
+                        className={cx(classes.cubeMp4, classes.cubeBottomMp4)}
+                    />
+
+                </div>
+                <AnimatedBanner 
+                    className={classes.textAnimatedBanner}
+                
+                    slides={[t("assemble"), t("reveal"), t("experiment")].map((text, index) =>
+                        <div
+                            key={index}
+                            className={classes.textAnimatedBannerContent}
+                        >
+                            <Typo className={classes.animatedBannerText} variant="heading2">{text}</Typo>
+                            <ReactSVG
+                                className={classes.animatedBannerStar}
+                                src={starSvg}
+                            />
+                        </div>)}
+
+                /*slides={[
+
+                    <div className={classes.textAnimatedBanner}>
+                        <Typo className="" variant="heading2">{t("assemble")}</Typo>
+                        <ReactSVG 
+                            src={starSvg}
+                        />
+                    </div>,
+                    <div className={classes.textAnimatedBanner}>
+                        <Typo variant="heading2">{t("reveal")}</Typo>
+                        <ReactSVG 
+                            src={starSvg}
+                        />
+                    </div>,
+                    <div className={classes.textAnimatedBanner}>
+                        <Typo variant="heading2">{t("experiment")}</Typo>
+                        <ReactSVG 
+                            src={starSvg}
+                        />
+                    </div>,
+
+                ]}*/
+                />
+
+            </section>
 
 
 
@@ -536,6 +615,104 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         "cardWrapper": {
             "marginBottom": theme.spacing(25),
             "marginTop": theme.spacing(25)
+        },
+        "cubeSection": {
+            "position": "relative",
+            "marginBottom": theme.spacing(30),
+            [theme.breakpoints.down("xs")]: {
+
+                "bottom": `${((400 - windowInnerWidth)) * 5.1}px`,
+                "marginBottom": 0
+            }
+        },
+        "cubeTitleWrapper": {
+            "display": "flex",
+            "justifyContent": "center",
+            "marginBottom": theme.spacing(20),
+            [theme.breakpoints.between("md", "lgPlus")]: {
+                "marginBottom": 0
+            },
+            [theme.breakpoints.down("xs")]: {
+                "display": "none"
+            }
+        },
+        "cubeTitleInnerWrapper": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "flex-end",
+
+        },
+        "cubeCards": {
+            "display": "flex",
+            "gap": 42,
+            "flexWrap": "wrap",
+            [theme.breakpoints.up("md")]: {
+                "transform": `scale(${windowInnerWidth / 1980})`,
+                "transformOrigin": "bottom left",
+                "width": 1980,
+                "position": "relative",
+                "left": "13.5%"
+            },
+            [theme.breakpoints.down("md")]: {
+                "justifyContent": "center",
+            }
+        },
+        "cubeCard": {
+            ...(windowInnerWidth < 400 ? {
+                "display": "none"
+            } : {})
+        },
+        "cubeCardArrow": {
+            "& svg": {
+                "fill": theme.palette.white.main
+            }
+        },
+        "cubeTypo": {
+            "color": theme.palette.white.main
+        },
+        "cubeStar": {
+            "& svg": {
+                "fill": theme.palette.darkGray.main
+            }
+        },
+        "cubeMp4": {
+            "borderRadius": 55,
+            [theme.breakpoints.down("xs")]: {
+                "borderRadius": 0,
+            },
+        },
+        "cubeTopMp4": {
+            [theme.breakpoints.down("md")]: {
+                "display": "none"
+            }
+        },
+        "cubeBottomMp4": {
+        },
+        "textAnimatedBannerContent": {
+            "display": "flex",
+            "alignItems": "center",
+            "gap": theme.spacing(20),
+
+        },
+        "textAnimatedBanner": {
+            "display": "flex",
+            "alignItems": "center",
+            "backgroundColor": theme.palette.lightOrange.main,
+            "position": "relative",
+            [theme.breakpoints.up("xs")]: {
+
+                "transform": "rotate(6deg) translateX(-2vw)",
+                "top": 30,
+                "width": "105vw",
+            }
+        },
+        "animatedBannerText": {
+            "color": theme.palette.white.main,
+        },
+        "animatedBannerStar": {
+            "& svg": {
+                "fill": theme.palette.white.main
+            }
         }
     })
 

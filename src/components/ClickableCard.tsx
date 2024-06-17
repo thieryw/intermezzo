@@ -57,7 +57,9 @@ export const ClickableCard = memo((props: ClickableCardProps) => {
                     <Typography className={cx(classes.paragraph, classes.typo)} variant="paragraph1">{paragraph}</Typography>
                 </div>
             </div>
-            <CircledArrow className={classes.arrow} />
+            <CircledArrow classes={{
+                "arrow": classes.arrowSvg
+            }} className={classes.arrow} />
         </a>
 
     </div>
@@ -156,7 +158,10 @@ const useStyles = tss
                         "transform": "scale(1.05)"
                     })
                 },
-                backgroundColor
+                backgroundColor,
+            },
+            "arrowSvg": {
+
             },
             "link": {
                 "textDecoration": "none",

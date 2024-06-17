@@ -11,7 +11,7 @@ export type CardWrapperProps = {
     title: string;
     titleHighlight: string;
     paragraph: string;
-    cards: Omit<ClickableCardProps, "className" | "classes">[]
+    cards: (Omit<ClickableCardProps, "className" | "classes"> | undefined)[]
 }
 
 
@@ -46,7 +46,11 @@ export const CardWrapper = memo((props: CardWrapperProps) => {
             </div>
             <div className={classes.cards}>
                 {
-                    cards.map((card, index) => <ClickableCard
+                    cards.map((card, index) => {
+                        if(card === undefined){
+                            return;
+                        }
+                        return <ClickableCard
                         key={index}
                         {...card}
                         style={{
@@ -55,7 +59,8 @@ export const CardWrapper = memo((props: CardWrapperProps) => {
                                 "bottom": `${(400 - windowInnerWidth) * (index + 1)}px`
                             }: {})
                         }}
-                    />)
+                    />
+                })
                 }
             </div>
         </div>
@@ -107,7 +112,7 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
             "top": 0,
             "left": 0,
             "width": "100%",
-            "height": "80%",
+            "height": "70%",
             "background": theme.palette.gradient2.main
 
         },
