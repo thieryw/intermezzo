@@ -13,6 +13,9 @@ export type ComponentKeyHome =
 export type ComponentKeyPassCulture = 
     | import("pages/PassCulture").I18n
 
+export type ComponentKeyMediation = 
+    | import("pages/Mediation").I18n
+
 export type ComponentKeyHeaderFooter = 
     | import("Header").I18n
     | import("Footer").I18n
@@ -34,6 +37,13 @@ export type TranslationHome<L extends Language> = GenericTranslations<
 
 export type TranslationPassCulture<L extends Language> = GenericTranslations<
     ComponentKeyPassCulture,
+    Language,
+    typeof fallbackLanguage,
+    L
+>
+
+export type TranslationMediation<L extends Language> = GenericTranslations<
+    ComponentKeyMediation,
     Language,
     typeof fallbackLanguage,
     L

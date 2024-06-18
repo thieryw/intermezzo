@@ -4,7 +4,7 @@ import type { TranslationPassCulture } from "../../types";
 export const translation: TranslationPassCulture<"fr"> = {
     "PassCulture": {
         "heroSurtitle": "Pass Culture",
-        "heroTitle": "Intermezzo",
+        "heroTitle": "Intermezzo Débarque",
         "heroHighLightTitle": "En Classe !",
         "heroParagraph": "Dans le cadre du développement du Pass culture, notre association propose différentes actions culturelles à destination des élèves allant de la 6ème au lycée.",
         "heroButton1": "Découvrir",

@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { ReactNode, memo } from "react";
 import { tss } from "tss";
 import { PictureAnimator } from "components/PictureAnimator"
 import type { PictureAnimatorProps } from "components/PictureAnimator"
@@ -10,51 +10,70 @@ import Typography from "@mui/material/Typography";
 import starSvg from "assets/svg/pink-glitter.svg";
 import { ReactSVG } from "react-svg";
 
+type Title = {
+    title?: string;
+    highLightTitle?: string;
+    highLightTitleImageUrl?: string;
+}
 
 export type HeroProps = {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     surtitle: string;
-    title: string;
-    highLightTitle: string;
-    highLightTitleImageUrl?: string;
     paragraph: string;
+    title: Title | ReactNode;
     button1: Link;
     button2: Link;
     animatedPicture: Pick<PictureAnimatorProps, "src" | "alt" | "sources">;
     statisticCard: Omit<StatisticsCardProps, "className" | "classes">;
 }
 
-export const Hero = memo((props: HeroProps)=>{
+export const Hero = memo((props: HeroProps) => {
     const {
         animatedPicture,
         button1,
         button2,
-        highLightTitle,
         paragraph,
         statisticCard,
         surtitle,
-        title, 
         className,
-        highLightTitleImageUrl
+        title
     } = props;
 
-    const {classes, cx, theme, windowInnerWidth} = useStyles();
+    const { classes, cx, theme, windowInnerWidth } = useStyles({
+        "classesOverrides": props.classes
+    });
 
     return <section className={cx(classes.root, className)}>
         {
-            (()=>{
+            (() => {
+                const titleObj = title as Title
                 if (window.innerWidth < theme.breakpoints.values.md) {
+
+
                     return <div className={classes.mobileTitleWrapper}>
                         <div className={classes.mobileSurtitle}>
                             <ReactSVG src={starSvg} className={classes.starSvg} />
                             <Typography variant="label">{surtitle}</Typography>
                         </div>
-                        <div className={classes.mobileTitle}>
-                            <Typography className={classes.mobileHeading1} variant="heading1">{title}</Typography>
-                            <Typography variant="highLight">{highLightTitle}</Typography>
+                        {
+                            (() => {
+                                if (
+                                    titleObj.highLightTitle === undefined
+                                    && titleObj.highLightTitleImageUrl === undefined
+                                    && titleObj.title === undefined
+                                ) {
 
-                        </div>
+                                    return title as ReactNode;
+                                }
+                                return <div className={classes.mobileTitle}>
+                                    <Typography className={classes.mobileHeading1} variant="heading1">{titleObj.title}</Typography>
+                                    <Typography variant="highLight">{titleObj.highLightTitle}</Typography>
+
+                                </div>
+
+                            })()
+                        }
 
                     </div>
                 }
@@ -65,19 +84,34 @@ export const Hero = memo((props: HeroProps)=>{
                             <ReactSVG src={starSvg} className={classes.starSvg} />
                             <Typography variant="label">{surtitle}</Typography>
                         </div>
-                        <div className={classes.titleWrapper}>
-                            <Typography variant="heading1">{title}</Typography>
-                            <div className={classes.highLightTitle}>
-                                {
-                                    highLightTitleImageUrl !== undefined &&
-                                    <div className={classes.highLightImageWrapper}>
-                                        <img className={classes.highLightImage} src={highLightTitleImageUrl} alt="high light image for title" />
-                                    </div>
-                                }
-                                <Typography variant="highLight">{highLightTitle}</Typography>
-                            </div>
+                        {
+                            (() => {
 
-                        </div>
+                                if (
+                                    titleObj.highLightTitle === undefined
+                                    && titleObj.highLightTitleImageUrl === undefined
+                                    && titleObj.title === undefined
+                                ) {
+
+                                    return title as ReactNode;
+                                }
+
+                                return <div className={classes.titleWrapper}>
+                                    <Typography variant="heading1">{titleObj.title}</Typography>
+                                    <div className={classes.highLightTitle}>
+                                        {
+                                            titleObj.highLightTitleImageUrl !== undefined &&
+                                            <div className={classes.highLightImageWrapper}>
+                                                <img className={classes.highLightImage} src={titleObj.highLightTitleImageUrl} alt="high light image for title" />
+                                            </div>
+                                        }
+                                        <Typography variant="highLight">{titleObj.highLightTitle}</Typography>
+                                    </div>
+
+                                </div>
+                            })()
+
+                        }
                         <Typography className={classes.paragraph} variant="paragraph1">{paragraph}</Typography>
                         <div className={classes.buttonWrapper}>
                             <LinkButton
@@ -198,7 +232,7 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
 
         },
         "mobileParagraphAndButtons": {
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(4);
                 return {
                     "paddingRight": value,

@@ -107,9 +107,13 @@ export const Home = memo(() => {
                 "label": t("heroButton2")
             }}
             surtitle={t("heroSurtitle")}
-            title={t("heroTitle")}
-            highLightTitle={t("heroHighLightTitle")}
-            highLightTitleImageUrl={titleCapsule}
+            title={{
+                "title": t("heroTitle"),
+                "highLightTitle": t("heroHighLightTitle"),
+                "highLightTitleImageUrl": titleCapsule
+
+            }
+            }
             paragraph={t("heroParagraph")}
             statisticCard={{
                 "stats": [
@@ -266,29 +270,29 @@ export const Home = memo(() => {
                 paragraph={t("servicesParagraph")}
                 isScaled={true}
                 cards={[
-                    <ClickableCard 
+                    <ClickableCard
                         link={{
                             "href": ""
                         }}
-                        backgroundColor={ theme.palette.pink.main}
+                        backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard1Surtitle")}
                         title={t("servicesCard1Title")}
                         paragraph={t("servicesCard1Paragraph")}
                     />,
-                    <ClickableCard 
+                    <ClickableCard
                         link={{
                             "href": ""
                         }}
-                        backgroundColor={ theme.palette.pink.main}
+                        backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard2Surtitle")}
                         title={t("servicesCard2Title")}
                         paragraph={t("servicesCard2Paragraph")}
                     />,
-                    <ClickableCard 
+                    <ClickableCard
                         link={{
                             "href": ""
                         }}
-                        backgroundColor={ theme.palette.pink.main}
+                        backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard3Surtitle")}
                         title={t("servicesCard3Title")}
                         paragraph={t("servicesCard3Paragraph")}
@@ -298,7 +302,7 @@ export const Home = memo(() => {
 
                             return undefined;
                         }
-                        return <ClickableCard 
+                        return <ClickableCard
                             link={{
                                 "href": ""
                             }}
@@ -356,9 +360,9 @@ export const Home = memo(() => {
                     />
 
                 </div>
-                <AnimatedBanner 
+                <AnimatedBanner
                     className={classes.textAnimatedBanner}
-                
+
                     slides={[t("assemble"), t("reveal"), t("experiment")].map((text, index) =>
                         <div
                             key={index}

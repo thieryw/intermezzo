@@ -91,9 +91,14 @@ export const PassCulture = memo(() => {
 
             }}
             surtitle={t("heroSurtitle")}
-            title={t("heroTitle")}
-            highLightTitle={t("heroHighLightTitle")}
             paragraph={t("heroParagraph")}
+            title={
+                {
+                    "title": t("heroTitle"),
+                    "highLightTitle": t("heroHighLightTitle"),
+
+                }
+            }
             button1={{
                 "href": "",
                 "label": t("heroButton1")
