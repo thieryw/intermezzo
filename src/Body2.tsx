@@ -11,8 +11,6 @@ import { SliderCard } from "components/SliderCard";
 import passSrc from "assets/jpg/pass-culture/program-1-img.jpg";
 import { Video } from "components/Video";
 import videoImage from "assets/jpg/mediation/carnet-video-preview.jpg";
-import { Hero } from "components/Hero";
-import titleCapsuleSrc from "assets/jpg/home/title-capsule-croped.jpg";
 import { ParagraphList } from "components/ParagraphList";
 import { PortraitGallery } from "components/PortraitGallery";
 import benevoleImg1 from "assets/jpg/home/benevoles/benevole-img-1.jpg";
@@ -54,50 +52,7 @@ export function Body(props: PropsOfBody) {
             <Header
             />
 
-            <Hero
-                animatedPicture={{
-                    "src": testJpg,
-                }}
-                button1={{
-                    "href": "",
-                    "label": "Découvrir"
-                }}
-                button2={{
-                    "href": "",
-                    "label": "Contact"
-                }}
-                surtitle="L'Association Musicale"
-                title="Incubatrice de Projets Culturels"
-                highLightTitle="Innovants"
-                highLightTitleImageUrl={titleCapsuleSrc}
-                paragraph="Fondée par des artistes locaux passionnés, notre association musicale Intermezzo s'engage pleinement à promouvoir les talents artistiques de Bordeaux et de sa région."
-                statisticCard={{
-                    "stats": [
-                        {
-                            "statNumber": "170",
-                            "statSign": "+",
-                            "statDesc": "Concerts & Spectacles"
-                        },
-                        {
-                            "statNumber": "50",
-                            "statSign": "+",
-                            "statDesc": "Artistes Soutenus"
-                        },
-                        {
-                            "statNumber": "220",
-                            "statSign": "+",
-                            "statDesc": "Heures de Médiations"
-                        },
-                        {
-                            "statNumber": <Typo className={classes.cardNumber} variant="cardNumber">3000</Typo>,
-                            "statSign": <Typo className={classes.cardNumber} variant="cardSign">+</Typo>,
-                            "statDesc": "Spectateurs Conquis"
-                        },
-                    ]
-
-                }}
-
-            />
+   
             <PortraitGallery 
                 images={benevoleImages.map(image => ({
                     "src": image
