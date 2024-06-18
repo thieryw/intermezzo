@@ -371,28 +371,6 @@ export const Home = memo(() => {
                             />
                         </div>)}
 
-                /*slides={[
-
-                    <div className={classes.textAnimatedBanner}>
-                        <Typo className="" variant="heading2">{t("assemble")}</Typo>
-                        <ReactSVG 
-                            src={starSvg}
-                        />
-                    </div>,
-                    <div className={classes.textAnimatedBanner}>
-                        <Typo variant="heading2">{t("reveal")}</Typo>
-                        <ReactSVG 
-                            src={starSvg}
-                        />
-                    </div>,
-                    <div className={classes.textAnimatedBanner}>
-                        <Typo variant="heading2">{t("experiment")}</Typo>
-                        <ReactSVG 
-                            src={starSvg}
-                        />
-                    </div>,
-
-                ]}*/
                 />
 
             </section>

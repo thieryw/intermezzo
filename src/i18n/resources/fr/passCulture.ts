@@ -55,6 +55,9 @@ export const translation: TranslationPassCulture<"fr"> = {
         "voyageCard4HoverDetail2": "50 à 60 min",
         "voyageButtonMore": "En sovoir plus",
         "voyageButtonProject": "Un Projet ?",
+        "souvSurtitle": "Évènements Passés",
+        "souvTitle": "Quelques beaux",
+        "souvHighlight": "Souvenirs"
 
     }
 }

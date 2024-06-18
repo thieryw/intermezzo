@@ -75,6 +75,17 @@ const useStyles = tss.withParams<
             height,
             borderRadius,
             "overflow": "hidden",
+            "maxWidth": "95vw",
+            ...(() => {
+                if (typeof width !== "number" || typeof height !== "number") {
+                    return;
+
+                }
+                return {
+                    "minHeight": `${height / width}vw`,
+
+                }
+            })(),
         },
         "animatedDiv": {
 
@@ -92,8 +103,17 @@ const useStyles = tss.withParams<
             "transitionDelay": `${animationDelay}ms`,
             "width": width,
             "height": height,
-            "maxWidth": "100vw",
-            "maxHeight": "85vw",
+            "maxWidth": "95vw",
+            ...(() => {
+                if (typeof width !== "number" || typeof height !== "number") {
+                    return;
+
+                }
+                return {
+                    "minHeight": `${height / width}vw`,
+
+                }
+            })(),
             "objectFit": "cover"
         }
     })

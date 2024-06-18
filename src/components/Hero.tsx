@@ -260,7 +260,9 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
             [theme.breakpoints.down("md")]: {
                 "right": 0,
                 "bottom": 0,
-                "marginTop": theme.spacing(12)
+                "marginTop": theme.spacing(12),
+                "paddingLeft": theme.spacing(5),
+                "paddingRight": theme.spacing(5)
             },
             [theme.breakpoints.down("sm")]: {
                 "bottom": theme.spacing(10),

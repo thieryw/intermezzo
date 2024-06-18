@@ -79,18 +79,14 @@ const useStyles = tss
                 "boxSizing": "border-box",
                 "gap": theme.spacing(6),
                 "justifyContent": "center",
-                [theme.breakpoints.down("sm")]: {
-                    //"justifyContent": "space-between"
-                    "display": "grid",
-                    "gridTemplateColumns": "repeat(2, 1fr)"
-                }
 
             },
             "statWrapper": {
                 "flexGrow": 0,
                 "display": "flex",
                 "gap": theme.spacing(6),
-                "justifyContent": "center"
+                "justifyContent": "center",
+                "alignItems": "center",
             },
             "decoLine": {
                 "width": 1,
@@ -111,7 +107,8 @@ const useStyles = tss
             "desc": {
                 //"width": theme.spacing(12),
                 "textAlign": "center",
-                "width": 12 * 8
+                "width": 120
+                //"width": 12 * 8
             }
         })
 
