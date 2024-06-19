@@ -113,7 +113,10 @@ export const Video = memo((props: VideoProps) => {
         isLightBoxOpen,
         zIndex
     });
-    return <div className={cx(classes.root, className)}>
+    return <div style={{
+        width,
+        height
+    }} className={cx(classes.root, className)}>
         <div className={classes.inner}>
 
             <PictureAnimator
@@ -163,7 +166,7 @@ export const Video = memo((props: VideoProps) => {
 const useStyles = tss.withName("Video").withParams<{ isLightBoxOpen: boolean; zIndex: number | undefined; }>().create(({ theme, isLightBoxOpen, zIndex }) => {
     return ({
         "root": {
-            "alignSelf": "self-start",
+            "position": "relative",
 
         },
         "inner": {

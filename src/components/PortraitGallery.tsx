@@ -81,7 +81,21 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                             <Typography variant="heading2">{title}</Typography>
                             <Typography variant="highLight2">{highlight}</Typography>
                         </div>
-                        <div className={classes.mobilePictureWrapper}>
+                        <div style={{
+                            ...(()=> {
+                                if(mobilePictures.length < 2){
+                                    return {}
+                                }
+                                return {
+                                    "paddingLeft": theme.spacing(5),
+                                    "paddingRight": theme.spacing(5),
+                                    "position": "relative",
+                                    "boxSizing": "border-box",
+                                    "width": "100vw"
+                                }
+                            })()
+                        }} className={classes.mobilePictureWrapper}
+                        >
                             {
                                 ...mobilePictures.map((picture, index) => <PictureAnimator
                                     {
@@ -207,6 +221,7 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
         "mobilePictureWrapper": {
             "display": "flex",
             "flexDirection": "column",
+            "alignItems": "center",
             "gap": 20
         }
     })

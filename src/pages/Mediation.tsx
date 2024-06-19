@@ -9,11 +9,14 @@ import ytSvg from "assets/svg/mediation/yt-purple.svg";
 import { Hero } from "components/Hero";
 import heroJpg from "assets/jpg/mediation/mediations-hero-image.jpg"
 import heroWebp from "assets/webp/mediation/mediations-hero-image.webp"
+import { DropdownSection } from "components/DropdownSection";
+import { Video } from "components/Video";
+import videoPreview from "assets/jpg/mediation/carnet-video-preview.jpg";
 
 
 export const Mediation = memo(() => {
     const { t } = useTranslation("Mediation");
-    const { classes } = useStyles();
+    const { classes, theme, windowInnerWidth } = useStyles();
     return <div>
         <Hero
             surtitle={t("heroSurtitle")}
@@ -67,24 +70,58 @@ export const Mediation = memo(() => {
                 ]
             }}
         />
-        <PressFile
-            link={{
-                "href": "",
-                "label": t("voyagePressTitle")
-            }}
-            organizations={[
-                t("voyagePressName1"),
-                t("voyagePressName2"),
-                t("voyagePressName3"),
-                t("voyagePressName4"),
-                t("voyagePressName5"),
-                t("voyagePressName6"),
+        <DropdownSection
+            isStateBlocked={windowInnerWidth >= theme.breakpoints.values.md}
+            aside={
+                <PressFile
+                    link={{
+                        "href": "",
+                        "label": t("voyagePressTitle")
+                    }}
+                    organizations={[
+                        t("voyagePressName1"),
+                        t("voyagePressName2"),
+                        t("voyagePressName3"),
+                        t("voyagePressName4"),
+                        t("voyagePressName5"),
+                        t("voyagePressName6"),
+                    ]}
+                    socialIconsUrls={[
+                        fbSvg,
+                        instaSvg,
+                        ytSvg
+                    ]}
+                />
+            }
+            media={
+                <Video
+                    src={videoPreview}
+                    width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
+                    height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
+                    borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
+                    videoId="UlFsoRQYVrs"
+                    alt="video preview image"
+                />
+
+
+            }
+            closeMessage="Ouvrire"
+            openMessage="Réduire"
+            title={t("voyageTitle")}
+            paragraphTitle={<Typo variant="heading3">{t("voyageParagraphTitle")} <span style={{...theme.typography.highLight4}}>{t("voyageParagraphHighlight")}</span></Typo>}
+            paragraphs={[
+                {
+                    "paragraph": t("voyageParagraph1")
+                },
+                {
+                    "paragraph": t("voyageParagraph2")
+                },
+                {
+                    "paragraph": t("voyageParagraph3")
+                },
             ]}
-            socialIconsUrls={[
-                fbSvg,
-                instaSvg,
-                ytSvg
-            ]}
+            date={t("voyageDate")}
+            event={t("voyageEvent")}
         />
 
     </div>

@@ -75,7 +75,7 @@ const useStyles = tss.withParams<
             height,
             borderRadius,
             "overflow": "hidden",
-            "maxWidth": "95vw",
+            "maxWidth": "100%",
             ...(() => {
                 if (typeof width !== "number" || typeof height !== "number") {
                     return;
@@ -103,7 +103,7 @@ const useStyles = tss.withParams<
             "transitionDelay": `${animationDelay}ms`,
             "width": width,
             "height": height,
-            "maxWidth": "95vw",
+            "maxWidth": "100%",
             ...(() => {
                 if (typeof width !== "number" || typeof height !== "number") {
                     return;
