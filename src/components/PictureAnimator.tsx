@@ -103,7 +103,6 @@ const useStyles = tss.withParams<
             "transitionDelay": `${animationDelay}ms`,
             "width": width,
             "height": height,
-            "maxWidth": "100%",
             ...(() => {
                 if (typeof width !== "number" || typeof height !== "number") {
                     return;

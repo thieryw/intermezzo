@@ -6,6 +6,8 @@ import { useDomRect } from "powerhooks/useDomRect";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import toggleSvg from "assets/svg/openClose.svg";
 import { ReactSVG } from "react-svg";
+import { Link } from "tools/link";
+import { LinkButton } from "./LinkButton";
 
 
 
@@ -16,7 +18,7 @@ export type DropdownSectionProps = {
     isStateBlocked?: boolean;
     openMessage?: string;
     closeMessage?: string;
-    title: string;
+    title?: string;
     aside?: ReactNode;
     media?: ReactNode;
     paragraphTitle?: ReactNode
@@ -28,6 +30,7 @@ export type DropdownSectionProps = {
     }[];
     date?: string;
     event?: string;
+    button?: Link;
 
 };
 
@@ -46,6 +49,7 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
         isStateBlocked = true,
         media,
         paragraphTitle,
+        button
 
 
     } = props;
@@ -76,23 +80,26 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
     })
 
     return <div className={cx(classes.root, className)}>
-        <div onClick={toggleOpen} className={classes.banner}>
-            <div className={classes.bannerBackground}>
-
-            </div>
-            <Typo className={classes.bannerText} variant="heading1">{title}</Typo>
-            {
-                (openMessage !== undefined && closeMessage !== undefined && !isStateBlocked) &&
-                <div className={classes.openCloseMessage}>
-                    <ReactSVG
-                        className={classes.openCloseIcon}
-                        src={toggleSvg}
-                    />
-                    <Typo className={classes.toggleText} variant="paragraph1">{isOpen ? openMessage : closeMessage}</Typo>
+        {
+            title !== undefined &&
+            <div onClick={toggleOpen} className={classes.banner}>
+                <div className={classes.bannerBackground}>
 
                 </div>
-            }
-        </div>
+                <Typo className={classes.bannerText} variant="heading1">{title}</Typo>
+                {
+                    (openMessage !== undefined && closeMessage !== undefined && !isStateBlocked) &&
+                    <div className={classes.openCloseMessage}>
+                        <ReactSVG
+                            className={classes.openCloseIcon}
+                            src={toggleSvg}
+                        />
+                        <Typo className={classes.toggleText} variant="paragraph1">{isOpen ? openMessage : closeMessage}</Typo>
+
+                    </div>
+                }
+            </div>
+        }
         <div className={classes.bodyWrapper}>
             <div ref={ref} className={classes.body}>
                 {
@@ -149,6 +156,18 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
 
                             </div>
                         }
+
+                        {
+                            button !== undefined &&
+                            <LinkButton 
+                                {...button}
+                                variant="outlinedDark"
+                                className={classes.button}
+
+                            />
+                        }
+
+
 
                     </div>
 
@@ -270,17 +289,20 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "right": theme.spacing(5),
             "height": 1,
             "backgroundColor": theme.palette.lightGray.main,
-            "marginTop": theme.spacing(2)
+            "marginTop": theme.spacing(2),
+            [theme.breakpoints.up("md")]: {
+                "display": "none"
+            }
 
         },
         "aside": {
             "minWidth": 220,
+            "maxWidth": 220,
             [theme.breakpoints.down("md")]: {
                 "paddingLeft": theme.spacing(5)
             }
         },
         "content": {
-            "maxWidth": 780,
 
             [theme.breakpoints.between("md", "mdPlus")]: {
                 "maxWidth": 550
@@ -293,6 +315,7 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "display": "flex",
             "flexDirection": "column",
             "gap": theme.spacing(5),
+            "maxWidth": 780,
             [theme.breakpoints.down("md")]: {
                 ...(() => {
                     const value = theme.spacing(5);
@@ -316,6 +339,11 @@ const useStyles = tss.withName("DropdownSection").withParams<
         },
         "event": {
             "color": theme.palette.orange.main
+        },
+        "button": {
+            "alignSelf": "flex-start",
+            "marginTop": theme.spacing(2)
+
         }
     })
 })
