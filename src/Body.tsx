@@ -5,6 +5,7 @@ import { useRoute } from "router";
 import { Home } from "pages/Home";
 import { PassCulture } from "pages/PassCulture";
 import { Mediation } from "pages/Mediation";
+import { Rp } from "pages/Rp";
 
 export type PropsOfBody = {
     className?: string;
@@ -24,6 +25,7 @@ export function Body(props: PropsOfBody) {
                 {route.name === "home" && <Home />}
                 {route.name === "pc" && <PassCulture />}
                 {route.name === "mediation" && <Mediation />}
+                {route.name === "rp" && <Rp />}
 
             </div>
             <div className={classes.footerWrapper}>

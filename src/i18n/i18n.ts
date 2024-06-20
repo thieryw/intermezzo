@@ -3,12 +3,14 @@ import type {
 	ComponentKeyHome, 
 	ComponentKeyHeaderFooter,
 	ComponentKeyPassCulture,
-	ComponentKeyMediation
+	ComponentKeyMediation,
+	ComponentKeyRp
 } from "./types";
 import {translation as homeTranslation} from "./resources/fr/home"
 import {translation as headerFooterTranslation} from "./resources/fr/headerAndFooter";
 import {translation as passCultureTranslation} from "./resources/fr/passCulture";
 import {translation as mediationTranslation} from "./resources/fr/mediation";
+import {translation as rpTranslation} from "./resources/fr/rp";
 export { declareComponentKeys };
 
 //List the languages you with to support
@@ -34,7 +36,8 @@ export const {
 	ComponentKeyHeaderFooter |
 	ComponentKeyHome |
 	ComponentKeyPassCulture |
-	ComponentKeyMediation
+	ComponentKeyMediation |
+	ComponentKeyRp
 >()(
 	{
 		languages,
@@ -47,7 +50,8 @@ export const {
 			"Header": headerFooterTranslation.Header,
 			"Footer": headerFooterTranslation.Footer,
 			"PassCulture": passCultureTranslation.PassCulture,
-			"Mediation": mediationTranslation.Mediation
+			"Mediation": mediationTranslation.Mediation,
+			"Rp": rpTranslation.Rp
 		}
 		/* spell-checker: enable */
 	}

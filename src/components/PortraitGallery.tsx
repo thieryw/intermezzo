@@ -78,8 +78,8 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                             surtitle={surtitle}
                         />
                         <div className={classes.mobileTitleWrapper}>
-                            <Typography variant="heading2">{title}</Typography>
-                            <Typography variant="highLight2">{highlight}</Typography>
+                            <Typography className={classes.mobileTitle} variant="heading2">{title}</Typography>
+                            <Typography className={classes.mobileTitle} variant="highLight2">{highlight}</Typography>
                         </div>
                         <div style={{
                             ...(()=> {
@@ -210,13 +210,24 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": 50
+            "gap": 50,
+            "justifyContent": "center"
         },
         "mobileTitleWrapper": {
             "display": "flex",
             "flexDirection": "column",
-            "alignItems": "center"
+            "alignItems": "center",
+            ...(()=>{
+                const value = theme.spacing(5);
+                return {
+                    "paddingLeft": value,
+                    "paddingRight": value
+                }
+            })()
 
+        },
+        "mobileTitle": {
+            "textAlign": "center",
         },
         "mobilePictureWrapper": {
             "display": "flex",
