@@ -52,8 +52,6 @@ import rpPng2 from "assets/png/rp/recitalprod-transparent-img-2.png";
 import { LinkButton } from "components/LinkButton";
 import instaSvg from "assets/svg/icons/fInsta.svg";
 import emailSvg from "assets/svg/icons/emailIcon.svg";
-import { CircularButton } from "components/CircularButton";
-import glitterSvg from "assets/svg/pink-glitter.svg"
 
 const medias = {
     "jpg": [
