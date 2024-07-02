@@ -14,8 +14,8 @@ import type { AnimatedBannerProps } from "components/AnimatedBanner";
 import { BlurryBackground } from "components/BlurryBackground";
 
 export const IsMenuOpenContext = createContext<
-    {isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}
->({"isOpen": false, "setIsOpen": () => {}});
+    { isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }
+>({ "isOpen": false, "setIsOpen": () => { } });
 
 export const IsMenuOpenProvider = memo((props: { children: ReactNode }) => {
     const { children } = props;
@@ -111,6 +111,7 @@ export type HeaderProps = {
 }
 
 export function Header(props: HeaderProps) {
+
     const {
         links,
         className,
@@ -121,10 +122,12 @@ export function Header(props: HeaderProps) {
         buttonLink,
         animatedBanner
     } = props;
-    const {isOpen, setIsOpen} = useContext(IsMenuOpenContext);
+
+    const { isOpen, setIsOpen } = useContext(IsMenuOpenContext);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 960);
     const controls = useAnimation();
     const { classes, cx, theme, windowInnerWidth } = useStyles({ isOpen, "classesOverrides": props.classes, isSmallScreen });
+
 
     useEffect(() => {
         if (windowInnerWidth < theme.breakpoints.values.md) {
@@ -335,6 +338,9 @@ export function Header(props: HeaderProps) {
 
                                     >
                                         <MenuLink
+                                            classes={{
+                                                "text": classes.linkText
+                                            }}
                                             variants="primary"
                                             key={label}
                                             href={href}
@@ -435,6 +441,10 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
 
                 }
             })(),
+
+        },
+        "linkText": {
+            "color": theme.palette.purple.main
 
         },
         "background": {

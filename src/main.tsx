@@ -7,13 +7,13 @@ import { RouteProvider } from "./router.ts";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <IsMenuOpenProvider>
-        <RouteProvider>
+    <RouteProvider>
+      <ThemeProvider>
+        <IsMenuOpenProvider>
           <App />
 
-        </RouteProvider>
-      </IsMenuOpenProvider>
-    </ThemeProvider>
+        </IsMenuOpenProvider>
+      </ThemeProvider>
+    </RouteProvider>
   </React.StrictMode>,
 )

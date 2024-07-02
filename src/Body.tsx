@@ -6,6 +6,9 @@ import { Home } from "pages/Home";
 import { PassCulture } from "pages/PassCulture";
 import { Mediation } from "pages/Mediation";
 import { Rp } from "pages/Rp";
+import { Festival } from "pages/Festival";
+import { useIsDark } from "theme/useIsDark";
+import { useEffect } from "react";
 
 export type PropsOfBody = {
     className?: string;
@@ -17,7 +20,16 @@ export function Body(props: PropsOfBody) {
 
     const { cx, classes } = useStyles();
     const route = useRoute();
+    const { setIsDark } = useIsDark()
 
+    useEffect(() => {
+        if (route.name !== "festival") {
+            setIsDark(false);
+            return;
+        }
+
+        setIsDark(true)
+    }, [route.name])
     return (
         <div className={cx(classes.root, className)}>
             <Header />
@@ -26,6 +38,7 @@ export function Body(props: PropsOfBody) {
                 {route.name === "pc" && <PassCulture />}
                 {route.name === "mediation" && <Mediation />}
                 {route.name === "rp" && <Rp />}
+                {route.name === "festival" && <Festival />}
 
             </div>
             <div className={classes.footerWrapper}>

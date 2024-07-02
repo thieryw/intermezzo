@@ -9,9 +9,10 @@ export const BlurryBackground = memo((props: {
     className?: string;
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     animationPlaying?: boolean;
+    mode?: "dark" | "light"
 }) => {
-    const { className, animationPlaying = true } = props;
-    const { classes, cx } = useStyles({ "classesOverrides": props.classes, animationPlaying });
+    const { className, animationPlaying = true, mode = "light" } = props;
+    const { classes, cx } = useStyles({ "classesOverrides": props.classes, animationPlaying, mode });
     return <div className={cx(classes.root, className)}>
         <div className={classes.gradientContainer}>
             <div className={cx(classes.g, classes.g1)}></div>
@@ -23,7 +24,26 @@ export const BlurryBackground = memo((props: {
     </div>
 })
 
-const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying: boolean}>().create(({animationPlaying}) => {
+const useStyles = tss.withName("BlurryBackground").withParams<{ animationPlaying: boolean; mode: "dark" | "light" }>().create(({ animationPlaying, mode }) => {
+
+    const background = (()=>{
+        if(mode === "light"){
+            return {
+                "g1": "radial-gradient(circle at center, rgba(253, 110, 52, 0.8) 0, rgba(253, 110, 52, 0) 50%) no-repeat",
+                "g2": "radial-gradient(circle at center, rgba(76,51,147, 0.8) 0, rgba(76,51,147, 0) 50%) no-repeat",
+                "g3": "radial-gradient(circle at center, rgba(139,80,234, 0.8) 0, rgba(139,80,234, 0) 50%) no-repeat"
+            }
+        }
+
+        return {
+            "g1": "radial-gradient(circle at center, rgba(255, 183, 130, 0.8) 0, rgba(255, 183, 130, 0) 50%) no-repeat",
+            "g2": "radial-gradient(circle at center, rgba(13,0,69, 0.8) 0, rgba(13,0,69, 0) 50%) no-repeat",
+            "g3": "radial-gradient(circle at center, rgba(219, 0, 255, 0.8) 0, rgba(219, 0, 255, 0) 50%) no-repeat"
+
+        }
+    })()
+
+
     return ({
         "root": {
             "width": "100vw",
@@ -48,7 +68,8 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
             "height": 700
         },
         "g1": {
-            "background": "radial-gradient(circle at center, rgba(253, 110, 52, 0.8) 0, rgba(253, 110, 52, 0) 50%) no-repeat",
+            //"background": "radial-gradient(circle at center, rgba(253, 110, 52, 0.8) 0, rgba(253, 110, 52, 0) 50%) no-repeat",
+            "background": background.g1,
             "transformOrigin": "center center",
             "top": 0,
             "right": "10%",
@@ -66,7 +87,7 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
             "opacity": 0.5
         },
         "g2": {
-            "background": "radial-gradient(circle at center, rgba(76,51,147, 0.8) 0, rgba(76,51,147, 0) 50%) no-repeat",
+            "background": background.g2,
             "transformOrigin": "calc(50% - 400px)",
             "top": 0,
             "right": "40%",
@@ -86,7 +107,7 @@ const useStyles = tss.withName("BlurryBackground").withParams<{animationPlaying:
 
         },
         "g3": {
-            "background": "radial-gradient(circle at center, rgba(139,80,234, 0.8) 0, rgba(139,80,234, 0) 50%) no-repeat",
+            "background": background.g3,
             "transformOrigin": "calc(50% + 400px)",
             "top": "50%",
             "right": "30%",

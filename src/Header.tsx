@@ -16,6 +16,7 @@ import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
 import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
 import { routes, useRoute } from "router";
+import { tss } from "tss";
 
 
 
@@ -61,16 +62,17 @@ export const Header = memo(() => {
             "routeName": routes.contact().name
         },
 
-    ])
+    ]);
+    const { classes } = useStyles();
     return <HeaderComponent
         links={linksRef.current}
         currentLinkLabel={linksRef.current.find(({ routeName }) => routeName === route.name)?.label}
         logo={siteLogo}
         smallPrint={
             <div>
-                <a href=""><Text variant="details">{t("legalLink")}</Text></a>
-                <Text variant="details">{t("copyRight")}</Text>
-                <Text variant="details">{t("siteDesigner")} <a href="">{t("ideaArtLink")}</a></Text>
+                <a href=""><Text className={classes.details} variant="details">{t("legalLink")}</Text></a>
+                <Text className={classes.details} variant="details">{t("copyRight")}</Text>
+                <Text className={classes.details} variant="details">{t("siteDesigner")} <a className={classes.link} href="">{t("ideaArtLink")}</a></Text>
 
             </div>
         }
@@ -111,6 +113,21 @@ export const Header = memo(() => {
         }}
 
     />
+})
+
+
+const useStyles = tss.create(({theme}) => {
+    return ({
+        "details": {
+            "color": theme.palette.darkGray.main
+        },
+        "link": {
+            "color": theme.palette.purple.main
+
+        },
+
+
+    })
 })
 
 
