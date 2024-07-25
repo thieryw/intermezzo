@@ -366,7 +366,7 @@ const muiThemeDark = createMuiTheme({
     "palette": {
         "mode": "dark",
         "background": {
-            "default": "#060000"
+            "default": "#010010"
         },
         "purple": {
             "main": "#49336C",

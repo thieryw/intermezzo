@@ -9,6 +9,7 @@ import { Link } from "tools/link";
 import Typography from "@mui/material/Typography";
 import starSvg from "assets/svg/pink-glitter.svg";
 import { ReactSVG } from "react-svg";
+import { LoopedVideo, type LoopedVideoProps } from "components/LoopedVideo";
 
 type Title = {
     title?: string;
@@ -24,7 +25,8 @@ export type HeroProps = {
     title: Title | ReactNode;
     button1: Link;
     button2: Link;
-    animatedPicture: Pick<PictureAnimatorProps, "src" | "alt" | "sources">;
+    animatedPicture?: Pick<PictureAnimatorProps, "src" | "alt" | "sources">;
+    loopedVideo?: Pick<LoopedVideoProps, "src">;
     statisticCard: Omit<StatisticsCardProps, "className" | "classes">;
 }
 
@@ -37,10 +39,11 @@ export const Hero = memo((props: HeroProps) => {
         statisticCard,
         surtitle,
         className,
-        title
+        title,
+        loopedVideo
     } = props;
 
-    const { classes, cx, theme, windowInnerWidth } = useStyles({
+    const { classes, cx, theme, windowInnerWidth, isDark } = useStyles({
         "classesOverrides": props.classes
     });
 
@@ -68,7 +71,7 @@ export const Hero = memo((props: HeroProps) => {
                                 }
                                 return <div className={classes.mobileTitle}>
                                     <Typography className={classes.mobileHeading1} variant="heading1">{titleObj.title}</Typography>
-                                    <Typography variant="highLight">{titleObj.highLightTitle}</Typography>
+                                    <Typography className={classes.mobileHighlight} variant="highLight">{titleObj.highLightTitle}</Typography>
 
                                 </div>
 
@@ -120,7 +123,7 @@ export const Hero = memo((props: HeroProps) => {
                             />
                             <LinkButton
                                 {...button2}
-                                variant="outlinedDark"
+                                variant={isDark ? "outlinedLight" : "outlinedDark"}
                             />
                         </div>
 
@@ -132,12 +135,27 @@ export const Hero = memo((props: HeroProps) => {
         }
         <div className={classes.imageAndStatisticsWrapper}>
 
-            <PictureAnimator
-                {...animatedPicture}
-                width={parseInt(theme.spacing(93))}
-                height={parseInt(theme.spacing(93)) / 100 * 85}
-                borderRadius={windowInnerWidth < theme.breakpoints.values.md ? "0px" : "0px 44%"}
-            />
+            {
+                (animatedPicture !== undefined && loopedVideo === undefined) &&
+                <PictureAnimator
+                    {...animatedPicture}
+                    width={parseInt(theme.spacing(93))}
+                    height={parseInt(theme.spacing(93)) / 100 * 85}
+                    borderRadius={windowInnerWidth < theme.breakpoints.values.md ? "0px" : "0px 44%"}
+                    className={classes.animatedPicture}
+                />
+            }
+
+            {
+                (loopedVideo !== undefined && animatedPicture === undefined) &&
+                <LoopedVideo 
+                    className={classes.loopedVideo}
+                    width={parseInt(theme.spacing(93))}
+                    height={parseInt(theme.spacing(93))}
+                    {...loopedVideo}
+                />
+            }
+
             <div className={classes.statisticCard}>
                 <StatisticsCard
                     {...statisticCard}
@@ -158,7 +176,7 @@ export const Hero = memo((props: HeroProps) => {
                     />
                     <LinkButton
                         {...button2}
-                        variant="outlinedDark"
+                        variant={isDark ? "outlinedLight" : "outlinedDark"}
                         className={classes.mobileLinkButton}
                     />
                 </div>
@@ -322,9 +340,15 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
                 }
             })()
         },
+        "mobileHighlight": {
+            "textAlign": "center"
+
+        },
         "mobileHeading1": {
             "textAlign": "center"
-        }
+        },
+        "animatedPicture": {},
+        "loopedVideo": {}
 
     })
 })

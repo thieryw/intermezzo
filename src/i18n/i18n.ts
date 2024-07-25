@@ -4,13 +4,16 @@ import type {
 	ComponentKeyHeaderFooter,
 	ComponentKeyPassCulture,
 	ComponentKeyMediation,
-	ComponentKeyRp
+	ComponentKeyRp,
+	ComponentKeyFestival
+
 } from "./types";
 import {translation as homeTranslation} from "./resources/fr/home"
 import {translation as headerFooterTranslation} from "./resources/fr/headerAndFooter";
 import {translation as passCultureTranslation} from "./resources/fr/passCulture";
 import {translation as mediationTranslation} from "./resources/fr/mediation";
 import {translation as rpTranslation} from "./resources/fr/rp";
+import { translation as festivalTranslation } from "./resources/fr/festival";
 export { declareComponentKeys };
 
 //List the languages you with to support
@@ -37,7 +40,8 @@ export const {
 	ComponentKeyHome |
 	ComponentKeyPassCulture |
 	ComponentKeyMediation |
-	ComponentKeyRp
+	ComponentKeyRp |
+	ComponentKeyFestival
 >()(
 	{
 		languages,
@@ -51,7 +55,8 @@ export const {
 			"Footer": headerFooterTranslation.Footer,
 			"PassCulture": passCultureTranslation.PassCulture,
 			"Mediation": mediationTranslation.Mediation,
-			"Rp": rpTranslation.Rp
+			"Rp": rpTranslation.Rp,
+			"Festival": festivalTranslation.Festival
 		}
 		/* spell-checker: enable */
 	}

@@ -31,7 +31,10 @@ export function App() {
             }
           }}
         />
-        <BlurryBackground animationPlaying={!isOpen} />
+        {
+          //!isDark &&
+          <BlurryBackground animationPlaying={!isOpen} />
+        }
         <Body />
 
     </>

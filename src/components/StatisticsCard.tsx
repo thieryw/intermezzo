@@ -62,14 +62,14 @@ export const StatisticsCard = memo((props: StatisticsCardProps) => {
 })
 
 const useStyles = tss
-    .withName("StatisticsCard").create(({ theme }) => {
+    .withName("StatisticsCard").create(({ theme, isDark }) => {
         return ({
 
             "root": {
                 "position": "relative",
                 "alignSelf": "self-start",
                 "display": "inline-flex",
-                "backgroundColor": theme.palette.white.main,
+                "backgroundColor": isDark ? "rgba(239, 239, 240, 0.05)" : theme.palette.white.main,
                 "padding": theme.spacing(6),
                 "borderRadius": theme.spacing(6),
                 "boxShadow": theme.shadows[1],
@@ -79,6 +79,8 @@ const useStyles = tss
                 "boxSizing": "border-box",
                 "gap": theme.spacing(6),
                 "justifyContent": "center",
+                "border": !isDark ? undefined : `solid ${theme.palette.white.main} 1px`,
+                "backdropFilter": !isDark ? undefined : "blur(10px)",
 
             },
             "statWrapper": {
