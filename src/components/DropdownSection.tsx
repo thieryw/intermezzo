@@ -18,7 +18,7 @@ export type DropdownSectionProps = {
     isStateBlocked?: boolean;
     openMessage?: string;
     closeMessage?: string;
-    title?: string;
+    title?: ReactNode | string;
     aside?: ReactNode;
     media?: ReactNode;
     paragraphTitle?: ReactNode
@@ -86,7 +86,14 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
                 <div className={classes.bannerBackground}>
 
                 </div>
-                <Typo className={classes.bannerText} variant="heading1">{title}</Typo>
+                {
+                    (()=>{
+                        if(typeof title === "string"){
+                            return <Typo className={classes.bannerText} variant="heading1">{title}</Typo>
+                        }
+                        return title
+                    })()
+                }
                 {
                     (openMessage !== undefined && closeMessage !== undefined && !isStateBlocked) &&
                     <div className={classes.openCloseMessage}>
@@ -118,10 +125,15 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
                     <div className={classes.textContent}>
                         {
                             paragraphTitle !== undefined &&
-                            paragraphTitle
+                            <div className={classes.paragraphsTitle}>
+                                {
+                                    paragraphTitle
+                                }
+
+                            </div>
                         }
                         {
-                            paragraphs.map(({ media, paragraph, subtitle, title }, index) => <div key={index}>
+                            paragraphs.map(({ media, paragraph, subtitle, title }, index) => <div className={classes.paragraphWrapper} key={index}>
                                 {
                                     title !== undefined &&
                                     <Typo className={classes.paragraphTitle} variant="heading3">{title}</Typo>
@@ -198,6 +210,7 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "paddingLeft": theme.spacing(31),
             "display": "flex",
             "alignItems": "center",
+            "cursor": "pointer",
             "gap": theme.spacing(4),
             [theme.breakpoints.down("mdPlus")]: {
                 "paddingLeft": 0,
@@ -243,6 +256,10 @@ const useStyles = tss.withName("DropdownSection").withParams<
         "toggleText": {
             "color": theme.palette.white.main,
             "textDecoration": "underline"
+        },
+        "paragraphWrapper": {
+            "marginBottom": theme.spacing(5)
+
         },
         "bannerBackground": {
             "position": "absolute",
@@ -314,7 +331,6 @@ const useStyles = tss.withName("DropdownSection").withParams<
         "textContent": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(5),
             "maxWidth": 780,
             [theme.breakpoints.down("md")]: {
                 ...(() => {
@@ -326,10 +342,24 @@ const useStyles = tss.withName("DropdownSection").withParams<
                 })()
             }
         },
-        "paragraphTitle": {},
-        "paragraph": {},
-        "subtitle": {},
-        "paragraphMedia": {},
+        "paragraphsTitle": {
+            "marginBottom": theme.spacing(5)
+
+        },
+        "paragraphTitle": {
+            "marginBottom": theme.spacing(5)
+        },
+        "paragraph": {
+            "marginBottom": theme.spacing(5)
+        },
+        "subtitle": {
+            "color": theme.palette.pink.main,
+            "marginBottom": theme.spacing(5)
+        },
+        "paragraphMedia": {
+            "marginTop": theme.spacing(3),
+            "marginBottom": theme.spacing(4)
+        },
         "dateAndEventWrapper": {
             "marginTop": theme.spacing(2)
         },
