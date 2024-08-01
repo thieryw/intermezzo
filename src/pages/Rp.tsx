@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { memo } from "react";
 import { tss } from "tss";
 import { declareComponentKeys, useTranslation } from "i18n";
 import { Hero } from "components/Hero";
@@ -6,9 +6,7 @@ import Typo from "@mui/material/Typography";
 import heroJpg from "assets/jpg/rp/recital-prod-hero-image.jpg";
 import heroWebp from "assets/webp/rp/recital-prod-hero-image.webp";
 import rpMp4 from "assets/mp4/recital-prod-video.mp4";
-import playSvg from "assets/svg/icons/play-icon.svg";
 import { ReactSVG } from "react-svg";
-import { useConstCallback } from "powerhooks/useConstCallback";
 import selectionPng from "assets/png/rp/recitalprod-transparent-img-1.png";
 import { AnimatedBanner } from "components/AnimatedBanner";
 import sponsorSvg1 from "assets/svg/rp/logo-academie-bordeaux.svg";
@@ -81,26 +79,6 @@ const medias = {
 
 
 export const Rp = memo(() => {
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    const handlePlay = useConstCallback(() => {
-        if (videoRef.current === null) {
-            return;
-        }
-        if (isPlaying) {
-            videoRef.current.pause();
-        } else {
-            videoRef.current.play();
-        }
-        setIsPlaying(!isPlaying);
-
-    });
-
-    const handlePause = useConstCallback(() => {
-        setIsPlaying(false);
-    })
 
     const { t } = useTranslation("Rp");
 
