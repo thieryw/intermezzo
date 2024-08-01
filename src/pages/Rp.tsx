@@ -52,6 +52,7 @@ import rpPng2 from "assets/png/rp/recitalprod-transparent-img-2.png";
 import { LinkButton } from "components/LinkButton";
 import instaSvg from "assets/svg/icons/fInsta.svg";
 import emailSvg from "assets/svg/icons/emailIcon.svg";
+import { VideoSecondary } from "components/VideoSecondary";
 
 const medias = {
     "jpg": [
@@ -160,18 +161,11 @@ export const Rp = memo(() => {
             }}
         />
         <section className={classes.videoSection}>
-            <video onPause={handlePause} controls={isPlaying} ref={videoRef} className={classes.video} src={rpMp4} />
-            <div style={{ "display": isPlaying ? "none" : "flex" }} className={classes.playCallToActionWrapper}>
-                <div onClick={handlePlay} className={classes.playCallToAction}>
-                    <ReactSVG
-                        src={playSvg}
-                        className={classes.playIcon}
-                    />
-                    <Typo style={{ "color": theme.palette.white.main, "textDecoration": "underline" }} variant="paragraph1">{t("playVideo")}</Typo>
-
-                </div>
-
-            </div>
+            <VideoSecondary 
+                playVideoMsg={t("playVideo")}
+                previewScr={rpMp4}
+                videoId="UlFsoRQYVrs"
+            />
         </section>
         <section className={classes.selectionSection}>
             <img className={classes.selectionImage} src={selectionPng} alt="selection background" />
@@ -454,40 +448,13 @@ const useStyles = tss.withName("Rp").create(({ theme }) => {
             "maxWidth": 750,
         },
         "videoSection": {
-            "position": "relative",
-            "width": "100vw",
-            "height": "40vw",
-            "marginTop": theme.spacing(12)
+            "marginTop": theme.spacing(12),
 
         },
         "video": {
             "objectFit": "cover",
             "width": "100%",
             "height": "100%"
-        },
-        "playCallToActionWrapper": {
-            "position": "absolute",
-            "display": "flex",
-            "bottom": theme.spacing(8),
-            "right": theme.spacing(21),
-            [theme.breakpoints.down("sm")]: {
-                "bottom": 0,
-                "right": 0,
-                "width": "100%",
-                "height": "100%",
-                "justifyContent": "center",
-                "alignItems": "center"
-            }
-
-        },
-        "playCallToAction": {
-            "display": "flex",
-            "alignItems": "center",
-            "gap": theme.spacing(1),
-            "position": "relative",
-            ":hover": {
-                "cursor": "pointer"
-            },
         },
         "playIcon": {
             "& svg": {

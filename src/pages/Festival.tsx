@@ -53,6 +53,8 @@ import ouv12020webp from "assets/webp/festival/2020/2020-preview-ouverture-1.web
 import ouv2020webp from "assets/webp/festival/2020/2020-preview-ouverture-2.webp";
 import sorh2020webp from "assets/webp/festival/2020/2020-preview-sorhabchitan.webp";
 import seph2020webp from "assets/webp/festival/2020/2020-preview-zephir.webp";
+import { VideoSecondary } from "components/VideoSecondary";
+import festMp4 from "assets/mp4/festival-video.mp4";
 
 
 
@@ -133,6 +135,11 @@ export const Festival = memo(() => {
                 <img src={svgOnba} alt="sponsor" />,
                 <img src={svgPc} alt="sponsor" />
             ]}
+        />
+        <VideoSecondary 
+            previewScr={festMp4}
+            playVideoMsg={t("readVid")}
+            videoId="UlFsoRQYVrs"
         />
         <DropdownSection
             className={classes.firstSection}
@@ -725,7 +732,14 @@ const useStyles = tss.create(({ theme }) => {
             }
         },
         "animatedBanner": {
-            "marginTop": theme.spacing(25)
+            ...(()=>{
+                const value = theme.spacing(25);
+                return {
+                    "marginTop": value,
+                    "marginBottom": value
+
+                }
+            })()
         },
         "videoFirst": {
             "marginBottom": theme.spacing(3)
