@@ -70,7 +70,7 @@ export const DraggableSliderWrapper = memo((props: DraggableSliderWrapperProps) 
 const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
     return ({
         "root": {
-            "width": "100vw",
+            //"width": "100vw",
             "position": "relative",
             ...(() => {
                 const value = theme.spacing(11);

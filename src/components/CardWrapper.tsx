@@ -51,6 +51,7 @@ export const CardWrapper = memo((props: CardWrapperProps) => {
                             return;
                         }
                         return <div
+                            className={classes.cardWrapper}
                             key={index}
                             style={ isScaled ? {
                                 ...(windowInnerWidth < 400 ? {
@@ -120,7 +121,6 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
         "textWrapper": {
             "display": "flex",
             "position": "relative",
-            "gap": theme.spacing(26),
             "alignItems": "center",
             "marginBottom": theme.spacing(14),
             ...(()=>{
@@ -131,7 +131,6 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
                 }
             })(),
             [theme.breakpoints.down("md")]: {
-                "gap": theme.spacing(12),
                 "flexDirection": "column",
                 "alignItems": "center"
             },
@@ -149,13 +148,19 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
             "position": "relative",
             "top": theme.spacing(2),
             "color": theme.palette.white.main,
-            "textAlign": "center",
             [theme.breakpoints.down("md")]: {
                 "width": 600,
-                "maxWidth": "95vw"
+                "maxWidth": "95vw",
+                "textAlign": "center",
             }
         },
-        "titleWrapper": {},
+        "titleWrapper": {
+            "marginRight": theme.spacing(26),
+            [theme.breakpoints.down("md")]: {
+                "marginRight": 0,
+                "marginBottom": theme.spacing(12)
+            }
+        },
         "cards": {
             "display": "flex",
             [theme.breakpoints.down("md")]: {
@@ -166,18 +171,30 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
                 "transform": `scale(${windowInnerWidth / theme.breakpoints.values.xl})`,
                 "transformOrigin": "top left",
                 "width": 1980,
+                "border": "solid red 2px"
                 //"justifyContent": "center"
             } : {
                 "flexWrap": "wrap"
-            }),
-            ...(windowInnerWidth < 400 ? {
-
-            } : {
-                "gap": theme.spacing(5),
             }),
 
 
 
         },
+        "cardWrapper": {
+            ...(() => {
+                const value = theme.spacing(2);
+                return {
+                    [theme.breakpoints.between("xs", "md")]: {
+                        "marginTop": value,
+                        "marginBottom": value
+                    },
+                    "marginRight": value,
+                    [theme.breakpoints.up("md")]: {
+                        "marginLeft": value,
+
+                    }
+                }
+            })()
+        }
     })
 })

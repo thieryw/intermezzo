@@ -630,7 +630,9 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
             "display": "flex",
             "gap": 42,
             "flexWrap": "wrap",
-            [theme.breakpoints.up("md")]: {
+            //"width": "100vw",
+            "justifyContent": "center",
+            [theme.breakpoints.between("md", "xl")]: {
                 "transform": `scale(${windowInnerWidth / 1980})`,
                 "transformOrigin": "bottom left",
                 "width": 1980,
@@ -638,7 +640,6 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
                 "left": "13.5%"
             },
             [theme.breakpoints.down("md")]: {
-                "justifyContent": "center",
             }
         },
         "cubeCard": {
@@ -682,12 +683,16 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
             "display": "flex",
             "alignItems": "center",
             "backgroundColor": theme.palette.lightOrange.main,
-            "position": "relative",
+            "position": "absolute",
             [theme.breakpoints.up("xs")]: {
 
                 "transform": "rotate(6deg) translateX(-2vw)",
-                "top": 30,
+                "bottom": -100,
                 "width": "105vw",
+            },
+            [theme.breakpoints.up("xl")]: {
+                "left": -(windowInnerWidth - theme.breakpoints.values.xl) / 2
+
             }
         },
         "animatedBannerText": {

@@ -107,6 +107,7 @@ export const Footer = memo(() => {
 									return <Typography
 										variant="paragraph1"
 										key={index}
+										className={classes.addressLine}
 									>
 										<a
 											href={`mailto:${asso}`}
@@ -116,7 +117,7 @@ export const Footer = memo(() => {
 										</a>
 									</Typography>
 								}
-								return <Typography key={index} style={{ "color": theme.palette.white.main }} variant="paragraph1">{asso}</Typography>
+								return <Typography className={classes.addressLine} key={index} variant="paragraph1">{asso}</Typography>
 							})
 						}
 					</div>
@@ -128,6 +129,7 @@ export const Footer = memo(() => {
 									instaSvg,
 									ytSvg,
 								].map(svg => <Logo
+									className={classes.socialLogo}
 									key={svg}
 									logoUrl={svg}
 									width={30}
@@ -172,7 +174,7 @@ export const Footer = memo(() => {
 	</footer>
 })
 
-const useStyles = tss.withName("Footer").create(({ theme }) => {
+const useStyles = tss.withName("Footer").create(({ theme, windowInnerWidth }) => {
 	return ({
 		"root": {
 			"position": "relative",
@@ -278,64 +280,95 @@ const useStyles = tss.withName("Footer").create(({ theme }) => {
 		"contentWrapper": {
 			"display": "flex",
 			"marginTop": theme.spacing(11),
-			"gap": theme.spacing(11),
 			"justifyContent": "flex-end",
 			"flexWrap": "wrap",
 			[theme.breakpoints.down("md")]: {
 				"marginTop": theme.spacing(17),
 				"flexDirection": "column",
 				"alignItems": "center",
-				"gap": theme.spacing(17),
 			}
 		},
 		"links": {
 			"display": "flex",
 			"flexDirection": "column",
-			"gap": theme.spacing(2),
 			"paddingInlineStart": 0,
+			"marginRight": theme.spacing(5),
 			[theme.breakpoints.down("md")]: {
 				"alignItems": "center",
 				"marginRight": theme.spacing(10),
-				"gap": theme.spacing(6)
 			}
 		},
 		"link": {
-			"color": theme.palette.white.main
+			"color": theme.palette.white.main,
+			...(()=>{
+				const value= theme.spacing(1);
+				return {
+					"marginTop": value,
+					"marginBottom": value
+				}
+
+			})()
 
 		},
 
 		"addressWrapper": {
 			"display": "flex",
 			"flexDirection": "column",
-			"gap": theme.spacing(2),
-			"marginTop": theme.spacing(3),
+			"marginTop": theme.spacing(2),
+			"marginLeft": theme.spacing(5),
+			"marginRight": theme.spacing(5),
 			[theme.breakpoints.down("md")]: {
 				"display": "none"
 			}
 		},
+		"addressLine": {
+			"color": theme.palette.white.main,
+			...(()=>{
+				const value = theme.spacing(1);
+				return {
+					"marginTop": value,
+					"marginBottom": value
+				}
+			})(),
+
+		},
 
 		"socialLegalDesign": {
 			"marginTop": theme.spacing(2),
+			"marginLeft": theme.spacing(5),
 			[theme.breakpoints.down("md")]: {
 				"display": "flex",
 				"flexDirection": "column",
 				"alignItems": "center",
-				"gap": theme.spacing(17)
+				"marginLeft": 0
 			}
 		},
 		"socialWrapper": {
 			"display": "flex",
-			"gap": theme.spacing(4),
 			"alignItems": "center",
-			"marginBottom": theme.spacing(6),
-			[theme.breakpoints.down("md")]: {
-				"gap": theme.spacing(8)
+			"marginBottom": theme.spacing(17),
+			"marginTop": theme.spacing(15),
+			[theme.breakpoints.up("md")]: {
+				"position": "relative",
+				"right": theme.spacing(2),
+				"marginBottom": theme.spacing(6),
+				"marginTop": 0
+
 			}
+		},
+		"socialLogo": {
+			...(()=>{
+				const value = windowInnerWidth >= theme.breakpoints.values.md ? theme.spacing(2) : theme.spacing(4);
+				return {
+					"marginRight": value,
+					"marginLeft": value
+				}
+			})(),
+
 		},
 		"legalDesignWrapper": {
 			[theme.breakpoints.down("md")]: {
 				"display": "flex",
-				"gap": theme.spacing(3),
 				"flexDirection": "column",
 				"alignItems": "center"
 			}

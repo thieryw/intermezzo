@@ -330,14 +330,18 @@ const useStyles = tss.withName("Mediation").create(({ theme }) => {
             "textAlign": "center"
         },
         "imageSection": {
-            "width": "100vw",
-            "height": "40vw",
+
             "overflow": "hidden",
             "position": "relative",
             [theme.breakpoints.down("md")]: {
 
                 "marginBottom": theme.spacing(19)
-            }
+            },
+            [theme.breakpoints.down("xl")]: {
+                "width": "100vw",
+            },
+            "aspectRatio": 2.5
+
         },
         "backgroundImage": {
             "objectFit": "cover",

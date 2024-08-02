@@ -167,8 +167,10 @@ const useStyles = tss.withName("VideoSecondary").withParams<{ isLightBoxOpen: bo
         },
         "inner": {
             "position": "relative",
-            "width": "100vw",
-            "height": "40vw",
+            [theme.breakpoints.down("xs")]: {
+                "width": "100vw",
+            },
+            "aspectRatio": 2.5
         },
 
         "video": {
