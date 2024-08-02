@@ -55,12 +55,32 @@ import sorh2020webp from "assets/webp/festival/2020/2020-preview-sorhabchitan.we
 import seph2020webp from "assets/webp/festival/2020/2020-preview-zephir.webp";
 import { VideoSecondary } from "components/VideoSecondary";
 import festMp4 from "assets/mp4/festival-video.mp4";
+import { Surtitle } from "components/Surtitle"
+import { LinkButton } from "components/LinkButton";
 
 
 
 export const Festival = memo(() => {
     const { t } = useTranslation("Festival");
     const { classes, theme, windowInnerWidth } = useStyles();
+    const paragraphs = [
+
+        {
+            "title": t("missionParagraphTitle1"),
+            "paragraph": t("missionParagraph1")
+
+        },
+        {
+            "title": t("missionParagraphTitle2"),
+            "paragraph": t("missionParagraph2")
+
+        },
+        {
+            "title": t("missionParagraphTitle3"),
+            "paragraph": t("missionParagraph3")
+
+        },
+    ]
     return <div>
         <Hero
             classes={{
@@ -136,11 +156,74 @@ export const Festival = memo(() => {
                 <img src={svgPc} alt="sponsor" />
             ]}
         />
-        <VideoSecondary 
+        <VideoSecondary
             previewScr={festMp4}
             playVideoMsg={t("readVid")}
             videoId="UlFsoRQYVrs"
         />
+        <div className={classes.engagement}>
+            <div className={classes.titleContactWrapper}>
+                <div>
+                    <Surtitle
+                        surtitle={t("missionSurtitle")}
+                        className={classes.missionSurtitle}
+                    />
+                    <Typo variant="heading2">{t("missionTitle")}</Typo>
+
+                </div>
+                {
+                    (() => {
+                        if (windowInnerWidth < theme.breakpoints.values.md) {
+                            return undefined;
+                        }
+                        return <LinkButton
+                            {...routes.contact().link}
+                            label={t("heroButton2")}
+                            variant="outlinedLight"
+                        />
+                    })()
+                }
+            </div>
+
+            <div className={classes.paragraphs}>
+                {
+                    paragraphs.map(({ paragraph, title }, index) => <div key={index} className={classes.paragraph}>
+                        <Typo className={classes.paragraphTitle} variant="highLight3">{title}</Typo>
+                        <Typo variant="paragraph1">{paragraph}</Typo>
+                    </div>)
+                }
+
+            </div>
+            {
+                (()=>{
+                    if (windowInnerWidth >= theme.breakpoints.values.md) {
+                        return undefined;
+                    }
+                    return <div style={{
+                        "display": "flex",
+                        "justifyContent": "center",
+                        "marginTop": theme.spacing(20)
+                    }}>
+                        <LinkButton
+                            {...routes.contact().link}
+                            label={t("heroButton2")}
+                            variant="outlinedLight"
+                        />
+                    </div>
+                })()
+            }
+
+        </div>
+        <div className={classes.yearsTitle}>
+            <Surtitle 
+                surtitle={t("archivesSurtitle")}
+            />
+            <div className={classes.yearTitleWrapper}>
+                <Typo variant="heading2">{t("archivesTitle")}</Typo>
+                <Typo variant="highLight2">{t("archivesHighlight")}</Typo>
+            </div>
+
+        </div>
         <DropdownSection
             className={classes.firstSection}
             aside={
@@ -732,7 +815,7 @@ const useStyles = tss.create(({ theme }) => {
             }
         },
         "animatedBanner": {
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(25);
                 return {
                     "marginTop": value,
@@ -746,6 +829,65 @@ const useStyles = tss.create(({ theme }) => {
         },
         "firstSection": {
             "marginTop": theme.spacing(20)
+        },
+        "engagement": {
+            "marginTop": theme.spacing(29)
+        },
+        "titleContactWrapper": {
+            "display": "flex",
+            "marginBottom": theme.spacing(20),
+            "justifyContent": "center",
+            [theme.breakpoints.up("md")]: {
+                "justifyContent": "space-between",
+                "alignItems": "center",
+                ...(() => {
+                    const value = theme.spacing(30);
+                    return {
+                        "paddingLeft": value,
+                        "paddingRight": value
+                    }
+                })(),
+
+            }
+
+        },
+        "missionSurtitle": {
+            "marginBottom": theme.spacing(2),
+            "marginLeft": theme.spacing(1)
+        },
+        "paragraphs": {
+            "display": "flex",
+            "justifyContent": "center",
+            "flexWrap": "wrap"
+        },
+        "paragraph": {
+            "maxWidth": 400,
+            ...(() => {
+                const leftRight = theme.spacing(4);
+                const topBottom = theme.spacing(5);
+                return {
+                    "marginLeft": leftRight,
+                    "marginRight": leftRight,
+                    "marginTop": topBottom,
+                    "marginBottom": topBottom
+                }
+            })()
+        },
+        "paragraphTitle": {
+            "marginBottom": theme.spacing(7)
+        },
+        "yearsTitle": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "marginTop": theme.spacing(34)
+        },
+        "yearTitleWrapper": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "marginTop": theme.spacing(7)
+            
         }
     })
 })
