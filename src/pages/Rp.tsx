@@ -187,7 +187,7 @@ export const Rp = memo(() => {
                                     },
                                     {
                                         "srcSet": presJpg1,
-                                        "type": "image/webp"
+                                        "type": "image/jpeg"
                                     }
                                 ]}
                                 title={t("serviceCard1Title")}
@@ -202,7 +202,7 @@ export const Rp = memo(() => {
                                     },
                                     {
                                         "srcSet": presJpg2,
-                                        "type": "image/webp"
+                                        "type": "image/jpeg"
                                     }
                                 ]}
                                 title={t("serviceCard2Title")}
@@ -217,7 +217,7 @@ export const Rp = memo(() => {
                                     },
                                     {
                                         "srcSet": presJpg3,
-                                        "type": "image/webp"
+                                        "type": "image/jpeg"
                                     }
                                 ]}
                                 title={t("serviceCard3Title")}
@@ -232,7 +232,7 @@ export const Rp = memo(() => {
                                     },
                                     {
                                         "srcSet": presJpg4,
-                                        "type": "image/webp"
+                                        "type": "image/jpeg"
                                     }
                                 ]}
                                 title={t("serviceCard4Title")}
@@ -267,7 +267,7 @@ export const Rp = memo(() => {
                                 },
                                 {
                                     "srcSet": presJpg1,
-                                    "type": "image/webp"
+                                    "type": "image/jpeg"
                                 }
                             ]}
                             title={t("serviceCard1Title")}
@@ -282,7 +282,7 @@ export const Rp = memo(() => {
                                 },
                                 {
                                     "srcSet": presJpg2,
-                                    "type": "image/webp"
+                                    "type": "image/jpeg"
                                 }
                             ]}
                             title={t("serviceCard2Title")}
@@ -297,7 +297,7 @@ export const Rp = memo(() => {
                                 },
                                 {
                                     "srcSet": presJpg3,
-                                    "type": "image/webp"
+                                    "type": "image/jpeg"
                                 }
                             ]}
                             title={t("serviceCard3Title")}
@@ -312,7 +312,7 @@ export const Rp = memo(() => {
                                 },
                                 {
                                     "srcSet": presJpg4,
-                                    "type": "image/webp"
+                                    "type": "image/jpeg"
                                 }
                             ]}
                             title={t("serviceCard4Title")}

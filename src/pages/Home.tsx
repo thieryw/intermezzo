@@ -237,7 +237,7 @@ export const Home = memo(() => {
                         },
                         {
                             "srcSet": raphaelPortraitJpg,
-                            "type": "image/jpg"
+                            "type": "image/jpeg"
                         }
                     ]}
                     name={t("raphaelName")}

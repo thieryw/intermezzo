@@ -165,7 +165,7 @@ export const PassCulture = memo(() => {
                         },
                         {
                             "srcSet": raphaelPortraitJpg,
-                            "type": "image/jpg"
+                            "type": "image/jpeg"
                         }
                     ]}
                     name={t("raphaelName")}

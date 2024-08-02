@@ -174,7 +174,7 @@ export const Mediation = memo(() => {
                     },
                     {
                         "srcSet": gestJpg,
-                        "type": "image/webp"
+                        "type": "image/jpeg"
                     }
                 ]}
                 width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
