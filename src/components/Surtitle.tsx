@@ -17,7 +17,9 @@ export type SurtitleProps = {
 
 export const Surtitle = memo((props: SurtitleProps) => {
     const { surtitle, className } = props;
-    const { classes, cx } = useStyles();
+    const { classes, cx } = useStyles({
+        "classesOverrides": props.classes
+    });
     return <div className={cx(classes.root, className)}>
         <ReactSVG 
             className={classes.star}

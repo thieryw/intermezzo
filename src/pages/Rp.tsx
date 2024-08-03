@@ -380,6 +380,9 @@ export const Rp = memo(() => {
                 <Surtitle
                     surtitle={t("contactSurtitle")}
                     className={classes.contactSurtitle}
+                    classes={{
+                        "star": classes.contactStar
+                    }}
                 />
                 <div className={classes.contactTitleWrapper}>
                     <Typo variant="heading2">{t("contactTitle")}</Typo>
@@ -513,7 +516,14 @@ const useStyles = tss.withName("Rp").create(({ theme }) => {
             "position": "relative"
         },
         "contactSurtitle": {
-            "marginBottom": theme.spacing(4)
+            "marginBottom": theme.spacing(4),
+            "flexDirection": "row",
+            "alignItems": "center"
+        },
+        "contactStar": {
+            "marginBottom": 0,
+            "marginRight": theme.spacing(3)
+
         },
         "contactTitleWrapper": {
             "marginBottom": theme.spacing(4)
