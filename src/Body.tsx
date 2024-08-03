@@ -9,6 +9,8 @@ import { Rp } from "pages/Rp";
 import { Festival } from "pages/Festival";
 import { useIsDark } from "theme/useIsDark";
 import { useEffect } from "react";
+import { Contact } from "pages/Contact";
+
 
 export type PropsOfBody = {
     className?: string;
@@ -39,6 +41,7 @@ export function Body(props: PropsOfBody) {
                 {route.name === "mediation" && <Mediation />}
                 {route.name === "rp" && <Rp />}
                 {route.name === "festival" && <Festival />}
+                {route.name === "contact" && <Contact />}
 
             </div>
             <div className={classes.footerWrapper}>
