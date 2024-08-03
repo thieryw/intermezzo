@@ -22,6 +22,9 @@ export type ComponentKeyRp =
 export type ComponentKeyFestival =
     | import("pages/Festival").I18n
 
+export type ComponentKeyContact = 
+    | import("pages/Contact").I18n
+
 export type ComponentKeyHeaderFooter =
     | import("Header").I18n
     | import("Footer").I18n
@@ -64,6 +67,13 @@ export type TranslationRp<L extends Language> = GenericTranslations<
 
 export type TranslationFestival<L extends Language> = GenericTranslations<
     ComponentKeyFestival,
+    Language,
+    typeof fallbackLanguage,
+    L
+>
+
+export type TranslationContact<L extends Language> = GenericTranslations<
+    ComponentKeyContact,
     Language,
     typeof fallbackLanguage,
     L

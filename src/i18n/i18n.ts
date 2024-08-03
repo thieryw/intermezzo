@@ -1,19 +1,21 @@
 import { createI18nApi, declareComponentKeys } from "i18nifty";
 import type {
-	ComponentKeyHome, 
+	ComponentKeyHome,
 	ComponentKeyHeaderFooter,
 	ComponentKeyPassCulture,
 	ComponentKeyMediation,
 	ComponentKeyRp,
-	ComponentKeyFestival
+	ComponentKeyFestival,
+	ComponentKeyContact
 
 } from "./types";
-import {translation as homeTranslation} from "./resources/fr/home"
-import {translation as headerFooterTranslation} from "./resources/fr/headerAndFooter";
-import {translation as passCultureTranslation} from "./resources/fr/passCulture";
-import {translation as mediationTranslation} from "./resources/fr/mediation";
-import {translation as rpTranslation} from "./resources/fr/rp";
+import { translation as homeTranslation } from "./resources/fr/home"
+import { translation as headerFooterTranslation } from "./resources/fr/headerAndFooter";
+import { translation as passCultureTranslation } from "./resources/fr/passCulture";
+import { translation as mediationTranslation } from "./resources/fr/mediation";
+import { translation as rpTranslation } from "./resources/fr/rp";
 import { translation as festivalTranslation } from "./resources/fr/festival";
+import { translation as contactTranslation } from "./resources/fr/contact";
 export { declareComponentKeys };
 
 //List the languages you with to support
@@ -27,21 +29,22 @@ export type Language = "fr";
 
 export type LocalizedString = Parameters<typeof resolveLocalizedString>[0];
 
-export const { 
-	useTranslation, 
-	resolveLocalizedString, 
-	useLang, 
+export const {
+	useTranslation,
+	resolveLocalizedString,
+	useLang,
 	$lang,
 	useResolveLocalizedString,
 	/** For use outside of React */
-	getTranslation 
+	getTranslation
 } = createI18nApi<
 	ComponentKeyHeaderFooter |
 	ComponentKeyHome |
 	ComponentKeyPassCulture |
 	ComponentKeyMediation |
 	ComponentKeyRp |
-	ComponentKeyFestival
+	ComponentKeyFestival |
+	ComponentKeyContact
 >()(
 	{
 		languages,
@@ -56,7 +59,8 @@ export const {
 			"PassCulture": passCultureTranslation.PassCulture,
 			"Mediation": mediationTranslation.Mediation,
 			"Rp": rpTranslation.Rp,
-			"Festival": festivalTranslation.Festival
+			"Festival": festivalTranslation.Festival,
+			"Contact": contactTranslation.Contact
 		}
 		/* spell-checker: enable */
 	}
