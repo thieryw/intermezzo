@@ -171,8 +171,6 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
                 "transform": `scale(${windowInnerWidth / theme.breakpoints.values.xl})`,
                 "transformOrigin": "top left",
                 "width": 1980,
-                "border": "solid red 2px"
-                //"justifyContent": "center"
             } : {
                 "flexWrap": "wrap"
             }),

@@ -635,7 +635,6 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
                 "transformOrigin": "bottom left",
                 "width": 1980,
                 "position": "relative",
-                "left": "13.5%"
             },
             [theme.breakpoints.down("md")]: {
             }
