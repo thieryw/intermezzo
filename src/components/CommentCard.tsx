@@ -64,15 +64,15 @@ const useStyles = tss.withName("CommentCard").create(({ theme }) => {
             "marginBottom": theme.spacing(4)
         },
         "personWrapper": {
-            "display": "flex",
-            "gap": theme.spacing(2)
+            "display": "flex"
         },
         "pictureWrapper": {
             "width": 55,
             "height": 55,
             "borderRadius": "50%",
             "overflow": "hidden",
-            "position": "relative"
+            "position": "relative",
+            "marginRight": theme.spacing(2)
         },
         "picture": {
             "width": "100%",

@@ -36,8 +36,8 @@ export const SliderCard = memo((props: SliderCardProps) => {
         className={cx(classes.root, className)}
     >
         <div className={classes.content}>
-            <Typography variant="highLight3">{title}</Typography>
-            <Typography variant="paragraph1">{subTitle}</Typography>
+            <Typography className={classes.title} variant="highLight3">{title}</Typography>
+            <Typography className={classes.title} variant="paragraph1">{subTitle}</Typography>
             <ReactSVG className={classes.star} src={starSvg} />
         </div>
         {
@@ -109,12 +109,15 @@ const useStyles = tss
                 })(),
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": theme.spacing(3),
                 "justifyContent": "center",
                 "width": "100%",
                 "minHeight": 390,
                 "boxSizing": "border-box",
                 "transition": "opacity 700ms"
+            },
+            "title": {
+                "marginBottom": theme.spacing(3)
+
             },
             "star": {
                 "& svg": {
@@ -172,22 +175,21 @@ const useStyles = tss
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "boxSizing": "border-box",
-                "gap": theme.spacing(6)
             },
             "bulletPoint": {
                 "display": "flex",
-                "gap": theme.spacing(4),
                 "alignItems": "center",
                 "& p": {
                     "color": theme.palette.white.main
-                }
+                },
             },
             "bulletPoints": {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": theme.spacing(1)
+                "marginTop": theme.spacing(6)
             },
             "starBulletPoint": {
+                "marginRight": theme.spacing(4),
                 "& svg": {
                     ...(()=>{
                         const value = theme.spacing(2);

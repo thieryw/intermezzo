@@ -96,7 +96,7 @@ export const Hero = memo((props: HeroProps) => {
                                     && titleObj.title === undefined
                                 ) {
 
-                                    return title as ReactNode;
+                                    return <div className={classes.titleWrapper}>{title as ReactNode}</div>;
                                 }
 
                                 return <div className={classes.titleWrapper}>
@@ -120,6 +120,7 @@ export const Hero = memo((props: HeroProps) => {
                             <LinkButton
                                 {...button1}
                                 variant="filled"
+                                className={classes.button1}
                             />
                             <LinkButton
                                 {...button2}
@@ -172,7 +173,8 @@ export const Hero = memo((props: HeroProps) => {
                     <LinkButton
                         {...button1}
                         variant="filled"
-                        className={classes.mobileLinkButton}
+                        className={cx(classes.mobileLinkButton, classes.mobileLinkButton1)}
+                        
                     />
                     <LinkButton
                         {...button2}
@@ -204,9 +206,6 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
                 }
             })(),
             "boxSizing": "border-box",
-            [theme.breakpoints.down("lg")]: {
-                "gap": theme.spacing(5)
-            },
             [theme.breakpoints.down("md")]: {
                 "display": "flex",
                 "flexDirection": "column",
@@ -215,17 +214,21 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
         },
         "mobileTitleWrapper": {
             "paddingTop": theme.spacing(12),
-            "marginBottom": theme.spacing(8)
+            "marginBottom": theme.spacing(13),
         },
         "textAndButtonWrapper": {
-            "paddingTop": theme.spacing(6)
+            "paddingTop": theme.spacing(6),
+            [theme.breakpoints.down("lg")]: {
+                "marginRight": theme.spacing(5),
+            },
         },
         "paragraph": {
             ...(windowInnerWidth < 1500 ? {
                 "maxWidth": 400
             } : {
                 "maxWidth": 572,
-            })
+            }),
+            "marginBottom": theme.spacing(6)
 
         },
         "textAndButtonWrapperInner": {
@@ -233,7 +236,6 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "flex-start",
-            "gap": theme.spacing(6)
 
         },
         "imageAndStatisticsWrapper": {
@@ -242,7 +244,7 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
             "alignItems": "flex-end",
             [theme.breakpoints.down("md")]: {
                 "alignItems": "center",
-                "marginBottom": theme.spacing(6)
+                "marginBottom": theme.spacing(11)
             },
             [theme.breakpoints.down("sm")]: {
                 "marginBottom": 0
@@ -265,8 +267,11 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
         "mobileButtonWrapper": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(3),
             "alignItems": "center"
+        },
+        "mobileLinkButton1": {
+            "marginBottom": theme.spacing(3)
+
         },
         "mobileLinkButton": {
             "width": 270,
@@ -275,23 +280,30 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
         "surtitle": {
             "display": "flex",
             "alignItems": "center",
-            "gap": theme.spacing(3)
+            "marginBottom": theme.spacing(6)
         },
         "starSvg": {
             "& svg": {
                 "fill": theme.palette.lightOrange.main
+            },
+            "marginBottom": theme.spacing(3),
+            [theme.breakpoints.up("md")]: {
+                "marginRight": theme.spacing(3),
+                "marginBottom": 0
             }
         },
-        "titleWrapper": {},
+        "titleWrapper": {
+            "marginBottom": theme.spacing(6)
+        },
         "highLightTitle": {
             "display": "flex",
-            "gap": theme.spacing(4),
             "alignItems": "center"
         },
         "highLightImageWrapper": {
             "height": theme.spacing(8),
             "overflow": "hidden",
-            "borderRadius": theme.spacing(6)
+            "borderRadius": theme.spacing(6),
+            "marginRight": theme.spacing(4)
         },
         "highLightImage": {
             "objectFit": "cover",
@@ -300,7 +312,10 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
         },
         "buttonWrapper": {
             "display": "flex",
-            "gap": theme.spacing(3)
+        },
+        "button1": {
+            "marginRight": theme.spacing(3)
+
         },
         "statisticCard": {
             "position": "relative",
@@ -325,7 +340,6 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": theme.spacing(3),
             "marginBottom": theme.spacing(7)
         },
         "mobileTitle": {

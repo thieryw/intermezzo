@@ -448,7 +448,6 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": theme.spacing(5),
             [theme.breakpoints.down("sm")]: {
                 "transform": "none"
             }
@@ -467,6 +466,7 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         "partnerSurtitle": {
             "position": "relative",
             "right": theme.spacing(40),
+            "marginBottom": theme.spacing(5),
             [theme.breakpoints.down("mdPlus")]: {
                 "right": 0
             }
@@ -628,9 +628,7 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         },
         "cubeCards": {
             "display": "flex",
-            "gap": 42,
             "flexWrap": "wrap",
-            //"width": "100vw",
             "justifyContent": "center",
             [theme.breakpoints.between("md", "xl")]: {
                 "transform": `scale(${windowInnerWidth / 1980})`,
@@ -645,7 +643,15 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         "cubeCard": {
             ...(windowInnerWidth < 400 ? {
                 "display": "none"
-            } : {})
+            } : {}),
+            ...(()=>{
+                const value = 42;
+                return {
+                    "marginLeft": value,
+                    "marginRight": value
+
+                }
+            })()
         },
         "cubeCardArrow": {
             "& svg": {
@@ -676,7 +682,6 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         "textAnimatedBannerContent": {
             "display": "flex",
             "alignItems": "center",
-            "gap": theme.spacing(20),
 
         },
         "textAnimatedBanner": {
@@ -697,6 +702,7 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
         },
         "animatedBannerText": {
             "color": theme.palette.white.main,
+            "marginRight": theme.spacing(20)
         },
         "animatedBannerStar": {
             "& svg": {

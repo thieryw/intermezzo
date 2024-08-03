@@ -184,7 +184,7 @@ const useStyles = tss.withName("CardWrapper").create(({ theme, windowInnerWidth 
             ...(() => {
                 const value = theme.spacing(2);
                 return {
-                    [theme.breakpoints.between("xs", "md")]: {
+                    [theme.breakpoints.down("md")]: {
                         "marginTop": value,
                         "marginBottom": value
                     },

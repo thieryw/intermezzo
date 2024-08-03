@@ -56,14 +56,13 @@ const useStyles = tss.withName("PressFile").create(({ theme }) => {
         "root": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(5)
 
         },
         "linkWrapper": {
+            "marginBottom": theme.spacing(5)
         },
         "link": {
             "display": "flex",
-            "gap": theme.spacing(2),
             "alignItems": "center",
             "textDecoration": "none"
 
@@ -73,22 +72,33 @@ const useStyles = tss.withName("PressFile").create(({ theme }) => {
             "textDecoration": "underline"
         },
         "linkIcon": {
+            "marginRight": theme.spacing(2),
             "& svg": {
                 "width": 24,
                 "height": 24
             }
         },
-        "organizations": {},
+        "organizations": {
+            "marginBottom": theme.spacing(5)
+        },
         "organization": {},
         "socialIcons": {
             "display": "flex",
-            "gap": theme.spacing(3),
-            "alignItems": "center"
+            "alignItems": "center",
+            "position": "relative",
+            "right": theme.spacing(1)
         },
         "socialIcon": {
             "& svg": {
                 "width": 30,
-            }
+            },
+            ...(()=>{
+                const value  = theme.spacing(1);
+                return {
+                    "marginLeft": value,
+                    "marginRight": value
+                }
+            })()
         },
 
 

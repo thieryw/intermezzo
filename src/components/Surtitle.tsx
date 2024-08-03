@@ -31,7 +31,6 @@ const useStyles = tss.withName("Surtitle").create(({theme}) => {
     return ({
         "root": {
             "display": "flex",
-            "gap": theme.spacing(3),
             "alignItems": "center",
             [theme.breakpoints.down("md")]: {
                 "flexDirection": "column",
@@ -43,6 +42,11 @@ const useStyles = tss.withName("Surtitle").create(({theme}) => {
                 "fill": theme.palette.lightOrange.main,
                 "width": theme.spacing(3),
                 "height": theme.spacing(3),
+            },
+            "marginRight": theme.spacing(3),
+            [theme.breakpoints.down("md")]: {
+                "marginRight": 0,
+                "marginBottom": theme.spacing(3)
             }
         },
         "surtitle": {}

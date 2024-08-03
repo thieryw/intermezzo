@@ -53,10 +53,12 @@ export const DraggableSliderWrapper = memo((props: DraggableSliderWrapperProps) 
             />
             <div className={classes.links}>
                 <LinkButton
+                    className={classes.button}
                     {...link1}
                     variant="outlinedLight"
                 />
                 <LinkButton
+                    className={classes.button}
                     {...link2}
                     variant={"filled"}
                 />
@@ -107,10 +109,9 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
                 "top": 0,
                 "paddingLeft": 0,
                 "justifyContent": "center",
-                "gap": theme.spacing(10),
                 "alignItems": "center",
                 "paddingTop": theme.spacing(10),
-                "paddingBottom": theme.spacing(5)
+                "paddingBottom": theme.spacing(5),
             }
         },
         "titleWrapper": {
@@ -127,7 +128,6 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
         "paragraphWrapper": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(4),
             "position": "relative",
             "top": theme.spacing(5),
             [theme.breakpoints.down("mdPlus")]: {
@@ -137,14 +137,15 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
         },
         "subtitleWrapper": {
             "display": "flex",
-            "gap": theme.spacing(4),
-            "alignItems": "center"
+            "alignItems": "center",
+            "marginBottom": theme.spacing(4)
         },
         "paragraph": {
             "width": "30vw"
 
         },
         "starSvg": {
+            "marginRight": theme.spacing(4),
             "& svg": {
                 "fill": theme.palette.lightOrange.main,
                 "width": 25,
@@ -160,7 +161,15 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
             "paddingRight": theme.spacing(20),
             "paddingTop": theme.spacing(13),
             "paddingBottom": theme.spacing(13),
-            "gap": theme.spacing(3)
+        },
+        "button": {
+            ...(()=>{
+                const value = theme.spacing(2);
+                return {
+                    "marginLeft": value,
+                    "marginRight": value
+                }
+            })()
         }
     })
 })

@@ -457,6 +457,13 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
             ":hover": {
                 "transform": "scale(1.1)",
             },
+            ...(()=>{
+                const value = theme.spacing(2);
+                return {
+                    "marginLeft": value,
+                    "marginRight": value
+                }
+            })()
 
         },
         "mobileWrapper": {
@@ -488,7 +495,6 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
             "right": 0,
             "zIndex": 4002,
             "display": "flex",
-            "gap": theme.spacing(4),
             "alignItems": "center",
             "paddingTop": theme.spacing(7),
             "paddingRight": theme.spacing(21),
@@ -498,6 +504,7 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
 
         },
         "toggleMenuButton": {
+            "marginLeft": theme.spacing(4)
         },
         "linkButton": {
             "transition": `opacity ${transitionTime}ms, background-color 300ms`,
@@ -511,7 +518,8 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
             "marginTop": theme.spacing(10),
             "marginBottom": theme.spacing(4),
             "alignItems": "center",
-            "gap": theme.spacing(4)
+            "position": "relative",
+            "right": theme.spacing(2)
         },
         "mobileLogoWrapper": {
             "marginTop": 100,

@@ -557,10 +557,12 @@ const useStyles = tss.withName("PassCulture").create(({ theme, windowInnerWidth 
             [theme.breakpoints.between("md", "xl")]: {
                 "minWidth": 400,
                 "width": 400,
-                "height": 360
+                "height": 360,
+                "marginBottom": theme.spacing(10)
             },
             [theme.breakpoints.down("xs")]: {
-                "left": 0
+                "left": 0,
+                "marginBottom": theme.spacing(10)
             }
 
         },
@@ -594,7 +596,6 @@ const useStyles = tss.withName("PassCulture").create(({ theme, windowInnerWidth 
             "display": "flex",
             "justifyContent": "space-between",
             "alignItems": "flex-end",
-            "gap": theme.spacing(10),
             [theme.breakpoints.down("md")]: {
                 "flexDirection": "column",
                 "justifyContent": "center",

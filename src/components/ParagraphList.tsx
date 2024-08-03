@@ -61,7 +61,6 @@ const useStyles = tss.withName("ParagraphList").create(({theme})=>{
             "display": "grid",
             "gridTemplateColumns": "repeat(5, 1fr)",
             "backgroundColor": theme.palette.lightOrange.main,
-            "gap": theme.spacing(7),
             ...(()=>{
                 const rightLeft = theme.spacing(7);
                 const topBottom = theme.spacing(12);
@@ -81,7 +80,9 @@ const useStyles = tss.withName("ParagraphList").create(({theme})=>{
             }
         },
         "paragraph": {},
-        "paragraphWrapper": {},
+        "paragraphWrapper": {
+            "margin": theme.spacing(3)
+        },
         "title": {
             "marginBottom": theme.spacing(3)
         },

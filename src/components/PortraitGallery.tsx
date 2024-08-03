@@ -76,6 +76,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                     return <div className={classes.mobileWrapper}>
                         <Surtitle 
                             surtitle={surtitle}
+                            className={classes.mobileSurtitle}
                         />
                         <div className={classes.mobileTitleWrapper}>
                             <Typography className={classes.mobileTitle} variant="heading2">{title}</Typography>
@@ -105,6 +106,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                                     height={400 / 3 * 2.1}
                                     borderRadius={mobilePictures.length > 1 ? "30px" : "0px"}
                                     key={index}
+                                    className={classes.pictureMobile}
                                 />)
                             }
                         </div>
@@ -135,6 +137,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                         <div className={classes.titleInner}>
                             <Surtitle
                                 surtitle={surtitle}
+                                className={classes.surtitle}
                             />
                             <div>
                                 <Typography variant="heading2">{title}</Typography>
@@ -167,6 +170,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
         {
             windowInnerWidth >= theme.breakpoints.values.md &&
             <LinkButton
+                className={classes.button}
                 {...button}
                 variant="outlinedDark"
             />
@@ -181,7 +185,11 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": theme.spacing(13)
+
+        },
+        "button": {
+            "marginTop": theme.spacing(13)
+
 
         },
         "gallery": {
@@ -202,16 +210,21 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
             "display": "flex",
             "flexDirection": "column",
             "justifyContent": "center",
-            "gap": theme.spacing(5)
 
+
+        },
+        "surtitle": {
+            "marginBottom": theme.spacing(5)
 
         },
         "mobileWrapper": {
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": 50,
             "justifyContent": "center"
+        },
+        "mobileSurtitle": {
+            "marginBottom": 50
         },
         "mobileTitleWrapper": {
             "display": "flex",
@@ -223,7 +236,8 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
                     "paddingLeft": value,
                     "paddingRight": value
                 }
-            })()
+            })(),
+            "marginBottom": theme.spacing(10)
 
         },
         "mobileTitle": {
@@ -233,7 +247,9 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            "gap": 20
+        },
+        "pictureMobile": {
+            "marginBottom": theme.spacing(10)
         }
     })
 })

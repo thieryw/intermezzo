@@ -70,14 +70,13 @@ const useStyles = tss
                 "alignSelf": "self-start",
                 "display": "inline-flex",
                 "backgroundColor": isDark ? "rgba(239, 239, 240, 0.05)" : theme.palette.white.main,
-                "padding": theme.spacing(6),
+                "padding": theme.spacing(3),
                 "borderRadius": theme.spacing(6),
                 "boxShadow": theme.shadows[1],
                 [theme.breakpoints.down("lg")]: {
                     "flexWrap": "wrap",
                 },
                 "boxSizing": "border-box",
-                "gap": theme.spacing(6),
                 "justifyContent": "center",
                 "border": !isDark ? undefined : `solid ${theme.palette.white.main} 1px`,
                 "backdropFilter": !isDark ? undefined : "blur(10px)",
@@ -86,9 +85,9 @@ const useStyles = tss
             "statWrapper": {
                 "flexGrow": 0,
                 "display": "flex",
-                "gap": theme.spacing(6),
                 "justifyContent": "center",
                 "alignItems": "center",
+                "margin": theme.spacing(3)
             },
             "decoLine": {
                 "width": 1,
@@ -97,6 +96,7 @@ const useStyles = tss
                 [theme.breakpoints.down("lg")]: {
                     "display": "none"
                 },
+                "marginRight": theme.spacing(6)
             },
             "stat": {
                 "display": "flex",

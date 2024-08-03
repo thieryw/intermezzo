@@ -264,7 +264,6 @@ const useStyles = tss.withParams<{ numberOfSlides: number; slideWidth: number; }
             "transition": "transform 1s cubic-bezier(0.25, 0.1, 0.25, 1)",
             "userSelect": "none",
             "cursor": "grab",
-            gap,
             ":active": {
                 "cursor": "grabbing"
 
@@ -283,7 +282,9 @@ const useStyles = tss.withParams<{ numberOfSlides: number; slideWidth: number; }
             "position": "relative",
             "display": "flex",
             "flexDirection": "column",
-            "flex": "0 0 auto"
+            "flex": "0 0 auto",
+            "marginLeft": gap / 2,
+            "marginRight": gap / 2
 
         },
     })

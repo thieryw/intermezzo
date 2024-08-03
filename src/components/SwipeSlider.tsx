@@ -103,7 +103,6 @@ const useStyles = tss.withName("SwipeSlider").create(({ theme }) => {
                     "paddingRight": value
                 }
             })(),
-            "gap": 51
 
         },
         "viewport": {
@@ -154,7 +153,7 @@ const useStyles = tss.withName("SwipeSlider").create(({ theme }) => {
         },
         "dots": {
             "display": "flex",
-            "gap": 25
+            "marginTop": 51
         },
         "dot": {
             "width": 12,
@@ -164,7 +163,14 @@ const useStyles = tss.withName("SwipeSlider").create(({ theme }) => {
             "transition": "background-color 500ms",
             ":hover": {
                 "cursor": "pointer"
-            }
+            },
+            ...(()=>{
+                const value = 12;
+                return {
+                    "marginLeft": value,
+                    "marginRight": value
+                }
+            })()
         }
 
     })

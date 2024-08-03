@@ -196,7 +196,6 @@ const useStyles = tss.withName("VideoSecondary").withParams<{ isLightBoxOpen: bo
         "playCallToAction": {
             "display": "flex",
             "alignItems": "center",
-            "gap": theme.spacing(1),
             ":hover": {
                 "cursor": "pointer"
             },
@@ -212,6 +211,7 @@ const useStyles = tss.withName("VideoSecondary").withParams<{ isLightBoxOpen: bo
             "left": 0
         },
         "playIcon": {
+            "marginRight": theme.spacing(1),
             "& svg": {
                 "fill": theme.palette.white.main,
                 "transition": "fill 600ms, transform 600ms",

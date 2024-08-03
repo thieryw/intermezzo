@@ -148,7 +148,7 @@ export const Rp = memo(() => {
         <section className={classes.selectionSection}>
             <img className={classes.selectionImage} src={selectionPng} alt="selection background" />
             <div className={classes.selectionText}>
-                <Typo variant="heading3">{t("selectionTitleStart")} <span style={{ ...theme.typography.highLight4 }}>{t("selectionTitleHighlight")}</span> {t("selectionTitleEnd")}</Typo>
+                <Typo className={classes.selectionHeading} variant="heading3">{t("selectionTitleStart")} <span style={{ ...theme.typography.highLight4 }}>{t("selectionTitleHighlight")}</span> {t("selectionTitleEnd")}</Typo>
                 <Typo variant="paragraph1">{t("selectionParagraph")}</Typo>
             </div>
             <AnimatedBanner
@@ -192,6 +192,7 @@ export const Rp = memo(() => {
                                 ]}
                                 title={t("serviceCard1Title")}
                                 subTitle={t("serviceCard1Paragraph")}
+                                className={classes.sliderCard}
                             />,
                             <SliderCard
                                 imageSrc={presWebp2}
@@ -207,6 +208,7 @@ export const Rp = memo(() => {
                                 ]}
                                 title={t("serviceCard2Title")}
                                 subTitle={t("serviceCard2Paragraph")}
+                                className={classes.sliderCard}
                             />,
                             <SliderCard
                                 imageSrc={presWebp3}
@@ -222,6 +224,7 @@ export const Rp = memo(() => {
                                 ]}
                                 title={t("serviceCard3Title")}
                                 subTitle={t("serviceCard3Paragraph")}
+                                className={classes.sliderCard}
                             />,
                             <SliderCard
                                 imageSrc={presWebp4}
@@ -376,13 +379,16 @@ export const Rp = memo(() => {
             <div className={classes.content}>
                 <Surtitle
                     surtitle={t("contactSurtitle")}
+                    className={classes.contactSurtitle}
                 />
-                <div>
+                <div className={classes.contactTitleWrapper}>
                     <Typo variant="heading2">{t("contactTitle")}</Typo>
                     <Typo variant="highLight2">{t("contactHighlight")}</Typo>
                 </div>
                 <div className={classes.links}>
-                    <a href="" className={classes.link}>
+                    <a href="" className={classes.link} style={{
+                        "marginBottom": theme.spacing(1)
+                    }}>
                         <ReactSVG src={instaSvg} className={classes.socialSvg} />
                         <Typo className={classes.linkText} variant="paragraph1">{t("email")}</Typo>
                     </a>
@@ -451,13 +457,16 @@ const useStyles = tss.withName("Rp").create(({ theme }) => {
             "maxWidth": 680,
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(7),
             "marginBottom": theme.spacing(17),
             "paddingLeft": theme.spacing(32),
             [theme.breakpoints.down("md")]: {
                 "paddingLeft": theme.spacing(5),
                 "paddingRight": theme.spacing(5)
             }
+        },
+        "selectionHeading": {
+            "marginBottom": theme.spacing(7)
+
         },
         "selectionImage": {
             "position": "absolute",
@@ -467,8 +476,10 @@ const useStyles = tss.withName("Rp").create(({ theme }) => {
             "objectFit": "cover",
             "zIndex": -1
         },
-        "mobileCards": {
-            "gap": theme.spacing(10)
+        "mobileCards": {},
+        "sliderCard": {
+            "marginBottom": theme.spacing(2)
+
         },
         "backgroundMobileCards": {
             "height": "90%"
@@ -498,27 +509,31 @@ const useStyles = tss.withName("Rp").create(({ theme }) => {
         "content": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(4),
             "alignItems": "flex-start",
             "position": "relative"
+        },
+        "contactSurtitle": {
+            "marginBottom": theme.spacing(4)
+        },
+        "contactTitleWrapper": {
+            "marginBottom": theme.spacing(4)
         },
         "links": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": theme.spacing(1)
+            "marginBottom": theme.spacing(4)
         },
         "link": {
-
             "display": "flex",
             "alignItems": "center",
-            "gap": theme.spacing(2),
             "textDecoration": "none",
         },
         "socialSvg": {
             "& svg": {
                 "width": 20,
                 "height": 20
-            }
+            },
+            "marginRight": theme.spacing(2)
         },
         "linkText": {
             "textDecoration": "underline"

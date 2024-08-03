@@ -211,7 +211,6 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "display": "flex",
             "alignItems": "center",
             "cursor": "pointer",
-            "gap": theme.spacing(4),
             [theme.breakpoints.down("mdPlus")]: {
                 "paddingLeft": 0,
                 "justifyContent": "center"
@@ -232,16 +231,21 @@ const useStyles = tss.withName("DropdownSection").withParams<
         "bannerText": {
             "color": theme.palette.white.main,
             "position": "relative",
+            "marginRight": theme.spacing(4),
+            [theme.breakpoints.down("md")]: {
+                "marginRight": 0,
+                "marginBottom": theme.spacing(4)
+            }
 
         },
         "openCloseMessage": {
             "display": "flex",
-            "gap": theme.spacing(2),
             "alignItems": "center"
         },
         "openCloseIcon": {
             "width": 13,
             "height": 13,
+            "marginRight": theme.spacing(2),
             "& svg": {
                 "width": 13,
                 "position": "relative",
@@ -286,9 +290,7 @@ const useStyles = tss.withName("DropdownSection").withParams<
                 }
             })(),
             "display": "flex",
-            "gap": theme.spacing(24),
             [theme.breakpoints.down("mdPlus")]: {
-                "gap": theme.spacing(5)
             },
             "justifyContent": "center",
             "boxSizing": "border-box",
@@ -297,7 +299,6 @@ const useStyles = tss.withName("DropdownSection").withParams<
                 "paddingRight": 0,
                 "paddingLeft": 0,
                 "paddingTop": 0,
-                "gap": theme.spacing(10)
             }
         },
         "interSectionLine": {
@@ -315,8 +316,14 @@ const useStyles = tss.withName("DropdownSection").withParams<
         "aside": {
             "minWidth": 220,
             "maxWidth": 220,
+            "marginRight": theme.spacing(24),
+            [theme.breakpoints.down("mdPlus")]: {
+                "marginRight": theme.spacing(5),
+            },
             [theme.breakpoints.down("md")]: {
-                "paddingLeft": theme.spacing(5)
+                "paddingLeft": theme.spacing(5),
+                "marginRight": 0,
+                "marginTop": theme.spacing(10)
             }
         },
         "content": {
