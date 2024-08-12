@@ -5,6 +5,7 @@ import { Body } from "./Body";
 import { BlurryBackground } from "components/BlurryBackground";
 import { IsMenuOpenContext } from "components/Header";
 import { useContext } from "react";
+import "./index.css";
 
 export function App() {
 

@@ -99,12 +99,12 @@ export const Home = memo(() => {
 
             }}
             button1={{
-                "href": "",
-                "label": t("heroButton1")
+                "href": "#values",
+                "label": t("heroButton1"),
             }}
             button2={{
-                "href": "",
-                "label": t("heroButton2")
+                "label": t("heroButton2"),
+                ...routes.contact().link
             }}
             surtitle={t("heroSurtitle")}
             title={{
@@ -169,7 +169,7 @@ export const Home = memo(() => {
             </div>
         </section>
         <section className={classes.sliderSection}>
-            <div className={classes.titleAndButtonWrapper}>
+            <div id="values" className={classes.titleAndButtonWrapper}>
                 <div className={classes.titleWrapper}>
                     <Surtitle
                         surtitle={t("valuesBullet")}
@@ -272,7 +272,7 @@ export const Home = memo(() => {
                 cards={[
                     <ClickableCard
                         link={{
-                            "href": ""
+                            ...routes.pc().link
                         }}
                         backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard1Surtitle")}
@@ -281,7 +281,7 @@ export const Home = memo(() => {
                     />,
                     <ClickableCard
                         link={{
-                            "href": ""
+                            ...routes.mediation().link
                         }}
                         backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard2Surtitle")}
@@ -290,7 +290,7 @@ export const Home = memo(() => {
                     />,
                     <ClickableCard
                         link={{
-                            "href": ""
+                            ...routes.rp().link
                         }}
                         backgroundColor={theme.palette.pink.main}
                         surTitle={t("servicesCard3Surtitle")}
@@ -340,7 +340,7 @@ export const Home = memo(() => {
                     <ClickableCard
                         className={classes.cubeCard}
                         link={{
-                            "href": ""
+                            ...routes.festival().link
                         }}
                         surTitle={t("festivalCardSurtitle")}
                         title={t("festivalCardTitle")}
@@ -397,10 +397,10 @@ export const Home = memo(() => {
                         }
                     ]
                 }))}
-                button={{
-                    "href": "",
-                    "label": t("joinButtonLabel")
-                }}
+                /*button={{
+                    "label": t("joinButtonLabel"),
+                    ...routes.contact().link
+                }}*/
                 surtitle={t("voluntarySurtitle")}
                 title={t("voluntaryTitle")}
                 highlight={t("voluntaryHighLight")}
@@ -526,11 +526,11 @@ const useStyles = tss.withName("Home").create(({ theme, windowInnerWidth }) => {
             }
         },
         "positionedTitle": {
-            "position": "relative",
+            /*"position": "relative",
             "left": theme.spacing(6),
             [theme.breakpoints.down("md")]: {
                 "left": 0
-            }
+            }*/
 
         },
         "contactButton": {

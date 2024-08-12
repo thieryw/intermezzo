@@ -57,6 +57,7 @@ import { VideoSecondary } from "components/VideoSecondary";
 import festMp4 from "assets/mp4/festival-video.mp4";
 import { Surtitle } from "components/Surtitle"
 import { LinkButton } from "components/LinkButton";
+import { social } from "router";
 
 
 
@@ -95,7 +96,7 @@ export const Festival = memo(() => {
             }}
             paragraph={t("heroParagraph")}
             button1={{
-                "href": "",
+                "href": "#discover",
                 "label": t("heroButton1")
             }}
             button2={{
@@ -135,7 +136,7 @@ export const Festival = memo(() => {
 
 
         />
-        <div className={classes.festivalDesc}>
+        <div id="discover" className={classes.festivalDesc}>
             <ReactSVG
                 src={trLogoSvg}
                 className={classes.trLogo}
@@ -195,7 +196,7 @@ export const Festival = memo(() => {
 
             </div>
             {
-                (()=>{
+                (() => {
                     if (windowInnerWidth >= theme.breakpoints.values.md) {
                         return undefined;
                     }
@@ -215,7 +216,7 @@ export const Festival = memo(() => {
 
         </div>
         <div className={classes.yearsTitle}>
-            <Surtitle 
+            <Surtitle
                 surtitle={t("archivesSurtitle")}
             />
             <div className={classes.yearTitleWrapper}>
@@ -251,10 +252,19 @@ export const Festival = memo(() => {
                         t("2022PressName16"),
                         t("2022PressName17"),
                     ]}
-                    socialIconsUrls={[
-                        fbSvg,
-                        instaSvg,
-                        ytSvg
+                    socialIcons={[
+                        {
+                            "href": social.facebook,
+                            "iconSrc": fbSvg
+                        },
+                        {
+                            "href": social.insta,
+                            "iconSrc": instaSvg
+                        },
+                        {
+                            "href": social.youtube,
+                            "iconSrc": ytSvg
+                        },
                     ]}
 
                 />
@@ -399,10 +409,19 @@ export const Festival = memo(() => {
                         t("2021PressName16"),
                         t("2021PressName17"),
                     ]}
-                    socialIconsUrls={[
-                        fbSvg,
-                        instaSvg,
-                        ytSvg
+                    socialIcons={[
+                        {
+                            "href": social.facebook,
+                            "iconSrc": fbSvg
+                        },
+                        {
+                            "href": social.insta,
+                            "iconSrc": instaSvg
+                        },
+                        {
+                            "href": social.youtube,
+                            "iconSrc": ytSvg
+                        },
                     ]}
 
                 />
@@ -566,10 +585,19 @@ export const Festival = memo(() => {
                         t("2020PressName21"),
                         t("2020PressName22"),
                     ]}
-                    socialIconsUrls={[
-                        fbSvg,
-                        instaSvg,
-                        ytSvg
+                    socialIcons={[
+                        {
+                            "href": social.facebook,
+                            "iconSrc": fbSvg
+                        },
+                        {
+                            "href": social.insta,
+                            "iconSrc": instaSvg
+                        },
+                        {
+                            "href": social.youtube,
+                            "iconSrc": ytSvg
+                        },
                     ]}
 
                 />
@@ -887,7 +915,7 @@ const useStyles = tss.create(({ theme }) => {
             "flexDirection": "column",
             "alignItems": "center",
             "marginTop": theme.spacing(7)
-            
+
         }
     })
 })

@@ -2,8 +2,9 @@ import { createRouter, defineRoute } from "type-route";
 import { makeThisModuleAnExecutableRouteLister } from "github-pages-plugin-for-type-route";
 import type { RouterOpts } from "type-route";
 
+
 const opts: RouterOpts = {
-	"scrollToTop": true
+	"scrollToTop": true,
 }
 
 const publicUrl = import.meta.env.BASE_URL;
@@ -26,3 +27,10 @@ makeThisModuleAnExecutableRouteLister(routeDefs);
 export const { RouteProvider, routes, useRoute } = createRouter(opts,
 	routeDefs
 );
+
+export const social = {
+	"facebook": "https://www.facebook.com/festivalcubedemusique",
+	"insta": "https://www.instagram.com/intermezzo_bordeaux/",
+	"youtube": "https://www.youtube.com/@associationintermezzo8897",
+}
+

@@ -9,6 +9,7 @@ import fbSvg from "assets/svg/icons/fb-purple.svg";
 import { ReactSVG } from "react-svg";
 import { LinkButton } from "components/LinkButton";
 import logoSvg from "assets/svg/big-transparent-logo.svg";
+import { social } from "router";
 
 
 export const Contact = memo(() => {
@@ -43,17 +44,17 @@ export const Contact = memo(() => {
                             {
                                 "icon": emailSvg,
                                 "label": t("gmail"),
-                                "href": ""
+                                "href": `mailto:${t("gmail")}`
                             },
                             {
                                 "icon": fbSvg,
                                 "label": t("facebook"),
-                                "href": ""
+                                "href": social.facebook
                             },
                             {
                                 "icon": instaSvg,
                                 "label": t("insta"),
-                                "href": ""
+                                "href": social.insta
                             }
 
                         ].map(({ href, icon, label }) => <a href={href} key={label} className={classes.social}>
@@ -72,12 +73,12 @@ export const Contact = memo(() => {
                             {
                                 "icon": emailSvg,
                                 "label": t("rpEmail"),
-                                "href": ""
+                                "href": `mailto:${t("rpEmail")}`
                             },
                             {
                                 "icon": instaSvg,
                                 "label": t("rpInsta"),
-                                "href": ""
+                                "href": "https://www.instagram.com/recital_production/"
                             }
 
                         ].map(({ href, icon, label }) => <a href={href} key={label} className={classes.social}>
@@ -89,7 +90,7 @@ export const Contact = memo(() => {
                 </div>
                 <LinkButton 
                     className={classes.button}
-                    href=""
+                    href="https://recital-production.fr/"
                     label={t("siteButtonLabel")}
                     variant="outlinedDark"
                 />

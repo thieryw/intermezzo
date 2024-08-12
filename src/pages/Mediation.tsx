@@ -21,6 +21,9 @@ import bTLogo from "assets/svg/big-transparent-logo.svg";
 import { ReactSVG } from "react-svg";
 import elderJpg from "assets/jpg/mediation/ehpad-image.jpg";
 import elderWebp from "assets/webp/mediation/ehpad-image.webp";
+import { routes, social } from "router";
+import bilanCdv from "assets/downloadables/bilan-carnet-de-voyage.pdf";
+import bilanGestu from "assets/downloadables/bilan-gestu-elles.docx";
 
 
 export const Mediation = memo(() => {
@@ -37,12 +40,12 @@ export const Mediation = memo(() => {
             </div>}
             paragraph={t("heroParagraph")}
             button1={{
-                "href": "",
+                "href": "#museum",
                 "label": t("heroButton1")
             }}
             button2={{
-                "href": "",
-                "label": t("heroButton2")
+                "label": t("heroButton2"),
+                ...routes.contact().link
             }}
             animatedPicture={{
                 "alt": "hero",
@@ -79,7 +82,7 @@ export const Mediation = memo(() => {
                 ]
             }}
         />
-        <section className={classes.textSection}>
+        <section id="museum" className={classes.textSection}>
             <div className={classes.textSectionInner}>
                 <ReactSVG
                     src={bTLogo}
@@ -102,9 +105,10 @@ export const Mediation = memo(() => {
             aside={
                 <PressFile
                     link={{
-                        "href": "",
-                        "label": t("voyagePressTitle")
+                        "href": bilanCdv,
+                        "label": t("voyagePressTitle"),
                     }}
+                    download="bilan-carnet-de-voyage.pdf"
                     organizations={[
                         t("voyagePressName1"),
                         t("voyagePressName2"),
@@ -113,10 +117,19 @@ export const Mediation = memo(() => {
                         t("voyagePressName5"),
                         t("voyagePressName6"),
                     ]}
-                    socialIconsUrls={[
-                        fbSvg,
-                        instaSvg,
-                        ytSvg
+                    socialIcons={[
+                        {
+                            "href": social.facebook,
+                            "iconSrc": fbSvg
+                        },
+                        {
+                            "href": social.insta,
+                            "iconSrc": instaSvg
+                        },
+                        {
+                            "href": social.youtube,
+                            "iconSrc": ytSvg
+                        }
                     ]}
                 />
             }
@@ -186,19 +199,29 @@ export const Mediation = memo(() => {
             aside={
                 <PressFile
                     link={{
-                        "href": "",
+                        "href": bilanGestu,
                         "label": t("voyagePressTitle")
                     }}
+                    download="bilan-gestu-elles.docx"
                     organizations={[
                         t("gesturePressName1"),
                         t("gesturePressName2"),
                         t("gesturePressName3"),
                         t("gesturePressName4"),
                     ]}
-                    socialIconsUrls={[
-                        fbSvg,
-                        instaSvg,
-                        ytSvg
+                    socialIcons={[
+                        {
+                            "href": social.facebook,
+                            "iconSrc": fbSvg
+                        },
+                        {
+                            "href": social.insta,
+                            "iconSrc": instaSvg
+                        },
+                        {
+                            "href": social.youtube,
+                            "iconSrc": ytSvg
+                        }
                     ]}
                 />
             }
@@ -220,9 +243,9 @@ export const Mediation = memo(() => {
                     surtitle={t("socialSurtitle")}
                 />
                 <div>
-                    <Typo className={classes.textSectionText} variant="heading2"><span style={{...theme.typography.highLight2}}>{t("socialHighlight")}</span> {t("socialTitle")}</Typo>
+                    <Typo className={classes.textSectionText} variant="heading2"><span style={{ ...theme.typography.highLight2 }}>{t("socialHighlight")}</span> {t("socialTitle")}</Typo>
                 </div>
-                <Typo className={classes.textSectionText} variant="heading3">{t("socialParagraphStart")} <span style={{...theme.typography.highLight4}}>{t("socialParagraphHighlight")}</span> {t("socialParagraphEnd")}</Typo>
+                <Typo className={classes.textSectionText} variant="heading3">{t("socialParagraphStart")} <span style={{ ...theme.typography.highLight4 }}>{t("socialParagraphHighlight")}</span> {t("socialParagraphEnd")}</Typo>
 
             </div>
         </section>
@@ -242,13 +265,13 @@ export const Mediation = memo(() => {
 
         </div>
 
-        <DropdownSection 
+        <DropdownSection
             isInitiallyOpen={true}
             isStateBlocked={true}
             classes={{
                 "interSectionLine": classes.elderIntersection
             }}
-            aside={<div style={{"paddingTop": theme.spacing(5)}}>
+            aside={<div style={{ "paddingTop": theme.spacing(5) }}>
                 <Typo variant="italicP">{t("elderSmall1")}</Typo>
                 <Typo variant="italicP">{t("elderSmall2")}</Typo>
                 <Typo variant="italicP">{t("elderSmall3")}</Typo>
@@ -264,8 +287,8 @@ export const Mediation = memo(() => {
 
             ]}
             button={{
-                "href": "",
-                "label": t("contact")
+                "label": t("contact"),
+                ...routes.contact().link
             }}
 
         />

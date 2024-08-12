@@ -21,7 +21,7 @@ export type PortraitGalleryProps = {
     surtitle: string;
     title: string;
     highlight: string;
-    button: Link;
+    button?: Link;
     mobilePictures: {
         src: string;
         alt?: string;
@@ -110,9 +110,12 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                                 />)
                             }
                         </div>
-                        <LinkButton
-                            {...button}
-                        />
+                        {
+                            button !== undefined &&
+                            <LinkButton
+                                {...button}
+                            />
+                        }
                     </div>
                 }
 
@@ -168,7 +171,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
             })()
         }
         {
-            windowInnerWidth >= theme.breakpoints.values.md &&
+            (windowInnerWidth >= theme.breakpoints.values.md && button !== undefined) &&
             <LinkButton
                 className={classes.button}
                 {...button}
@@ -230,7 +233,7 @@ const useStyles = tss.withName("PortraitGallery").withParams<{ columnWidth: numb
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "center",
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(5);
                 return {
                     "paddingLeft": value,

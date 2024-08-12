@@ -24,10 +24,12 @@ import presJpg1 from "assets/jpg/rp/Prestations/prestation-1-img.jpg";
 import presJpg2 from "assets/jpg/rp/Prestations/prestation-2-img.jpg";
 import presJpg3 from "assets/jpg/rp/Prestations/prestation-3-img.jpg";
 import presJpg4 from "assets/jpg/rp/Prestations/prestation-4-img.jpg";
+import presJpg5 from "assets/jpg/rp/Prestations/prestation-5-img.jpg";
 import presWebp1 from "assets/webp/rp/Prestations/prestation-1-img.webp";
 import presWebp2 from "assets/webp/rp/Prestations/prestation-2-img.webp";
 import presWebp3 from "assets/webp/rp/Prestations/prestation-3-img.webp";
 import presWebp4 from "assets/webp/rp/Prestations/prestation-4-img.webp";
+import presWebp5 from "assets/webp/rp/Prestations/prestation-5-img.webp";
 import m1jpg from "assets/jpg/rp/Médias/medias-1-img.jpg";
 import m2jpg from "assets/jpg/rp/Médias/medias-2-img.jpg";
 import m3jpg from "assets/jpg/rp/Médias/medias-3-img.jpg";
@@ -51,6 +53,7 @@ import { LinkButton } from "components/LinkButton";
 import instaSvg from "assets/svg/icons/fInsta.svg";
 import emailSvg from "assets/svg/icons/emailIcon.svg";
 import { VideoSecondary } from "components/VideoSecondary";
+import { routes } from "router";
 
 const medias = {
     "jpg": [
@@ -96,12 +99,12 @@ export const Rp = memo(() => {
             </div>}
             paragraph={t("heroParagraph")}
             button1={{
-                "href": "",
+                "href": "#selection",
                 "label": t("heroButton1")
             }}
             button2={{
-                "href": "",
-                "label": t("heroButton2")
+                "label": t("heroButton2"),
+                ...routes.contact().link
             }}
             animatedPicture={{
                 "alt": "hero",
@@ -145,7 +148,7 @@ export const Rp = memo(() => {
                 videoId="UlFsoRQYVrs"
             />
         </section>
-        <section className={classes.selectionSection}>
+        <section id="selection" className={classes.selectionSection}>
             <img className={classes.selectionImage} src={selectionPng} alt="selection background" />
             <div className={classes.selectionText}>
                 <Typo className={classes.selectionHeading} variant="heading3">{t("selectionTitleStart")} <span style={{ ...theme.typography.highLight4 }}>{t("selectionTitleHighlight")}</span> {t("selectionTitleEnd")}</Typo>
@@ -192,6 +195,22 @@ export const Rp = memo(() => {
                                 ]}
                                 title={t("serviceCard1Title")}
                                 subTitle={t("serviceCard1Paragraph")}
+                                className={classes.sliderCard}
+                            />,
+                            <SliderCard
+                                imageSrc={presWebp5}
+                                sources={[
+                                    {
+                                        "srcSet": presWebp5,
+                                        "type": "image/webp"
+                                    },
+                                    {
+                                        "srcSet": presJpg5,
+                                        "type": "image/jpeg"
+                                    }
+                                ]}
+                                title={t("serviceCard5Title")}
+                                subTitle={t("serviceCard5Paragraph")}
                                 className={classes.sliderCard}
                             />,
                             <SliderCard
@@ -252,12 +271,12 @@ export const Rp = memo(() => {
                     paragraph={t("servicesParagraph")}
                     subtitle={t("servicesSurtitle")}
                     link1={{
-                        "href": "",
+                        "href": "https://recital-production.fr/",
                         "label": t("servicesButton1")
                     }}
                     link2={{
-                        "href": "",
-                        "label": t("servicesButton2")
+                        "label": t("servicesButton2"),
+                        ...routes.contact().link
                     }}
                     slides={[
 
@@ -275,6 +294,21 @@ export const Rp = memo(() => {
                             ]}
                             title={t("serviceCard1Title")}
                             subTitle={t("serviceCard1Paragraph")}
+                        />,
+                        <SliderCard
+                            imageSrc={presWebp5}
+                            sources={[
+                                {
+                                    "srcSet": presWebp5,
+                                    "type": "image/webp"
+                                },
+                                {
+                                    "srcSet": presJpg5,
+                                    "type": "image/jpeg"
+                                }
+                            ]}
+                            title={t("serviceCard5Title")}
+                            subTitle={t("serviceCard5Paragraph")}
                         />,
                         <SliderCard
                             imageSrc={presWebp2}
@@ -334,7 +368,7 @@ export const Rp = memo(() => {
                 title={t("mediaTitle")}
                 highlight={t("mediaHighlight")}
                 button={{
-                    "href": "",
+                    "href": "https://recital-production.fr/",
                     "label": t("mediaButton")
                 }}
                 mobilePictures={[
@@ -402,7 +436,7 @@ export const Rp = memo(() => {
 
                 </div>
                 <LinkButton
-                    href=""
+                    href="https://recital-production.fr/"
                     label={t("websiteLinkLabel")}
                 />
 
@@ -590,6 +624,8 @@ const { i18n } = declareComponentKeys<
     | "serviceCard3Paragraph"
     | "serviceCard4Title"
     | "serviceCard4Paragraph"
+    | "serviceCard5Title"
+    | "serviceCard5Paragraph"
     | "mediaSurtitle"
     | "mediaTitle"
     | "mediaHighlight"

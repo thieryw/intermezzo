@@ -10,7 +10,7 @@ import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { MenuLink } from "components/MenuLink";
 import type { Link } from "tools/link";
-import {useRoute, routes} from "router";
+import {useRoute, routes, social} from "router";
 
 
 
@@ -125,15 +125,24 @@ export const Footer = memo(() => {
 						<div className={classes.socialWrapper}>
 							{
 								[
-									fbSvg,
-									instaSvg,
-									ytSvg,
-								].map(svg => <Logo
+									{
+										"icon": fbSvg,
+										"href": social.facebook
+									},
+									{
+										"icon": instaSvg,
+										"href": social.insta
+									},
+									{
+										"icon": ytSvg,
+										"href": social.youtube
+									},
+								].map(({href, icon}) => <a href={href}><Logo
 									className={classes.socialLogo}
-									key={svg}
-									logoUrl={svg}
+									key={icon}
+									logoUrl={icon}
 									width={30}
-								/>)
+								/></a>)
 							}
 
 						</div>

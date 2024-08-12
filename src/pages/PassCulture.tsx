@@ -100,7 +100,7 @@ export const PassCulture = memo(() => {
                 }
             }
             button1={{
-                "href": "",
+                "href": "#pi",
                 "label": t("heroButton1")
             }}
             button2={{
@@ -139,7 +139,7 @@ export const PassCulture = memo(() => {
             <div className={classes.stepsTextWrapper}>
                 <ClickableCard
                     link={{
-                        "href": ""
+                        "href": "https://adage-pr.phm.education.gouv.fr/sso/webAgentService?CTAuthMode=BASIC&fim_local_form=http%3A%2F%2Fwww.orion.education.fr%2F&CT_ORIG_URL=https%3A%2F%2Fadage-pr.phm.education.gouv.fr%2Fadage%2F&ct_orig_uri=%2Fadage%2F&zone=-%20Dmz&CDCIDPList="
                     }}
                     surTitle={t("financeCardSurtitle")}
                     title={t("financeCardTitle")}
@@ -194,7 +194,7 @@ export const PassCulture = memo(() => {
         {
             (() => {
                 if (windowInnerWidth < theme.breakpoints.values.md) {
-                    return <div className={classes.cardsMobile}>
+                    return <div id="pi" className={classes.cardsMobile}>
                         <CardWrapper
                             className={classes.mobileCardWrapper}
                             classes={{
@@ -294,13 +294,13 @@ export const PassCulture = memo(() => {
                         />
                         <LinkButton
                             variant="outlinedLight"
-                            href=""
                             label={t("voyageButtonMore")}
                             className={classes.cardButtonMobile}
+                            {...routes.contact().link}
                         />
                         <ClickableCard
                             link={{
-                                "href": ""
+                                ...routes.contact().link
                             }}
                             title={t("voyageCard5Title")}
                             paragraph={t("voyageCard5Paragraph")}
@@ -310,7 +310,7 @@ export const PassCulture = memo(() => {
                     </div>
                 }
 
-                return <DraggableSliderWrapper
+                return <div id="pi"><DraggableSliderWrapper
                     title={t("voyageTitle")}
                     titleHighLight={t("voyageTitleHighlight")}
                     paragraph={t("voyageParagraph")}
@@ -398,7 +398,7 @@ export const PassCulture = memo(() => {
                         />,
                         <ClickableCard
                             link={{
-                                "href": ""
+                                ...routes.contact().link
                             }}
                             title={t("voyageCard5Title")}
                             paragraph={t("voyageCard5Paragraph")}
@@ -408,14 +408,15 @@ export const PassCulture = memo(() => {
 
                     ]}
                     link1={{
-                        "href": "",
-                        "label": t("voyageButtonMore")
+                        "label": t("voyageButtonMore"),
+                        ...routes.contact().link
                     }}
                     link2={{
-                        "href": "",
-                        "label": t("voyageButtonProject")
+                        "label": t("voyageButtonProject"),
+                        ...routes.contact().link
                     }}
                 />
+                </div>
 
 
             })()
@@ -570,6 +571,7 @@ const useStyles = tss.withName("PassCulture").create(({ theme, windowInnerWidth 
             "position": "relative",
             "& svg": {
                 "position": "absolute",
+                "zIndex": -2,
                 "top": `-${theme.spacing(28)}`,
                 "right": 0,
                 "width": "100vw",
