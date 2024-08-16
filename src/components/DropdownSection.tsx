@@ -31,6 +31,7 @@ export type DropdownSectionProps = {
     date?: string;
     event?: string;
     button?: Link;
+    hasHoverEffect?: boolean;
 
 };
 
@@ -49,7 +50,8 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
         isStateBlocked = true,
         media,
         paragraphTitle,
-        button
+        button,
+        hasHoverEffect = false
 
 
     } = props;
@@ -76,7 +78,9 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
     const { classes, cx } = useStyles({
         "classesOverrides": props.classes,
         isOpen,
-        bodyHeight
+        bodyHeight,
+        hasHoverEffect,
+        isStateBlocked
     })
 
     return <div className={cx(classes.root, className)}>
@@ -196,9 +200,9 @@ export const DropdownSection = memo((props: DropdownSectionProps) => {
 })
 
 
-const useStyles = tss.withName("DropdownSection").withParams<
-    { bodyHeight: number; isOpen: boolean; }
->().create(({ theme, isOpen, bodyHeight }) => {
+const useStyles = tss.withNestedSelectors<"bannerBackground">().withName("DropdownSection").withParams<
+    { bodyHeight: number; isOpen: boolean; hasHoverEffect: boolean; isStateBlocked: boolean; }
+>().create(({ theme, isOpen, bodyHeight, hasHoverEffect, isStateBlocked, classes }) => {
     return ({
         "root": {
             "position": "relative"
@@ -210,7 +214,7 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "paddingLeft": theme.spacing(31),
             "display": "flex",
             "alignItems": "center",
-            "cursor": "pointer",
+            "cursor": isStateBlocked ? undefined : "pointer",
             [theme.breakpoints.down("mdPlus")]: {
                 "paddingLeft": 0,
                 "justifyContent": "center"
@@ -226,6 +230,9 @@ const useStyles = tss.withName("DropdownSection").withParams<
             [theme.breakpoints.down("sm")]: {
                 "justifyContent": "flex-start",
                 "paddingLeft": theme.spacing(5),
+            },
+            [`&:hover .${classes.bannerBackground}`]: {
+                "transform": (hasHoverEffect && !isOpen) ? "scaleY(1)" : undefined
             }
         },
         "bannerText": {
@@ -271,7 +278,9 @@ const useStyles = tss.withName("DropdownSection").withParams<
             "height": "100%",
             "top": 0,
             "left": 0,
-            "backgroundColor": theme.palette.lightOrange.main
+            "backgroundColor": theme.palette.lightOrange.main,
+            "transition": "transform 500ms",
+            "transform": (hasHoverEffect && !isOpen) ? "scaleY(0)" : undefined
         },
         "bodyWrapper": {
             "height": isOpen ? bodyHeight : 0,

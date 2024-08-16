@@ -2,10 +2,10 @@ import type { TranslationHome } from "../../types";
 
 export const translation: TranslationHome<"fr"> = {
     "Home": {
-        "heroSurtitle": "L'Association Musicale",
+        "heroSurtitle": "L'Association Musicale Intermezzo",
         "heroTitle": "Incubatrice de Projets Culturels",
         "heroHighLightTitle": "Innovants",
-        "heroParagraph": "Fondée par des artistes locaux passionnés, notre association musicale Intermezzo s'engage pleinement à promouvoir les talents artistiques de Bordeaux et sa région.",
+        "heroParagraph": "Fondée par des artistes locaux passionnés, notre association s'engage pleinement à promouvoir les talents artistiques de Bordeaux et sa région.",
         "heroConcertStatNumber": "170",
         "heroConcertStatSign": "+",
         "heroConcertStatDesc": "Concerts & Spectacles",
@@ -26,7 +26,7 @@ export const translation: TranslationHome<"fr"> = {
         "reasonsTitleTop": "Nous",
         "reasonsTitleBottom": "Oeuvrons pour",
         "reasonsCard1Title": "Innover",
-        "reasonsCard1Paragraph": "Créer un proposition culturelle innovante en développant des projets musicaux d’esthétiques,  variées, où pourront interagir diverses formes artistiques.",
+        "reasonsCard1Paragraph": "Créer une proposition culturelle innovante en développant des projets musicaux d’esthétiques,  variées, où pourront interagir diverses formes artistiques.",
         "reasonsCard2Title": "Révéler",
         "reasonsCard2Paragraph": "Permettre aux artistes et particulièrement aux jeunes de trouver à Bordeaux et sa métropole, les conditions favorables à la réalisation de leurs projets artistiques.",
         "reasonsCard3Title": "Irriguer",

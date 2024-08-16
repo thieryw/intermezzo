@@ -438,8 +438,8 @@ export const PassCulture = memo(() => {
                 ]
             }))}
             button={{
-                "href": "",
-                "label": t("heroButton2")
+                "label": t("heroButton2"),
+                ...routes.contact().link
             }}
             surtitle={t("souvSurtitle")}
             title={t("souvTitle")}

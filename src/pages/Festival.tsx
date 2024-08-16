@@ -86,8 +86,9 @@ export const Festival = memo(() => {
         <Hero
             classes={{
                 "loopedVideo": classes.cube,
-                "textAndButtonWrapperInner": classes.heroText,
-                "statisticCard": classes.statCard
+                "textAndButtonWrapperInner": classes.heroTextWrapper,
+                "statisticCard": classes.statCard,
+                "paragraph": classes.heroText
             }}
             surtitle={t("heroSurtitle")}
             title={{
@@ -227,6 +228,7 @@ export const Festival = memo(() => {
         </div>
         <DropdownSection
             className={classes.firstSection}
+            hasHoverEffect={true}
             aside={
                 <PressFile
                     link={{
@@ -384,6 +386,7 @@ export const Festival = memo(() => {
 
         />
         <DropdownSection
+            hasHoverEffect={true}
             aside={
                 <PressFile
                     link={{
@@ -555,6 +558,7 @@ export const Festival = memo(() => {
 
         />
         <DropdownSection
+            hasHoverEffect={true}
             aside={
                 <PressFile
                     link={{
@@ -793,8 +797,16 @@ const useStyles = tss.create(({ theme }) => {
             "background": theme.palette.gradient1.main,
             "backgroundClip": "text"
         },
+        "heroTextWrapper": {
+            "maxWidth": 700,
+        },
         "heroText": {
-            "maxWidth": 700
+            [theme.breakpoints.down("lgPlus")]: {
+                "maxWidth": 350
+            },
+            [theme.breakpoints.down("lg")]: {
+                "maxWidth": 400
+            }
         },
         "statCard": {
             [theme.breakpoints.up("md")]: {

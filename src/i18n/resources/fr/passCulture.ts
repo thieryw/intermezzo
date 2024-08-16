@@ -53,7 +53,7 @@ export const translation: TranslationPassCulture<"fr"> = {
         "voyageCard4HoverParagraph": "Voyage impressionniste, découverte de l'art numérique sur les tableaux et la musique impressionniste (Ravel, Debussy, Monet, Van Gogh).",
         "voyageCard4HoverDetail1": "4 intervenants",
         "voyageCard4HoverDetail2": "50 à 60 min",
-        "voyageButtonMore": "En sovoir plus",
+        "voyageButtonMore": "En savoir plus",
         "voyageButtonProject": "Un Projet ?",
         "souvSurtitle": "Évènements Passés",
         "souvTitle": "Quelques beaux",

@@ -140,7 +140,8 @@ const typography: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "clamp(3.438rem, 3.59vw, 4rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic",
-            "lineHeight": "1em"
+            //"lineHeight": "1.1em"
+            "marginTop": "-0.2em"
         },
         "highLight3": {
             "fontFamily": "source-serif-4, serif",
@@ -312,7 +313,8 @@ const typographyDark: (palette: Palette) => TypographyOptions = (palette) => {
             "fontSize": "clamp(3.438rem, 3.59vw, 4rem)",
             "letterSpacing": "-0.02em",
             "fontStyle": "italic",
-            "lineHeight": "1em"
+            //"lineHeight": "1em",
+            "marginTop": "-0.2em"
         },
         "highLight3": {
             "fontFamily": "source-serif-4, serif",

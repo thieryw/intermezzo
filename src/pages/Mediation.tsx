@@ -241,10 +241,9 @@ export const Mediation = memo(() => {
             <div className={classes.textSectionInner}>
                 <Surtitle
                     surtitle={t("socialSurtitle")}
+                    className={classes.textSectionSurtitle}
                 />
-                <div>
-                    <Typo className={classes.textSectionText} variant="heading2"><span style={{ ...theme.typography.highLight2 }}>{t("socialHighlight")}</span> {t("socialTitle")}</Typo>
-                </div>
+                <Typo className={classes.textSectionText} variant="heading2"><span style={{ ...theme.typography.highLight2 }}>{t("socialHighlight")}</span> {t("socialTitle")}</Typo>
                 <Typo className={classes.textSectionText} variant="heading3">{t("socialParagraphStart")} <span style={{ ...theme.typography.highLight4 }}>{t("socialParagraphHighlight")}</span> {t("socialParagraphEnd")}</Typo>
 
             </div>
@@ -357,8 +356,13 @@ const useStyles = tss.withName("Mediation").create(({ theme }) => {
             },
             "paddingBottom": theme.spacing(17)
         },
+        "textSectionSurtitle": {
+            "marginBottom": theme.spacing(4)
+
+        },
         "textSectionText": {
-            "textAlign": "center"
+            "textAlign": "center",
+            "marginBottom": theme.spacing(4)
         },
         "imageSection": {
 
