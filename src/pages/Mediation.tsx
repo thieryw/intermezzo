@@ -120,15 +120,18 @@ export const Mediation = memo(() => {
                     socialIcons={[
                         {
                             "href": social.facebook,
-                            "iconSrc": fbSvg
+                            "iconSrc": fbSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.insta,
-                            "iconSrc": instaSvg
+                            "iconSrc": instaSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.youtube,
-                            "iconSrc": ytSvg
+                            "iconSrc": ytSvg,
+                            "target": "_blank"
                         }
                     ]}
                 />
@@ -212,15 +215,18 @@ export const Mediation = memo(() => {
                     socialIcons={[
                         {
                             "href": social.facebook,
-                            "iconSrc": fbSvg
+                            "iconSrc": fbSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.insta,
-                            "iconSrc": instaSvg
+                            "iconSrc": instaSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.youtube,
-                            "iconSrc": ytSvg
+                            "iconSrc": ytSvg,
+                            "target": "_blank"
                         }
                     ]}
                 />

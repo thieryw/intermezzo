@@ -272,7 +272,8 @@ export const Rp = memo(() => {
                     subtitle={t("servicesSurtitle")}
                     link1={{
                         "href": "https://recital-production.fr/",
-                        "label": t("servicesButton1")
+                        "label": t("servicesButton1"),
+                        "openInNewTab": true
                     }}
                     link2={{
                         "label": t("servicesButton2"),
@@ -369,7 +370,8 @@ export const Rp = memo(() => {
                 highlight={t("mediaHighlight")}
                 button={{
                     "href": "https://recital-production.fr/",
-                    "label": t("mediaButton")
+                    "label": t("mediaButton"),
+                    "openInNewTab": true
                 }}
                 mobilePictures={[
                     {
@@ -423,14 +425,14 @@ export const Rp = memo(() => {
                     <Typo variant="highLight2">{t("contactHighlight")}</Typo>
                 </div>
                 <div className={classes.links}>
-                    <a href="" className={classes.link} style={{
+                    <a href="mailto:contact@recital-production.fr" className={classes.link} style={{
                         "marginBottom": theme.spacing(1)
                     }}>
-                        <ReactSVG src={instaSvg} className={classes.socialSvg} />
+                        <ReactSVG src={emailSvg} className={classes.socialSvg} />
                         <Typo className={classes.linkText} variant="paragraph1">{t("email")}</Typo>
                     </a>
-                    <a href="" className={classes.link}>
-                        <ReactSVG src={emailSvg} className={classes.socialSvg} />
+                    <a href="https://www.instagram.com/intermezzo_bordeaux/" target="_blank" className={classes.link}>
+                        <ReactSVG src={instaSvg} className={classes.socialSvg} />
                         <Typo className={classes.linkText} variant="paragraph1">{t("instaLinkLabel")}</Typo>
                     </a>
 

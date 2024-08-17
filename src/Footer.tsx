@@ -127,17 +127,20 @@ export const Footer = memo(() => {
 								[
 									{
 										"icon": fbSvg,
-										"href": social.facebook
+										"href": social.facebook,
+										"target": "_blank"
 									},
 									{
 										"icon": instaSvg,
-										"href": social.insta
+										"href": social.insta,
+										"target": "_blank"
 									},
 									{
 										"icon": ytSvg,
-										"href": social.youtube
+										"href": social.youtube,
+										"target": "_blank"
 									},
-								].map(({href, icon}) => <a href={href}><Logo
+								].map(({href, icon, target}) => <a target={target} href={href}><Logo
 									className={classes.socialLogo}
 									key={icon}
 									logoUrl={icon}

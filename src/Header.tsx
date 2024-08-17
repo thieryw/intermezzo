@@ -80,17 +80,20 @@ export const Header = memo(() => {
             {
                 "href": "https://www.facebook.com/artisteformation/",
                 "logo": fbIcon,
-                "label": "Facebook link"
+                "label": "Facebook link",
+                "target": "_blank"
             },
             {
                 "href": "",
                 "logo": instaIcon,
                 "label": "Instagram link",
+                "target": "_blank"
             },
             {
                 "href": "https://www.youtube.com/@cfj757683",
                 "logo": youtubeIcon,
-                "label": "Youtube link"
+                "label": "Youtube link",
+                "target": "_blank"
             }
         ]}
         buttonLink={{

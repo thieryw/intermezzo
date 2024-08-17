@@ -139,7 +139,8 @@ export const PassCulture = memo(() => {
             <div className={classes.stepsTextWrapper}>
                 <ClickableCard
                     link={{
-                        "href": "https://adage-pr.phm.education.gouv.fr/sso/webAgentService?CTAuthMode=BASIC&fim_local_form=http%3A%2F%2Fwww.orion.education.fr%2F&CT_ORIG_URL=https%3A%2F%2Fadage-pr.phm.education.gouv.fr%2Fadage%2F&ct_orig_uri=%2Fadage%2F&zone=-%20Dmz&CDCIDPList="
+                        "href": "https://adage-pr.phm.education.gouv.fr/sso/webAgentService?CTAuthMode=BASIC&fim_local_form=http%3A%2F%2Fwww.orion.education.fr%2F&CT_ORIG_URL=https%3A%2F%2Fadage-pr.phm.education.gouv.fr%2Fadage%2F&ct_orig_uri=%2Fadage%2F&zone=-%20Dmz&CDCIDPList=",
+                        "target": "_blank"
                     }}
                     surTitle={t("financeCardSurtitle")}
                     title={t("financeCardTitle")}

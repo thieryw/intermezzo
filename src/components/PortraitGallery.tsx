@@ -4,8 +4,8 @@ import { useContext } from "theme"
 import { PictureAnimator } from "components/PictureAnimator";
 import { LinkButton } from "components/LinkButton"
 import Typography from "@mui/material/Typography";
-import type { Link } from "tools/link";
 import { Surtitle } from "components/Surtitle";
+import type { LinkButtonProps } from "components/LinkButton";
 
 export type PortraitGalleryProps = {
     className?: string;
@@ -21,7 +21,7 @@ export type PortraitGalleryProps = {
     surtitle: string;
     title: string;
     highlight: string;
-    button?: Link;
+    button?: LinkButtonProps;
     mobilePictures: {
         src: string;
         alt?: string;
@@ -51,7 +51,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
         width: number;
         height: number;
     } {
-        if(windowInnerWidth >= theme.breakpoints.values.lg){
+        if (windowInnerWidth >= theme.breakpoints.values.lg) {
             return {
                 "width": parseInt(isLarge ? widthLargeRef.current : widthRef.current),
                 "height": parseInt(heightRef.current),
@@ -71,10 +71,10 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
 
     return <div className={cx(classes.root, className)}>
         {
-            (()=>{
-                if(windowInnerWidth < theme.breakpoints.values.md){
+            (() => {
+                if (windowInnerWidth < theme.breakpoints.values.md) {
                     return <div className={classes.mobileWrapper}>
-                        <Surtitle 
+                        <Surtitle
                             surtitle={surtitle}
                             className={classes.mobileSurtitle}
                         />
@@ -83,8 +83,8 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
                             <Typography className={classes.mobileTitle} variant="highLight2">{highlight}</Typography>
                         </div>
                         <div style={{
-                            ...(()=> {
-                                if(mobilePictures.length < 2){
+                            ...(() => {
+                                if (mobilePictures.length < 2) {
                                     return {}
                                 }
                                 return {

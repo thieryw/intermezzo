@@ -10,6 +10,7 @@ export type PressFileProps = {
     socialIcons: {
         iconSrc: string;
         href?: string;
+        target?: string;
     }[];
     organizations: string [];
     download?: string;
@@ -48,7 +49,7 @@ export const PressFile = memo((props: PressFileProps) => {
 
         <div className={classes.socialIcons}>
             {
-                socialIcons.map(({iconSrc, href}, index) => <a href={href}><ReactSVG key={index} className={classes.socialIcon}  src={iconSrc}/></a>)
+                socialIcons.map(({iconSrc, href, target}, index) => <a target={target} href={href}><ReactSVG key={index} className={classes.socialIcon}  src={iconSrc}/></a>)
             }
         </div>
     </div>

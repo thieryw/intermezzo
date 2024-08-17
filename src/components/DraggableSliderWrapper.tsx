@@ -1,9 +1,9 @@
 import { memo } from "react";
-import type { Link } from "tools/link";
 import type { DraggableSliderProps } from "components/DraggableSlider";
 import { DraggableSlider } from "components/DraggableSlider";
 import starSvg from "assets/svg/pink-glitter.svg";
 import { LinkButton } from "components/LinkButton";
+import type { LinkButtonProps } from "components/LinkButton"
 import Typography from "@mui/material/Typography";
 import { tss } from "tss";
 import { ReactSVG } from "react-svg";
@@ -16,8 +16,8 @@ export type DraggableSliderWrapperProps = {
     titleHighLight: string;
     subtitle: string;
     paragraph: string;
-    link1: Link;
-    link2: Link;
+    link1: LinkButtonProps;
+    link2: LinkButtonProps;
     slides: DraggableSliderProps["slides"]
 }
 
@@ -163,7 +163,7 @@ const useStyles = tss.withName("DraggableSliderWrapper").create(({ theme }) => {
             "paddingBottom": theme.spacing(13),
         },
         "button": {
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(2);
                 return {
                     "marginLeft": value,

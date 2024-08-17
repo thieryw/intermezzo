@@ -263,15 +263,18 @@ export const Festival = memo(() => {
                     socialIcons={[
                         {
                             "href": social.facebook,
-                            "iconSrc": fbSvg
+                            "iconSrc": fbSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.insta,
-                            "iconSrc": instaSvg
+                            "iconSrc": instaSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.youtube,
-                            "iconSrc": ytSvg
+                            "iconSrc": ytSvg,
+                            "target": "_blank"
                         },
                     ]}
 
@@ -410,14 +413,12 @@ export const Festival = memo(() => {
                         t("2021PressName4"),
                         t("2021PressName5"),
                         t("2021PressName6"),
-                        t("2021PressName7"),
                         t("2021PressName8"),
                         t("2021PressName9"),
                         t("2021PressName10"),
                         t("2021PressName11"),
                         t("2021PressName12"),
                         t("2021PressName13"),
-                        t("2021PressName14"),
                         t("2021PressName15"),
                         t("2021PressName16"),
                         t("2021PressName17"),
@@ -425,15 +426,18 @@ export const Festival = memo(() => {
                     socialIcons={[
                         {
                             "href": social.facebook,
-                            "iconSrc": fbSvg
+                            "iconSrc": fbSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.insta,
-                            "iconSrc": instaSvg
+                            "iconSrc": instaSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.youtube,
-                            "iconSrc": ytSvg
+                            "iconSrc": ytSvg,
+                            "target": "_blank"
                         },
                     ]}
 
@@ -606,15 +610,18 @@ export const Festival = memo(() => {
                     socialIcons={[
                         {
                             "href": social.facebook,
-                            "iconSrc": fbSvg
+                            "iconSrc": fbSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.insta,
-                            "iconSrc": instaSvg
+                            "iconSrc": instaSvg,
+                            "target": "_blank"
                         },
                         {
                             "href": social.youtube,
-                            "iconSrc": ytSvg
+                            "iconSrc": ytSvg,
+                            "target": "_blank"
                         },
                     ]}
 
