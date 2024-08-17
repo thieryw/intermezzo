@@ -10,11 +10,18 @@ import { ReactSVG } from "react-svg";
 import { LinkButton } from "components/LinkButton";
 import logoSvg from "assets/svg/big-transparent-logo.svg";
 import { social } from "router";
+import camilleJpg from "assets/jpg/contact/camille.jpg"
+import dorianJpg from "assets/jpg/contact/dorian.jpg"
+import raphJpg from "assets/jpg/contact/raph.jpg"
+import camilleWebp from "assets/webp/contact/camille.webp"
+import dorianWebp from "assets/webp/contact/dorian.webp"
+import raphWebp from "assets/webp/contact/raph.webp"
+import { PictureAnimator } from "components/PictureAnimator"
 
 
 export const Contact = memo(() => {
     const { t } = useTranslation("Contact");
-    const { classes } = useStyles();
+    const { classes, theme, cx } = useStyles();
     return <div className={classes.root}>
         <div className={classes.titleWrapper}>
             <Surtitle
@@ -23,6 +30,81 @@ export const Contact = memo(() => {
             />
             <Typo className={classes.heading} variant="heading1">{t("heroTitle")}</Typo>
             <Typo className={classes.heading} variant="highLight">{t("heroHighlight")}</Typo>
+        </div>
+        <div className={classes.portraits}>
+            <div className={classes.portrait}>
+                <div className={classes.desc}>
+                    <Typo className={classes.name} variant="heading3">{t("portraitName1")}</Typo>
+                    <Typo className={classes.title} variant="paragraph1">{t("portraitTitle1")}</Typo>
+                </div>
+                <PictureAnimator 
+                    src={dorianWebp}
+                    alt="dorian portrait"
+                    sources={[
+                        {
+                            "type": "image/webp",
+                            "srcSet": dorianWebp
+                        },
+                        {
+                            "type": "image/jpeg",
+                            "srcSet": dorianJpg
+                        }
+                    ]}
+                    borderRadius=""
+                    width={parseInt(theme.spacing(50))}
+                    height={parseInt(theme.spacing(50)) / 100 * 130}
+
+                />
+            </div>
+            <div className={cx(classes.portrait, classes.portraitMiddle)}>
+                <PictureAnimator 
+                    src={camilleWebp}
+                    alt="camille portrait"
+                    sources={[
+                        {
+                            "type": "image/webp",
+                            "srcSet": camilleWebp
+                        },
+                        {
+                            "type": "image/jpeg",
+                            "srcSet": camilleJpg
+                        }
+                    ]}
+                    borderRadius=""
+                    width={parseInt(theme.spacing(50))}
+                    height={parseInt(theme.spacing(50)) / 100 * 130}
+
+                />
+                <div className={classes.descMiddle}>
+                    <Typo className={classes.name} variant="heading3">{t("portraitName2")}</Typo>
+                    <Typo className={classes.title} variant="paragraph1">{t("portraitTitle2")}</Typo>
+                </div>
+            </div>
+            <div className={classes.portrait}>
+                <div className={classes.desc}>
+                    <Typo className={classes.name} variant="heading3">{t("portraitName3")}</Typo>
+                    <Typo className={classes.title} variant="paragraph1">{t("portraitTitle3")}</Typo>
+                </div>
+                <PictureAnimator 
+                    src={raphWebp}
+                    alt="raph portrait"
+                    sources={[
+                        {
+                            "type": "image/webp",
+                            "srcSet": raphWebp
+                        },
+                        {
+                            "type": "image/jpeg",
+                            "srcSet": raphJpg
+                        }
+                    ]}
+                    borderRadius=""
+                    width={parseInt(theme.spacing(50))}
+                    height={parseInt(theme.spacing(50)) / 100 * 130}
+
+                />
+            </div>
+
         </div>
 
         <section className={classes.mainSection}>
@@ -102,7 +184,7 @@ export const Contact = memo(() => {
     </div>
 })
 
-const useStyles = tss.withName("Contact").create(({ theme }) => {
+const useStyles = tss.withName("Contact").create(({ theme, windowInnerWidth }) => {
     return ({
         "root": {
             "width": "100vw",
@@ -127,10 +209,79 @@ const useStyles = tss.withName("Contact").create(({ theme }) => {
             "boxSizing": "border-box",
             "position": "relative"
         },
+        "portraits": {
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "flexWrap": "wrap",
+            ...(()=>{
+                const value = theme.spacing(4);
+                return {
+                    "paddingLeft": value,
+                    "paddingRight": value
+                }
+            })(),
+            "boxSizing": "border-box",
+
+
+        },
+        "portrait": {
+            "margin": theme.spacing(3),
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            [theme.breakpoints.down("sm")]: {
+                "maxWidth": "90vw"
+            }
+
+
+        },
+        "portraitMiddle": {
+            ...(windowInnerWidth < 600 ? {
+
+                "display": "flex",
+                "flexDirection": "column-reverse",
+            } : {})
+
+        },
+        "portraitImg": {
+
+
+        },
+        "desc": {
+            "marginBottom": theme.spacing(6),
+            "width": theme.spacing(50),
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center"
+        },
+        "descMiddle": {
+            "marginTop": theme.spacing(6),
+            "width": theme.spacing(50),
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            ...(windowInnerWidth < 600 ? {
+                "marginBottom": theme.spacing(6),
+                "marginTop": 0
+
+            } : {})
+
+        },
+        "name": {
+            "marginBottom": theme.spacing(1),
+            "textAlign": "center"
+        },
+        "title": {
+            "textAlign": "center"
+
+        },
         "titleWrapper": {
             "display": "flex",
             "justifyContent": "flex-start",
-            "flexDirection": "column"
+            "flexDirection": "column",
+            "marginTop": theme.spacing(10),
+            "marginBottom": theme.spacing(15)
         },
         "heroSurtitle": {
             "marginBottom": theme.spacing(4)
@@ -142,6 +293,7 @@ const useStyles = tss.withName("Contact").create(({ theme }) => {
 
         },
         "mainSection": {
+            "position": "relative",
             "display": "flex",
             "flexDirection": "column",
             "alignItems": "flex-end",
@@ -220,6 +372,12 @@ export const { i18n } = declareComponentKeys<
     | "rpInsta"
     | "siteButtonLabel"
     | "circularText"
+    | "portraitName1"
+    | "portraitTitle1"
+    | "portraitName2"
+    | "portraitTitle2"
+    | "portraitName3"
+    | "portraitTitle3"
 >()({ Contact });
 
 export type I18n = typeof i18n

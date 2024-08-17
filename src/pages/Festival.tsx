@@ -40,6 +40,7 @@ import poingt2021webp from "assets/webp/festival/2021/2021-preview-poingt.webp";
 import roc2021webp from "assets/webp/festival/2021/2021-preview-rocailleux.webp";
 import voyage2021webp from "assets/webp/festival/2021/2021-preview-voyage.webp";
 import banner2020jpg from "assets/jpg/festival/2020/2020-banner.jpg";
+import banner2020jpgMobile from "assets/jpg/festival/2020/2020-banner-mobile.jpg";
 import cloture2020jpg from "assets/jpg/festival/2020/2020-preview-cloture.jpg";
 import erable2020jpg from "assets/jpg/festival/2020/2020-preview-erable.jpg";
 import ouv12020jpg from "assets/jpg/festival/2020/2020-preview-ouverture-1.jpg";
@@ -47,6 +48,7 @@ import ouv2020jpg from "assets/jpg/festival/2020/2020-preview-ouverture-2.jpg";
 import sorh2020jpg from "assets/jpg/festival/2020/2020-preview-sorhabchitan.jpg";
 import seph2020jpg from "assets/jpg/festival/2020/2020-preview-zephir.jpg";
 import banner2020webp from "assets/webp/festival/2020/2020-banner.webp";
+import banner2020webpMobile from "assets/webp/festival/2020/2020-banner-mobile.webp"
 import cloture2020webp from "assets/webp/festival/2020/2020-preview-cloture.webp";
 import erable2020webp from "assets/webp/festival/2020/2020-preview-erable.webp";
 import ouv12020webp from "assets/webp/festival/2020/2020-preview-ouverture-1.webp";
@@ -58,6 +60,9 @@ import festMp4 from "assets/mp4/festival-video.mp4";
 import { Surtitle } from "components/Surtitle"
 import { LinkButton } from "components/LinkButton";
 import { social } from "router";
+import press2020 from "assets/downloadables/cube-2020.pdf";
+import press2021 from "assets/downloadables/cube-2021.pdf";
+import press2022 from "assets/downloadables/cube-2022.pdf";
 
 
 
@@ -161,7 +166,7 @@ export const Festival = memo(() => {
         <VideoSecondary
             previewScr={festMp4}
             playVideoMsg={t("readVid")}
-            videoId="UlFsoRQYVrs"
+            videoId="rEpCVRzNDkY"
         />
         <div className={classes.engagement}>
             <div className={classes.titleContactWrapper}>
@@ -232,9 +237,10 @@ export const Festival = memo(() => {
             aside={
                 <PressFile
                     link={{
-                        "href": "",
+                        "href": press2022,
                         "label": t("2022PressTitle")
                     }}
+                    download="cube-2022.pdf"
                     organizations={[
                         t("2022PressName1"),
                         t("2022PressName2"),
@@ -291,7 +297,10 @@ export const Festival = memo(() => {
 
                 />
             }
-            title={t("2022Title")}
+            title={<div className={classes.bannerText}>
+                <Typo className={classes.bannerTextDate} variant="heading1">{t("2022Date")}</Typo>
+                <Typo variant="heading1">{t("2022Title")}</Typo>
+            </div>}
             isStateBlocked={false}
             paragraphs={[
                 {
@@ -313,7 +322,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="3bvgPpaaGDU"
                         alt="video preview"
 
                     />
@@ -344,7 +353,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="oOI2FMEkH2I"
                         alt="video preview"
 
                     />
@@ -375,7 +384,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="rEpCVRzNDkY"
                         alt="video preview"
 
                     />
@@ -390,9 +399,10 @@ export const Festival = memo(() => {
             aside={
                 <PressFile
                     link={{
-                        "href": "",
+                        "href": press2021,
                         "label": t("2021PressTitle")
                     }}
+                    download="cube-2021.pdf"
                     organizations={[
                         t("2021PressName1"),
                         t("2021PressName2"),
@@ -449,7 +459,10 @@ export const Festival = memo(() => {
 
                 />
             }
-            title={t("2021Title")}
+            title={<div className={classes.bannerText}>
+                <Typo className={classes.bannerTextDate} variant="heading1">{t("2021Date")}</Typo>
+                <Typo variant="heading1">{t("2021Title")}</Typo>
+            </div>}
             isStateBlocked={false}
             paragraphs={[
                 {
@@ -471,7 +484,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="F_clHeowKJs"
                         alt="video preview"
 
                     />
@@ -496,7 +509,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="L-VtnaBU7lE"
                         alt="video preview"
 
                     />
@@ -521,7 +534,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="dIWkjngY_00"
                         alt="video preview"
 
                     />
@@ -546,7 +559,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="n5wZEheCuv8"
                         alt="video preview"
 
                     />
@@ -562,9 +575,10 @@ export const Festival = memo(() => {
             aside={
                 <PressFile
                     link={{
-                        "href": "",
+                        "href": press2020,
                         "label": t("2020PressTitle")
                     }}
+                    download="cube-2020.pdf"
                     organizations={[
                         t("2020PressName1"),
                         t("2020PressName2"),
@@ -607,26 +621,52 @@ export const Festival = memo(() => {
                 />
             }
             media={
-                <PictureAnimator
-                    src={banner2020webp}
-                    sources={[
-                        {
-                            "srcSet": banner2020webp,
-                            "type": "image/webp"
-                        },
-                        {
-                            "srcSet": banner2020jpg,
-                            "type": "image/jpeg"
-                        }
-                    ]}
-                    alt="2020 banner"
-                    width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
-                    height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
-                    borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
+                (() => {
+                    if (windowInnerWidth < theme.breakpoints.values.sm) {
+                        return <PictureAnimator
+                            src={banner2020webpMobile}
+                            sources={[
+                                {
+                                    "srcSet": banner2020webpMobile,
+                                    "type": "image/webp"
+                                },
+                                {
+                                    "srcSet": banner2020jpgMobile,
+                                    "type": "image/jpeg"
+                                }
+                            ]}
+                            alt="2020 banner"
+                            width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
+                            height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
+                            borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
 
-                />
+                        />
+                    }
+
+                    return <PictureAnimator
+                        src={banner2020webp}
+                        sources={[
+                            {
+                                "srcSet": banner2020webp,
+                                "type": "image/webp"
+                            },
+                            {
+                                "srcSet": banner2020jpg,
+                                "type": "image/jpeg"
+                            }
+                        ]}
+                        alt="2020 banner"
+                        width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
+                        height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
+                        borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
+
+                    />
+                })()
             }
-            title={t("2020Title")}
+            title={<div className={classes.bannerText}>
+                <Typo className={classes.bannerTextDate} variant="heading1">{t("2020Date")}</Typo>
+                <Typo variant="heading1">{t("2020Title")}</Typo>
+            </div>}
             isStateBlocked={false}
             paragraphs={[
                 {
@@ -649,7 +689,7 @@ export const Festival = memo(() => {
                             width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                             height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                             borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                            videoId="UlFsoRQYVrs"
+                            videoId="VtCEDzV4UcI"
                             alt="video preview"
                             className={classes.videoFirst}
 
@@ -669,7 +709,7 @@ export const Festival = memo(() => {
                             width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                             height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                             borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                            videoId="UlFsoRQYVrs"
+                            videoId="GmDsZCQSNIw"
                             alt="video preview"
 
                         />
@@ -696,7 +736,7 @@ export const Festival = memo(() => {
                             width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                             height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                             borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                            videoId="UlFsoRQYVrs"
+                            videoId="XK2HZxH_WhE"
                             alt="video preview"
                             className={classes.videoFirst}
 
@@ -716,7 +756,7 @@ export const Festival = memo(() => {
                             width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                             height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                             borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                            videoId="UlFsoRQYVrs"
+                            videoId="fCb5rOWvfZc"
                             alt="video preview"
 
                         />
@@ -742,7 +782,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="oQgddMWwxKM"
                         alt="video preview"
 
                     />
@@ -767,7 +807,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="UlFsoRQYVrs"
+                        videoId="MzfddJYiMbw"
                         alt="video preview"
 
                     />
@@ -928,6 +968,19 @@ const useStyles = tss.create(({ theme }) => {
             "alignItems": "center",
             "marginTop": theme.spacing(7)
 
+        },
+        "bannerText": {
+            "position": "relative",
+            "display": "flex",
+            [theme.breakpoints.down("md")]: {
+                "flexDirection": "column"
+            }
+        },
+        "bannerTextDate": {
+            "marginRight": theme.spacing(20),
+            [theme.breakpoints.down("md")]: {
+                "marginRight": 0
+            }
         }
     })
 })

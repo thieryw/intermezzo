@@ -149,7 +149,7 @@ export const Mediation = memo(() => {
                     width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
                     height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
                     borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
-                    videoId="UlFsoRQYVrs"
+                    videoId="qwRJNDrjGuM"
                     alt="video preview"
                 />
 

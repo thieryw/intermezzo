@@ -210,7 +210,8 @@ const useStyles = tss.withName("Hero").create(({ theme, windowInnerWidth }) => {
                 "display": "flex",
                 "flexDirection": "column",
                 "padding": 0
-            }
+            },
+            "paddingTop": theme.spacing(7)
         },
         "mobileTitleWrapper": {
             "paddingTop": theme.spacing(12),

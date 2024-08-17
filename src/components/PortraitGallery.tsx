@@ -38,7 +38,7 @@ export const PortraitGallery = memo((props: PortraitGalleryProps) => {
     const { theme } = useContext()
     const widthLargeRef = useRef(theme.spacing(67));
     const widthRef = useRef(theme.spacing(49));
-    const heightRef = useRef(theme.spacing(37));
+    const heightRef = useRef(theme.spacing(49));
     const { classes, cx, windowInnerWidth } = useStyles({
         "classesOverrides": props.classes,
         "columnWidth": parseInt(widthRef.current),

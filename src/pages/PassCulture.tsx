@@ -23,8 +23,8 @@ import bigTrLogoSvg from "assets/svg/big-transparent-logo.svg";
 import { ReactSVG } from "react-svg";
 import { CommentCard } from "components/CommentCard";
 import { PictureAnimator } from "components/PictureAnimator";
-import raphaelPortraitWebp from "assets/webp/pass-culture/raphaelle-portrait.webp";
-import raphaelPortraitJpg from "assets/jpg/pass-culture/raphaelle-portrait.jpg";
+import dorianPortraitWebp from "assets/webp/pass-culture/dorian-portrait.webp";
+import dorianPortraitJpg from "assets/jpg/pass-culture/dorian-portrait.jpg";
 import passCtWebp from "assets/webp/pass-culture/pass-culture-image-2.webp";
 import passCtjpg from "assets/jpg/pass-culture/pass-culture-image-2.jpg";
 import { PortraitGallery } from "components/PortraitGallery";
@@ -157,14 +157,14 @@ export const PassCulture = memo(() => {
             <div className={classes.stepsImageAndComment}>
                 <CommentCard
                     className={classes.commentCard}
-                    portraitSrc={raphaelPortraitWebp}
+                    portraitSrc={dorianPortraitWebp}
                     portraitSources={[
                         {
-                            "srcSet": raphaelPortraitWebp,
+                            "srcSet": dorianPortraitWebp,
                             "type": "image/webp"
                         },
                         {
-                            "srcSet": raphaelPortraitJpg,
+                            "srcSet": dorianPortraitJpg,
                             "type": "image/jpeg"
                         }
                     ]}

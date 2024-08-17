@@ -497,9 +497,12 @@ const useStyles = tss.withParams<{ isOpen: boolean; isSmallScreen: boolean; }>()
             "display": "flex",
             "alignItems": "center",
             "paddingTop": theme.spacing(7),
-            "paddingRight": theme.spacing(21),
+            "paddingRight": theme.spacing(15),
             [theme.breakpoints.down("md")]: {
                 "paddingRight": theme.spacing(11)
+            },
+            [theme.breakpoints.down("sm")]: {
+                "paddingRight": theme.spacing(4)
             }
 
         },

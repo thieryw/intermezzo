@@ -18,6 +18,12 @@ export const translation: TranslationContact<"fr"> = {
         "rpEmail": "contact@recital-production.fr",
         "rpInsta": "@recital_production",
         "siteButtonLabel": "Site web",
-        "circularText": "Ecrivez-nous quelques lignes !"
+        "circularText": "Ecrivez-nous quelques lignes !",
+        "portraitName1": "Dorian Bertin",
+        "portraitTitle1": "Président",
+        "portraitName2": "Camille Batier",
+        "portraitTitle2": "Chargée de production et d'administration",
+        "portraitName3": "Raphael Stéfanica",
+        "portraitTitle3": "Directeur artistique",
     }
 }

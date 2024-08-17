@@ -145,7 +145,7 @@ export const Rp = memo(() => {
             <VideoSecondary 
                 playVideoMsg={t("playVideo")}
                 previewScr={rpMp4}
-                videoId="UlFsoRQYVrs"
+                videoId="oQgddMWwxKM"
             />
         </section>
         <section id="selection" className={classes.selectionSection}>
