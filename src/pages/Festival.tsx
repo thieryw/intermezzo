@@ -166,7 +166,7 @@ export const Festival = memo(() => {
         <VideoSecondary
             previewScr={festMp4}
             playVideoMsg={t("readVid")}
-            videoId="rEpCVRzNDkY"
+            videoId="X1GS_OeSdkU"
         />
         <div className={classes.engagement}>
             <div className={classes.titleContactWrapper}>
@@ -387,7 +387,7 @@ export const Festival = memo(() => {
                         width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                         height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                         borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                        videoId="rEpCVRzNDkY"
+                        videoId="X1GS_OeSdkU"
                         alt="video preview"
 
                     />

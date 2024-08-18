@@ -148,7 +148,7 @@ export const DraggableSlider = (props: DraggableSliderProps) => {
             <div className={classes.arrows}>
                 <div
                     className={classes.arrowWrapper}
-                    onClick={navigateFactory("forwards")}
+                    onClick={navigateFactory("back")}
                 >
                     <ReactSVG
                         src={ArrowIcon}
@@ -158,7 +158,7 @@ export const DraggableSlider = (props: DraggableSliderProps) => {
                 </div>
                 <div
                     className={cx(classes.arrowWrapper, classes.arrowWrapperForwards)}
-                    onClick={navigateFactory("back")}
+                    onClick={navigateFactory("forwards")}
                 >
 
                     <ReactSVG

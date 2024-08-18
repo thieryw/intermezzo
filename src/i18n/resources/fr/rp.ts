@@ -32,7 +32,7 @@ export const translation: TranslationRp<"fr"> = {
         "servicesButton2": "Je fonce !",
         "serviceCard1Title": "Répertoire Classique & Pop music",
         "serviceCard1Paragraph": "Choix de vos morceaux favoris !",
-        "serviceCard2Title": "Pour Toute Événement",
+        "serviceCard2Title": "Pour Tout Événement",
         "serviceCard2Paragraph": "Cocktail, vin d'honneur, gala, liturgie, etc.",
         "serviceCard3Title": "Sur Bordeaux, Gironde",
         "serviceCard3Paragraph": "Et toute la région Nouvelle-Aquitaine.",

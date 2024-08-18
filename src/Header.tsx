@@ -15,7 +15,7 @@ import svgMecenart from "assets/svg/sponsors/logo-mecenart.svg";
 import svgMuseeAqui from "assets/svg/sponsors/logo-musee-aquitaine.svg";
 import svgNouvAqui from "assets/svg/sponsors/logo-nouvelle-aquitaine.svg";
 import svgPassCult from "assets/svg/sponsors/logo-passculture.svg";
-import { routes, useRoute } from "router";
+import { routes, social, useRoute } from "router";
 import { tss } from "tss";
 
 
@@ -78,29 +78,29 @@ export const Header = memo(() => {
         }
         logoLinks={[
             {
-                "href": "https://www.facebook.com/artisteformation/",
+                "href": social.facebook,
                 "logo": fbIcon,
                 "label": "Facebook link",
                 "target": "_blank"
             },
             {
-                "href": "",
+                "href": social.insta,
                 "logo": instaIcon,
                 "label": "Instagram link",
                 "target": "_blank"
             },
             {
-                "href": "https://www.youtube.com/@cfj757683",
+                "href": social.youtube,
                 "logo": youtubeIcon,
                 "label": "Youtube link",
                 "target": "_blank"
             }
         ]}
-        buttonLink={{
+        /*buttonLink={{
             "openInNewTab": true,
             "label": t("joinUsLink"),
             "href": "https://outlook.office365.com/book/cesarreservation@artisteformation.com/"
-        }}
+        }}*/
         animatedBanner={{
             "slides":
                 [

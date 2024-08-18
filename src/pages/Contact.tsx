@@ -126,7 +126,7 @@ export const Contact = memo(() => {
                     ]}
                     borderRadius=""
                     width={parseInt(theme.spacing(50))}
-                    height={parseInt(theme.spacing(50)) / 100 * 130}
+                    height={parseInt(theme.spacing(50)) / 100 * 170}
 
                 />
             </div>
@@ -150,7 +150,7 @@ export const Contact = memo(() => {
                     ]}
                     borderRadius=""
                     width={parseInt(theme.spacing(50))}
-                    height={parseInt(theme.spacing(50)) / 100 * 130}
+                    height={parseInt(theme.spacing(50)) / 100 * 170}
 
                 />
             </div>
@@ -174,7 +174,7 @@ export const Contact = memo(() => {
                     ]}
                     borderRadius=""
                     width={parseInt(theme.spacing(50))}
-                    height={parseInt(theme.spacing(50)) / 100 * 130}
+                    height={parseInt(theme.spacing(50)) / 100 * 170}
 
                 />
             </div>
