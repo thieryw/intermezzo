@@ -21,7 +21,7 @@ import { PictureAnimator } from "components/PictureAnimator"
 
 export const Contact = memo(() => {
     const { t } = useTranslation("Contact");
-    const { classes, theme, cx } = useStyles();
+    const { classes, theme } = useStyles();
     return <div className={classes.root}>
         <div className={classes.titleWrapper}>
             <Surtitle
