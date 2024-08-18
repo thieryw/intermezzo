@@ -304,7 +304,7 @@ export const Home = memo(() => {
                         }
                         return <ClickableCard
                             link={{
-                                "href": ""
+                                ...routes.festival().link
                             }}
                             surTitle={t("festivalCardSurtitle")}
                             title={t("festivalCardTitle")}
