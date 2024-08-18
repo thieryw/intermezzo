@@ -11,7 +11,7 @@ const publicUrl = import.meta.env.BASE_URL;
 
 
 export const routeDefs = {
-	"home": defineRoute(publicUrl.slice(0, -1)),
+	"home": defineRoute(publicUrl),
 	"pc": defineRoute(publicUrl + "pass-culture"),
 	"mediation": defineRoute(publicUrl + "mediation"),
 	"rp": defineRoute(publicUrl + "recital-production"),
