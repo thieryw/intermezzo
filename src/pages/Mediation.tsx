@@ -14,6 +14,8 @@ import { Video } from "components/Video";
 import { PictureAnimator } from "components/PictureAnimator";
 import gestJpg from "assets/jpg/mediation/gestuelles-image.jpg"
 import gestWebp from "assets/webp/mediation/gestuelles-image.webp"
+import gestMobileJpg from "assets/jpg/mediation/gestuelles-image-mobile.jpg";
+import gestMobileWebp from "assets/webp/mediation/gestuelles-image-mobile.webp";
 import videoPreviewJpg from "assets/jpg/mediation/carnet-video-preview.jpg";
 import videoPreviewWebp from "assets/webp/mediation/carnet-video-preview.webp";
 import { Surtitle } from "components/Surtitle";
@@ -183,7 +185,7 @@ export const Mediation = memo(() => {
             openMessage="Réduire"
             paragraphTitle={<Typo variant="heading3">{t("gestureParagraphTitleStart")} <span style={{ ...theme.typography.highLight4 }}>{t("gestureParagraphHighlight")}</span> {t("gestureParagraphTitleEnd")}</Typo>}
             media={<PictureAnimator
-                src={gestWebp}
+                /*src={gestWebp}
                 sources={[
                     {
                         "srcSet": gestWebp,
@@ -193,7 +195,40 @@ export const Mediation = memo(() => {
                         "srcSet": gestJpg,
                         "type": "image/jpeg"
                     }
-                ]}
+                ]}*/
+                {
+                    ...(()=>{
+                        if(windowInnerWidth < theme.breakpoints.values.sm){
+                            return {
+                                "src": gestMobileWebp,
+                                "sources": [
+                                    {
+                                        "srcSet": gestMobileWebp,
+                                        "type": "image/webp"
+                                    },
+                                    {
+                                        "srcSet": gestMobileJpg,
+                                        "type": "image/jpeg"
+                                    }
+                                ]
+                            }
+                        }
+                        return {
+                                "src": gestWebp,
+                                "sources": [
+                                    {
+                                        "srcSet": gestWebp,
+                                        "type": "image/webp"
+                                    },
+                                    {
+                                        "srcSet": gestJpg,
+                                        "type": "image/jpeg"
+                                    }
+                                ]
+
+                        }
+                    })()
+                }
                 width={windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))}
                 height={(windowInnerWidth < theme.breakpoints.values.md ? windowInnerWidth : parseInt(theme.spacing(125))) / 100 * (windowInnerWidth < theme.breakpoints.values.sm ? 110 : 40)}
                 borderRadius={`${windowInnerWidth < theme.breakpoints.values.md ? "0px" : theme.spacing(25)} 0px`}
