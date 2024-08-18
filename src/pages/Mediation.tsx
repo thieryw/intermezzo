@@ -158,7 +158,7 @@ export const Mediation = memo(() => {
 
 
             }
-            closeMessage="Ouvrire"
+            closeMessage="Ouvrir"
             openMessage="Réduire"
             title={t("voyageTitle")}
             paragraphTitle={<Typo variant="heading3">{t("voyageParagraphTitle")} <span style={{ ...theme.typography.highLight4 }}>{t("voyageParagraphHighlight")}</span></Typo>}
@@ -179,7 +179,7 @@ export const Mediation = memo(() => {
         <DropdownSection
             isStateBlocked={windowInnerWidth >= theme.breakpoints.values.md}
             title={t("gestureTitle")}
-            closeMessage="Ouvrire"
+            closeMessage="Ouvrir"
             openMessage="Réduire"
             paragraphTitle={<Typo variant="heading3">{t("gestureParagraphTitleStart")} <span style={{ ...theme.typography.highLight4 }}>{t("gestureParagraphHighlight")}</span> {t("gestureParagraphTitleEnd")}</Typo>}
             media={<PictureAnimator
