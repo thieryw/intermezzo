@@ -29,7 +29,7 @@ export const { RouteProvider, routes, useRoute } = createRouter(opts,
 );
 
 export const social = {
-	"facebook": "https://www.facebook.com/festivalcubedemusique",
+	"facebook": "https://www.facebook.com/intermezzobordeaux",
 	"insta": "https://www.instagram.com/intermezzo_bordeaux/",
 	"youtube": "https://www.youtube.com/@associationintermezzo8897",
 }
