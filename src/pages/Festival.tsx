@@ -763,7 +763,7 @@ export const Festival = memo(() => {
                             width={windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth - (2 * parseInt(theme.spacing(5))) : parseInt(theme.spacing(71))}
                             height={(windowInnerWidth < theme.breakpoints.values.sm ? windowInnerWidth : parseInt(theme.spacing(71))) / 100 * 50}
                             borderRadius={windowInnerWidth < theme.breakpoints.values.sm ? "0px" : `0px ${theme.spacing(7)} ${theme.spacing(7)} ${theme.spacing(7)}`}
-                            videoId="fCb5rOWvfZc"
+                            videoId="jI3SRZU6Ky4"
                             alt="video preview"
 
                         />

@@ -23,7 +23,7 @@ export const translation: TranslationFestival<"fr"> = {
         "heroStatDesc4": "Spectateurs Conquis",
         "festivalDescTitleStart": "Ce festival",
         "festivalDescTitleHighlight": "jeune et intinérant",
-        "festivalDescTitleEnd": "à choisi une programmation locale qui mêle les arts, la tradition et la nouveauté !",
+        "festivalDescTitleEnd": "a choisi une programmation locale qui mêle les arts, la tradition et la nouveauté !",
         "festivalDescParagraph": "Créé par l'Association Musicale Intermezzo, le Festival Cube de Musique a présenté sa première édition les 17, 18 et 24 octobre 2020 à l’espace Saint-Rémi et à la Maison Cantonale de la Bastide.",
         "readVid": "Lire la vidéo",
         "missionSurtitle": "Engagement",

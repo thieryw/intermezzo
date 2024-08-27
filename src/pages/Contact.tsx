@@ -132,30 +132,6 @@ export const Contact = memo(() => {
             </div>
             <div className={classes.portrait}>
                 <div className={classes.desc}>
-                    <Typo className={classes.name} variant="heading3">{t("portraitName2")}</Typo>
-                    <Typo className={classes.title} variant="paragraph1">{t("portraitTitle2")}</Typo>
-                </div>
-                <PictureAnimator 
-                    src={camilleWebp}
-                    alt="camille portrait"
-                    sources={[
-                        {
-                            "type": "image/webp",
-                            "srcSet": camilleWebp
-                        },
-                        {
-                            "type": "image/jpeg",
-                            "srcSet": camilleJpg
-                        }
-                    ]}
-                    borderRadius=""
-                    width={parseInt(theme.spacing(50))}
-                    height={parseInt(theme.spacing(50)) / 100 * 170}
-
-                />
-            </div>
-            <div className={classes.portrait}>
-                <div className={classes.desc}>
                     <Typo className={classes.name} variant="heading3">{t("portraitName3")}</Typo>
                     <Typo className={classes.title} variant="paragraph1">{t("portraitTitle3")}</Typo>
                 </div>
@@ -170,6 +146,30 @@ export const Contact = memo(() => {
                         {
                             "type": "image/jpeg",
                             "srcSet": raphJpg
+                        }
+                    ]}
+                    borderRadius=""
+                    width={parseInt(theme.spacing(50))}
+                    height={parseInt(theme.spacing(50)) / 100 * 170}
+
+                />
+            </div>
+            <div className={classes.portrait}>
+                <div className={classes.desc}>
+                    <Typo className={classes.name} variant="heading3">{t("portraitName2")}</Typo>
+                    <Typo className={classes.title} variant="paragraph1">{t("portraitTitle2")}</Typo>
+                </div>
+                <PictureAnimator 
+                    src={camilleWebp}
+                    alt="camille portrait"
+                    sources={[
+                        {
+                            "type": "image/webp",
+                            "srcSet": camilleWebp
+                        },
+                        {
+                            "type": "image/jpeg",
+                            "srcSet": camilleJpg
                         }
                     ]}
                     borderRadius=""
