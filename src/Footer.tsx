@@ -140,7 +140,7 @@ export const Footer = memo(() => {
 										"href": social.youtube,
 										"target": "_blank"
 									},
-								].map(({href, icon, target}) => <a target={target} href={href}><Logo
+								].map(({href, icon, target}, index) => <a key={index} target={target} href={href}><Logo
 									className={classes.socialLogo}
 									key={icon}
 									logoUrl={icon}
