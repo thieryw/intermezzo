@@ -17,6 +17,8 @@ import camilleWebp from "assets/webp/contact/camille.webp"
 import dorianWebp from "assets/webp/contact/dorian.webp"
 import raphWebp from "assets/webp/contact/raph.webp"
 import { PictureAnimator } from "components/PictureAnimator"
+import { CircularButton } from "components/CircularButton";
+import arrowSvg from "assets/svg/icons/arrows/badge-arrow.svg";
 
 
 export const Contact = memo(() => {
@@ -34,6 +36,13 @@ export const Contact = memo(() => {
 
         <section className={classes.mainSection}>
             <ReactSVG className={classes.logo} src={logoSvg} />
+            <CircularButton 
+                className={classes.circularButton}
+                logoSvgSrc={arrowSvg}
+                circularText={`${t("circularText")} ${t("circularText")}`}
+                href={`mailto:${t("gmail")}`}
+
+            />
             <div className={classes.credentials}>
                 <div className={classes.credTitleWrapper}>
                     <Typo variant="heading3">{t("assoTitle1")}</Typo>
@@ -95,7 +104,7 @@ export const Contact = memo(() => {
                     }
 
                 </div>
-                <LinkButton 
+                <LinkButton
                     className={classes.button}
                     href="https://recital-production.fr/"
                     label={t("siteButtonLabel")}
@@ -111,7 +120,7 @@ export const Contact = memo(() => {
                     <Typo className={classes.name} variant="heading3">{t("portraitName1")}</Typo>
                     <Typo className={classes.title} variant="paragraph1">{t("portraitTitle1")}</Typo>
                 </div>
-                <PictureAnimator 
+                <PictureAnimator
                     src={dorianWebp}
                     alt="dorian portrait"
                     sources={[
@@ -135,7 +144,7 @@ export const Contact = memo(() => {
                     <Typo className={classes.name} variant="heading3">{t("portraitName3")}</Typo>
                     <Typo className={classes.title} variant="paragraph1">{t("portraitTitle3")}</Typo>
                 </div>
-                <PictureAnimator 
+                <PictureAnimator
                     src={raphWebp}
                     alt="raph portrait"
                     sources={[
@@ -159,7 +168,7 @@ export const Contact = memo(() => {
                     <Typo className={classes.name} variant="heading3">{t("portraitName2")}</Typo>
                     <Typo className={classes.title} variant="paragraph1">{t("portraitTitle2")}</Typo>
                 </div>
-                <PictureAnimator 
+                <PictureAnimator
                     src={camilleWebp}
                     alt="camille portrait"
                     sources={[
@@ -214,7 +223,7 @@ const useStyles = tss.withName("Contact").create(({ theme }) => {
             "alignItems": "center",
             "justifyContent": "center",
             "flexWrap": "wrap",
-            ...(()=>{
+            ...(() => {
                 const value = theme.spacing(4);
                 return {
                     "paddingLeft": value,
@@ -275,13 +284,21 @@ const useStyles = tss.withName("Contact").create(({ theme }) => {
         "mainSection": {
             "position": "relative",
             "display": "flex",
-            "flexDirection": "column",
-            "alignItems": "flex-end",
+            //"flexDirection": "column",
+            "alignItems": "center",
+            "justifyContent": "center",
             "paddingTop": theme.spacing(18),
-            "paddingRight": theme.spacing(17),
-            [theme.breakpoints.down("md")]: {
-                "alignItems": "flex-start"
+            //"paddingRight": theme.spacing(17),
+            [theme.breakpoints.down("mdPlus")]: {
+                "justifyContent": "flex-start"
             }
+        },
+        "circularButton": {
+            "marginRight": theme.spacing(37),
+            [theme.breakpoints.down("mdPlus")]: {
+                "display": "none"
+            }
+
         },
         "credentials": {
             "display": "flex",

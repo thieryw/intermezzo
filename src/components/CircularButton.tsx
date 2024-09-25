@@ -2,7 +2,6 @@ import { memo } from "react";
 import { tss } from "tss";
 import { Link } from "tools/link";
 import { Logo } from "components/Logo";
-import Typography from "@mui/material/Typography";
 
 
 export type CircularButtonProps = {
@@ -10,18 +9,19 @@ export type CircularButtonProps = {
     classes?: Partial<ReturnType<typeof useStyles>["classes"]>;
     circularText?: string;
     logoSvgSrc: string;
+    deg?: number;
 } & Partial<Omit<Link, "label">>
 
 
 
 
 export const CircularButton = memo((props: CircularButtonProps) => {
-    const { circularText, href, onClick, className, logoSvgSrc } = props
+    const { circularText, href, onClick, className, logoSvgSrc, deg = 5.7 } = props
     const { classes, cx } = useStyles();
     return <a href={href} onClick={onClick} className={cx(classes.root, className)}>
         {
             circularText !== undefined &&
-            circularText.split("").map((char, index) => <Char index={index} key={index} char={char} />)
+            circularText.split("").map((char, index) => <Char deg={deg} index={index} key={index} char={char} />)
 
         }
         <div className={classes.inner}>
@@ -68,31 +68,34 @@ const { Char } = (() => {
     type CharProps = {
         char: string;
         index: number;
+        deg: number;
     }
 
     const Char = memo((props: CharProps) => {
-        const { char, index } = props;
-        const { classes } = useStyles({ index });
+        const { char, index, deg } = props;
+        const { classes } = useStyles({ index, deg });
         return <div className={classes.root}>
-            <Typography className={classes.char} variant="details">{char}</Typography>
+            <p className={classes.char}>{char}</p>
         </div>
     })
 
-    const useStyles = tss.withName("Char").withParams<{ index: number; }>().create(({ theme, index }) => {
+    const useStyles = tss.withName("Char").withParams<{ index: number; deg: number }>().create(({ theme, deg, index }) => {
         return ({
             "root": {
                 "position": "absolute",
-                "top": 0,
-                "height": "50%",
+                "top": -5,
+                "height": "calc(50% + 5px)",
                 "boxSizing": "border-box",
-                "transform": `rotate(${index * 5.7}deg)`,
+                "transform": `rotate(${index * deg}deg)`,
                 "transformOrigin": "bottom center",
                 "paddingTop": 5,
 
             },
             "char": {
                 "color": theme.palette.white.main,
-                "fontSize": "0.95em"
+                "fontSize": "0.95em",
+                "fontFamily": '"Space Mono", monospace',
+                "lineHeight": "0em"
             }
         })
     })
